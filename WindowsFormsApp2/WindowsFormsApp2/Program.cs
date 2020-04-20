@@ -16,7 +16,35 @@ namespace WindowsFormsApp2.View
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Principal());
+            Application.Run(new Login());
         }
+
+        public static void inserirUserUsuario()
+        {
+            //INSERIR o => [ADM, 123]
+            DatabaseAbstractionLayer.PostgreSQLPersistence psqlp = new DatabaseAbstractionLayer.PostgreSQLPersistence();
+
+            var dic = new Dictionary<string, object>();
+            dic.Add("@login", "ADM");
+            dic.Add("@senha", "123");
+            dic.Add("@usuario_ativo", true);
+            dic.Add("@nivel_acesso", 1);
+
+            psqlp.executeNonQuery(
+                @"INSERT INTO controle_acesso 
+                (login, senha, usuario_ativo, nivel_acesso)
+                VALUES
+                (@login, @senha, @usuario_ativo, @nivel_acesso)", dic);
+        }
+
+
+        /*insert into estado (uf, nome) values('SP', 'São Paulo');
+insert into estado (uf, nome) values('RJ', 'Rio de Janeiro');
+
+
+insert into cidade (uf_estado, nome) values('SP', 'Presidente Prudente');
+insert into cidade (uf_estado, nome) values('SP', 'São Paulo');
+
+insert into cidade (uf_estado, nome) values('RJ', 'Rio de Janeiro');*/
     }
 }

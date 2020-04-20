@@ -16,3 +16,43 @@ C:\Users\Aluno\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsF
 C:\Users\Aluno\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.View.ContasReceber.resources
 C:\Users\Aluno\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.View.Fornecedores.resources
 C:\Users\Aluno\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.View.Obras.resources
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe.config
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.pdb
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\MaterialSkin.dll
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csprojAssemblyReference.cache
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.View.Agendamentos.resources
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.View.Clientes.resources
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.View.ContasPagar.resources
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.View.ContasReceber.resources
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.View.Fornecedores.resources
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Login.resources
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Properties.Resources.resources
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.View.Obras.resources
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.View.Principal.resources
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.GenerateResource.cache
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.CopyComplete
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.exe
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.pdb
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.View.Funcionarios.resources
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\Npgsql.dll
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\System.Buffers.dll
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\System.Memory.dll
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\System.Numerics.Vectors.dll
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\System.Text.Encodings.Web.dll
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\System.Text.Json.dll
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\System.Threading.Tasks.Extensions.dll
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\System.ValueTuple.dll
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\Npgsql.pdb
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\Npgsql.xml
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\System.Buffers.xml
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\System.Memory.xml
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\System.Numerics.Vectors.xml
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\System.Text.Encodings.Web.xml
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\System.Text.Json.xml
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\System.Threading.Tasks.Extensions.xml
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\System.ValueTuple.xml

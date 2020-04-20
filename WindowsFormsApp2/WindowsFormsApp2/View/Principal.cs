@@ -12,10 +12,13 @@ namespace WindowsFormsApp2.View
 {
     public partial class Principal : MaterialSkin.Controls.MaterialForm
     {
+        public static Model.Funcionario FUNCIONARIO_LOGADO = null;
+
         public Principal()
         {
             InitializeComponent();
         }
+
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
@@ -37,8 +40,8 @@ namespace WindowsFormsApp2.View
 
         private void btnFuncionarios_Click(object sender, EventArgs e)
         {
-            //Funcionarios form = new Funcionarios();
-            //form.Show();
+            Funcionarios form = new Funcionarios();
+            form.Show();
         }
 
         private void btnContasPagar_Click(object sender, EventArgs e)
