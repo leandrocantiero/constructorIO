@@ -41,6 +41,7 @@
             this.btnContasReceber = new System.Windows.Forms.Button();
             this.btnPedidos = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -284,12 +285,32 @@
             this.btnClientes.UseVisualStyleBackColor = false;
             this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkCyan;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(211, 37);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(148, 25);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "Alterar senha";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1280, 780);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.panelMenu);
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "Principal";
@@ -317,5 +338,6 @@
         private System.Windows.Forms.Button button1;
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
         private System.Windows.Forms.Button btnObras;
+        private System.Windows.Forms.Button button2;
     }
 }

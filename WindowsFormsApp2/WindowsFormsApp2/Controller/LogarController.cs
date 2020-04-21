@@ -85,6 +85,38 @@ namespace WindowsFormsApp2.Controller
             return funcLogado;
         }
 
+        public Model.Funcionario trocarSenha(string senhaAtual, string senhaNova, Model.Funcionario funcionario)
+        {
+            
+            if(senhaAtual != funcionario.getControleAcesso().getSenha())
+            {
+                MessageBox.Show("Senha atual digitada é diferente da atual cadastrada", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                funcionario = null;
+            }
+            else
+            {
+                if (senhaNova.Length == 0 || senhaNova.Length < 4 || senhaNova.Length > 20 || 
+                    senhaAtual.Length == 0 || senhaAtual.Length < 4 || senhaAtual.Length > 20)
+                {
+                    MessageBox.Show("Senha nova e senha atual tem que ter mais de 4 caracteres e menos que 20.", 
+                        "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    funcionario = null;
+                }
+                else
+                {
+                    DatabaseAbstractionLayer.FuncionarioDAL funcionarioDAL = 
+                        new DatabaseAbstractionLayer.FuncionarioDAL();
 
+                    funcionario.getControleAcesso().setSenha(senhaNova);
+                    
+                    if( !funcionarioDAL.inserir(funcionario))
+                    {
+                        funcionario = null;
+                    }
+                }
+            }
+
+            return funcionario;
+        }
     }
 }

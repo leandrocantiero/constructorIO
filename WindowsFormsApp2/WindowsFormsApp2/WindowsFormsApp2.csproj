@@ -107,6 +107,12 @@
     <Compile Include="View\Agendamentos.Designer.cs">
       <DependentUpon>Agendamentos.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\AlterarSenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AlterarSenha.Designer.cs">
+      <DependentUpon>AlterarSenha.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Clientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +165,9 @@
     </Compile>
     <EmbeddedResource Include="View\Agendamentos.resx">
       <DependentUpon>Agendamentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AlterarSenha.resx">
+      <DependentUpon>AlterarSenha.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Clientes.resx">
       <DependentUpon>Clientes.cs</DependentUpon>

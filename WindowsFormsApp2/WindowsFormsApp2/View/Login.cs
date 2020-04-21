@@ -12,7 +12,6 @@ namespace WindowsFormsApp2
 {
     public partial class Login : MaterialSkin.Controls.MaterialForm
     {
-
         public Login()
         {
             InitializeComponent();
@@ -46,5 +45,7 @@ namespace WindowsFormsApp2
                 MessageBox.Show("Vefifique o login ou a senha!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+
+        
     }
 }

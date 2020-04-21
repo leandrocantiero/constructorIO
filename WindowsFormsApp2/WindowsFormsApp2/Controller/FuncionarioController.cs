@@ -132,7 +132,7 @@ namespace WindowsFormsApp2.Controller
                 if (func.getControleAcesso().getSenha() == null ||
                     func.getControleAcesso().getSenha().Length == 0 ||
                     func.getControleAcesso().getSenha().Length < 4 ||
-                    func.getControleAcesso().getSenha().Length > 30)
+                    func.getControleAcesso().getSenha().Length > 20)
                 {
                     msgs.Add("Senha é preciso ter a quantidade de caracteres maior que 3 e menor que 30.");
                     operacao = false;

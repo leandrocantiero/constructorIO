@@ -79,5 +79,11 @@ namespace WindowsFormsApp2.View
             //Relatorios form = new Relatorios();
             //form.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            View.AlterarSenha alterarSenha = new View.AlterarSenha();
+            alterarSenha.Show();
+        }
     }
 }

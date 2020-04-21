@@ -56,3 +56,4 @@ Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\Wi
 Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\System.Text.Json.xml
 Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\System.Threading.Tasks.Extensions.xml
 Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\System.ValueTuple.xml
+Z:\ENGENHARIA DE SOFTWARE II\2_BIMESTRE\TRABALHOS\IMPLEMENTACAO\constructorIO\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.View.AlterarSenha.resources
