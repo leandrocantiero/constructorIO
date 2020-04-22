@@ -51,7 +51,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                 sucesso = bd.executeNonQuery(sql, param);
                 contato.setCod(bd.getUltimoCod());
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 sucesso = false;
             }
@@ -73,7 +73,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             {
                 sucesso = bd.executeNonQuery(sql, param);
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 sucesso = false;
             }
@@ -101,7 +101,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                     contato = map(dt.Rows[0]);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -130,7 +130,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                     }
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }

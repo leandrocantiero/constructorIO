@@ -48,7 +48,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                 sucesso = bd.executeNonQuery(sql, param);
                 ctrAccess.setCod(bd.getUltimoCod());
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 sucesso = false;
             }
@@ -69,7 +69,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             {
                 sucesso = bd.executeNonQuery(sql, param);
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 sucesso = false;
             }
@@ -102,7 +102,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                     }
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -130,7 +130,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                     cargo = map(dt.Rows[0]);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -158,7 +158,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                     ctr = map(dt.Rows[0]);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -192,7 +192,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                     endereco = map(dt.Rows[0]);
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }

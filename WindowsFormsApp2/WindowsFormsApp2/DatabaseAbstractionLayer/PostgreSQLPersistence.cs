@@ -32,7 +32,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                 {
                     conn.Open();
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
                     MessageBox.Show("Banco de dados Offline.");
                 }
@@ -64,7 +64,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             {
                 dt.Load(cmd.ExecuteReader());
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -98,7 +98,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                 ultimoCod = (int) cmd.ExecuteScalar();
                 sucesso = true;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 ultimoCod = 0;
             }

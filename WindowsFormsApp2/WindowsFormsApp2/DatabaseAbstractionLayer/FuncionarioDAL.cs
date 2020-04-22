@@ -115,7 +115,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                     funcionario.setCod(bd.getUltimoCod());
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 sucesso = false;
             }
@@ -157,7 +157,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                     MessageBox.Show("Há registro associados.");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 sucesso = false;
                 MessageBox.Show("Problema no banco");
@@ -217,7 +217,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                     }
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -255,7 +255,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                     funcionario = map(dt.Rows[0]);
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -303,7 +303,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                     funcionario = mapLoginSenha(dt.Rows[0]);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -358,7 +358,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             {
                 funcionario.setCod(Convert.ToInt16(row["pes_cod"]));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 funcionario.setCod(0);
             }
@@ -410,7 +410,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             {
                 funcionario.setCod(Convert.ToInt16(row["pes_cod"]));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 funcionario.setCod(0);
             }

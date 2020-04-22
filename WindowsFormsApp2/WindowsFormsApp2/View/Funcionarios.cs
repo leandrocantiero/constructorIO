@@ -175,7 +175,7 @@ namespace WindowsFormsApp2.View
 
             if (funcTela != null && funcTela.getCod() != 0)
             {
-                List<string> msgs = null;
+                //List<string> msgs = null;
                 bool operacao = false;
 
                 //Criar um MessageBox com os botões Sim e Não e deixar o botão 2(Não) selecionado por padrão e comparar o botão apertado
@@ -281,7 +281,7 @@ namespace WindowsFormsApp2.View
             {
                 enderecoTela.setNumero(Convert.ToInt32(txtNumero.Text.Length > 0 ? txtNumero.Text : "0"));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Digite um número válido para o endereco");
                 return null;

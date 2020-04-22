@@ -12,7 +12,7 @@ namespace WindowsFormsApp2.Controller
         public Model.Funcionario logar(Model.ControleAcesso ctrAccess)
         {
             List<string> msgs = new List<string>();
-            Model.ControleAcesso ctrAccessResp = null;
+            //Model.ControleAcesso ctrAccessResp = null;
             Model.Funcionario funcLogado = null;
             bool operacao = true;
 

@@ -49,7 +49,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
 
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -84,7 +84,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                     cidade = map(dt.Rows[0]);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
