@@ -34,7 +34,7 @@ namespace WindowsFormsApp2.View
             btnAtivo.Checked = true;
             btnSave.Show();
             btnRemove.Hide();
-            btnClose.Text = "Fechar";
+            btnCancel.Hide();
         }
 
         private void iniciarVariaveisGlobais()
@@ -62,7 +62,7 @@ namespace WindowsFormsApp2.View
             //endereco
             enderecoTela.setCod(this.cliTela != null && cliTela.getEndereco() != null ? this.cliTela.getEndereco().getCod() : 0);
             enderecoTela.setCep(txtCEP.Text.ToString());
-            enderecoTela.setLogradouro(txtLogradouro.Text);
+            enderecoTela.setComplemento(txtComplemento.Text);
             enderecoTela.setRua(txtRua.Text);
 
             try
@@ -79,8 +79,8 @@ namespace WindowsFormsApp2.View
 
             //pessoa e cliente
             cliTela.setNome(txtNome.Text);
-            cliTela.setRegistro(txtCPFCNPJ.Text);
-            cliTela.setRegistro(txtEmail.Text);
+            cliTela.setCpfCnpj(txtCPFCNPJ.Text);
+            cliTela.setEmail(txtEmail.Text);
             cliTela.setDtNascimento(dtNascimento.Value.ToString().Length > 0 ?
                 dtNascimento.Value : Convert.ToDateTime("1992-12-24"));
 
@@ -133,16 +133,6 @@ namespace WindowsFormsApp2.View
             cbbEstado.DataSource = this.estadoList;
         }
 
-        private void cbbEstado_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Model.Estado estado = (Model.Estado)cbbEstado.SelectedItem;
-
-            if (estado != null)
-            {
-                this.carregarCidadeTela(estado.getUf());
-            }
-        }
-
         private void carregarCidadeTela(string uf)
         {
             cbbCidade.DataSource = null;
@@ -163,16 +153,6 @@ namespace WindowsFormsApp2.View
             cbbCidade.DataSource = this.cidadeList;
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            btnSave.Show();
-            btnRemove.Hide();
-
-            dgvClientes.ClearSelection();
-
-            this.limparTela();
-        }
-
         private void limparTela()
         {
 
@@ -191,7 +171,7 @@ namespace WindowsFormsApp2.View
 
             //limpa endereco
             txtCEP.Text = "";
-            txtLogradouro.Text = "";
+            txtComplemento.Text = "";
             txtRua.Text = "";
             txtNumero.Text = "";
             txtBairro.Text = "";
@@ -220,7 +200,7 @@ namespace WindowsFormsApp2.View
 
             //enderecos
             txtCEP.Text = this.cliTela.getEndereco().getCep();
-            txtLogradouro.Text = this.cliTela.getEndereco().getLogradouro();
+            txtComplemento.Text = this.cliTela.getEndereco().getComplemento();
             txtRua.Text = this.cliTela.getEndereco().getRua();
             txtNumero.Text = this.cliTela.getEndereco().getNumero().ToString();
             txtBairro.Text = this.cliTela.getEndereco().getBairro();
@@ -322,7 +302,7 @@ namespace WindowsFormsApp2.View
         private void dgvClientes_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             btnRemove.Show();
-            btnClose.Text = "Cancelar";
+            btnCancel.Show();
 
             //txtLogin.Enabled = false;
             //txtSenha.Enabled = false;
@@ -336,6 +316,27 @@ namespace WindowsFormsApp2.View
                 cliTela = funcController.obterUm(clieSelected.getCod());
 
                 carregarDadosTela();
+            }
+        }
+
+        private void btnCancel_Click_1(object sender, EventArgs e)
+        {
+            btnSave.Show();
+            btnCancel.Hide();
+            btnRemove.Hide();
+
+            dgvClientes.ClearSelection();
+
+            this.limparTela();
+        }
+
+        private void cbbEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Model.Estado estado = (Model.Estado)cbbEstado.SelectedItem;
+
+            if (estado != null)
+            {
+                this.carregarCidadeTela(estado.getUf());
             }
         }
     }

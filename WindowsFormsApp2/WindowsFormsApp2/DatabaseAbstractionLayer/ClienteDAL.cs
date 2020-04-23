@@ -88,8 +88,9 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                     cliente.setCod(bd.getUltimoCod());
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                MessageBox.Show(e.ToString(), "warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 sucesso = false;
             }
 

@@ -99,3 +99,4 @@ C:\Users\leand\Documents\Arquivos Faculdade\7º Termo\ENG2\ConstructorIO\Windows
 C:\Users\leand\Documents\Arquivos Faculdade\7º Termo\ENG2\ConstructorIO\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.CopyComplete
 C:\Users\leand\Documents\Arquivos Faculdade\7º Termo\ENG2\ConstructorIO\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.exe
 C:\Users\leand\Documents\Arquivos Faculdade\7º Termo\ENG2\ConstructorIO\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.pdb
+C:\Users\leand\Documents\Arquivos Faculdade\7º Termo\ENG2\ConstructorIO\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.View.Param.resources

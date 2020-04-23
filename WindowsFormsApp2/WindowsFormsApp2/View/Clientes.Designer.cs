@@ -30,7 +30,6 @@
         {
             this.btnAtivo = new MaterialSkin.Controls.MaterialCheckBox();
             this.btnSave = new MaterialSkin.Controls.MaterialFlatButton();
-            this.btnClose = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialSingleLineTextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
@@ -47,7 +46,7 @@
             this.cbbEstado = new System.Windows.Forms.ComboBox();
             this.txtCEP = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtLogradouro = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtComplemento = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
             this.txtBairro = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -70,6 +69,7 @@
             this.txtContato1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel17 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.btnCancel = new MaterialSkin.Controls.MaterialFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,7 +78,7 @@
             this.btnAtivo.AutoSize = true;
             this.btnAtivo.Depth = 0;
             this.btnAtivo.Font = new System.Drawing.Font("Roboto", 10F);
-            this.btnAtivo.Location = new System.Drawing.Point(298, 182);
+            this.btnAtivo.Location = new System.Drawing.Point(263, 175);
             this.btnAtivo.Margin = new System.Windows.Forms.Padding(0);
             this.btnAtivo.MouseLocation = new System.Drawing.Point(-1, -1);
             this.btnAtivo.MouseState = MaterialSkin.MouseState.HOVER;
@@ -93,6 +93,7 @@
             // 
             this.btnSave.AutoSize = true;
             this.btnSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.Depth = 0;
             this.btnSave.Location = new System.Drawing.Point(998, 476);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
@@ -104,21 +105,6 @@
             this.btnSave.Text = "Salvar";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.AutoSize = true;
-            this.btnClose.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnClose.Depth = 0;
-            this.btnClose.Location = new System.Drawing.Point(926, 476);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnClose.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Primary = false;
-            this.btnClose.Size = new System.Drawing.Size(64, 36);
-            this.btnClose.TabIndex = 2;
-            this.btnClose.Text = "Fechar";
-            this.btnClose.UseVisualStyleBackColor = true;
             // 
             // materialSingleLineTextField1
             // 
@@ -291,6 +277,7 @@
             this.cbbEstado.Name = "cbbEstado";
             this.cbbEstado.Size = new System.Drawing.Size(115, 21);
             this.cbbEstado.TabIndex = 59;
+            this.cbbEstado.SelectedIndexChanged += new System.EventHandler(this.cbbEstado_SelectedIndexChanged);
             // 
             // txtCEP
             // 
@@ -320,20 +307,20 @@
             this.materialLabel13.TabIndex = 57;
             this.materialLabel13.Text = "CEP";
             // 
-            // txtLogradouro
+            // txtComplemento
             // 
-            this.txtLogradouro.Depth = 0;
-            this.txtLogradouro.Hint = "";
-            this.txtLogradouro.Location = new System.Drawing.Point(656, 302);
-            this.txtLogradouro.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtLogradouro.Name = "txtLogradouro";
-            this.txtLogradouro.PasswordChar = '\0';
-            this.txtLogradouro.SelectedText = "";
-            this.txtLogradouro.SelectionLength = 0;
-            this.txtLogradouro.SelectionStart = 0;
-            this.txtLogradouro.Size = new System.Drawing.Size(264, 23);
-            this.txtLogradouro.TabIndex = 56;
-            this.txtLogradouro.UseSystemPasswordChar = false;
+            this.txtComplemento.Depth = 0;
+            this.txtComplemento.Hint = "";
+            this.txtComplemento.Location = new System.Drawing.Point(17, 367);
+            this.txtComplemento.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtComplemento.Name = "txtComplemento";
+            this.txtComplemento.PasswordChar = '\0';
+            this.txtComplemento.SelectedText = "";
+            this.txtComplemento.SelectionLength = 0;
+            this.txtComplemento.SelectionStart = 0;
+            this.txtComplemento.Size = new System.Drawing.Size(264, 23);
+            this.txtComplemento.TabIndex = 56;
+            this.txtComplemento.UseSystemPasswordChar = false;
             // 
             // materialLabel12
             // 
@@ -341,12 +328,12 @@
             this.materialLabel12.Depth = 0;
             this.materialLabel12.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel12.Location = new System.Drawing.Point(652, 270);
+            this.materialLabel12.Location = new System.Drawing.Point(13, 335);
             this.materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel12.Name = "materialLabel12";
-            this.materialLabel12.Size = new System.Drawing.Size(86, 19);
+            this.materialLabel12.Size = new System.Drawing.Size(104, 19);
             this.materialLabel12.TabIndex = 55;
-            this.materialLabel12.Text = "Logradouro";
+            this.materialLabel12.Text = "Complemento";
             // 
             // materialLabel11
             // 
@@ -421,14 +408,14 @@
             // 
             this.txtRua.Depth = 0;
             this.txtRua.Hint = "";
-            this.txtRua.Location = new System.Drawing.Point(17, 367);
+            this.txtRua.Location = new System.Drawing.Point(656, 301);
             this.txtRua.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtRua.Name = "txtRua";
             this.txtRua.PasswordChar = '\0';
             this.txtRua.SelectedText = "";
             this.txtRua.SelectionLength = 0;
             this.txtRua.SelectionStart = 0;
-            this.txtRua.Size = new System.Drawing.Size(293, 23);
+            this.txtRua.Size = new System.Drawing.Size(262, 23);
             this.txtRua.TabIndex = 49;
             this.txtRua.UseSystemPasswordChar = false;
             // 
@@ -438,7 +425,7 @@
             this.materialLabel7.Depth = 0;
             this.materialLabel7.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel7.Location = new System.Drawing.Point(13, 335);
+            this.materialLabel7.Location = new System.Drawing.Point(652, 269);
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
             this.materialLabel7.Size = new System.Drawing.Size(34, 19);
@@ -462,7 +449,7 @@
             this.materialLabel10.Depth = 0;
             this.materialLabel10.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel10.Location = new System.Drawing.Point(181, 460);
+            this.materialLabel10.Location = new System.Drawing.Point(176, 460);
             this.materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel10.Name = "materialLabel10";
             this.materialLabel10.Size = new System.Drawing.Size(50, 19);
@@ -473,7 +460,7 @@
             // 
             this.materialSingleLineTextField6.Depth = 0;
             this.materialSingleLineTextField6.Hint = "";
-            this.materialSingleLineTextField6.Location = new System.Drawing.Point(185, 492);
+            this.materialSingleLineTextField6.Location = new System.Drawing.Point(180, 492);
             this.materialSingleLineTextField6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialSingleLineTextField6.Name = "materialSingleLineTextField6";
             this.materialSingleLineTextField6.PasswordChar = '\0';
@@ -516,8 +503,9 @@
             // 
             this.materialFlatButton3.AutoSize = true;
             this.materialFlatButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.materialFlatButton3.Depth = 0;
-            this.materialFlatButton3.Location = new System.Drawing.Point(472, 479);
+            this.materialFlatButton3.Location = new System.Drawing.Point(455, 479);
             this.materialFlatButton3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialFlatButton3.Name = "materialFlatButton3";
@@ -542,8 +530,9 @@
             // 
             this.btnRemove.AutoSize = true;
             this.btnRemove.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnRemove.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRemove.Depth = 0;
-            this.btnRemove.Location = new System.Drawing.Point(852, 476);
+            this.btnRemove.Location = new System.Drawing.Point(837, 476);
             this.btnRemove.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnRemove.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnRemove.Name = "btnRemove";
@@ -640,11 +629,29 @@
             this.materialLabel5.TabIndex = 75;
             this.materialLabel5.Text = "Contato 2";
             // 
+            // btnCancel
+            // 
+            this.btnCancel.AutoSize = true;
+            this.btnCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel.Depth = 0;
+            this.btnCancel.Location = new System.Drawing.Point(911, 476);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnCancel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Primary = false;
+            this.btnCancel.Size = new System.Drawing.Size(82, 36);
+            this.btnCancel.TabIndex = 76;
+            this.btnCancel.Text = "Cancelar";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click_1);
+            // 
             // Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1076, 816);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.materialLabel5);
             this.Controls.Add(this.txtDdd2);
             this.Controls.Add(this.txtDdd1);
@@ -664,7 +671,7 @@
             this.Controls.Add(this.cbbEstado);
             this.Controls.Add(this.txtCEP);
             this.Controls.Add(this.materialLabel13);
-            this.Controls.Add(this.txtLogradouro);
+            this.Controls.Add(this.txtComplemento);
             this.Controls.Add(this.materialLabel12);
             this.Controls.Add(this.materialLabel11);
             this.Controls.Add(this.txtBairro);
@@ -684,7 +691,6 @@
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.materialSingleLineTextField1);
-            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnAtivo);
             this.Name = "Clientes";
@@ -700,7 +706,6 @@
 
         private MaterialSkin.Controls.MaterialCheckBox btnAtivo;
         private MaterialSkin.Controls.MaterialFlatButton btnSave;
-        private MaterialSkin.Controls.MaterialFlatButton btnClose;
         private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField1;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
@@ -717,7 +722,7 @@
         private System.Windows.Forms.ComboBox cbbEstado;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtCEP;
         private MaterialSkin.Controls.MaterialLabel materialLabel13;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtLogradouro;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtComplemento;
         private MaterialSkin.Controls.MaterialLabel materialLabel12;
         private MaterialSkin.Controls.MaterialLabel materialLabel11;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtBairro;
@@ -740,5 +745,6 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField txtContato1;
         private MaterialSkin.Controls.MaterialLabel materialLabel17;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private MaterialSkin.Controls.MaterialFlatButton btnCancel;
     }
 }

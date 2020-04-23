@@ -18,7 +18,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
 
         public PostgreSQLPersistence()
         {
-            string strConn="Server=127.0.0.1;Port=5432;Database=postgres;User Id=postgres;Password=postgres123;";
+            string strConn="Server=localhost;Port=5432;Database=constructorio;User Id=postgres;Password=postgres;";
             
             conn = new NpgsqlConnection(strConn);
             cmd = conn.CreateCommand();
@@ -32,9 +32,9 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                 {
                     conn.Open();
                 }
-                catch(Exception)
+                catch(Exception e)
                 {
-                    MessageBox.Show("Banco de dados Offline.");
+                    MessageBox.Show("Banco de dados Offline." + e);
                 }
             }
         }

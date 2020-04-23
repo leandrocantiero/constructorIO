@@ -85,5 +85,11 @@ namespace WindowsFormsApp2.View
             View.AlterarSenha alterarSenha = new View.AlterarSenha();
             alterarSenha.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            View.Param param = new View.Param();
+            param.Show();
+        }
     }
 }

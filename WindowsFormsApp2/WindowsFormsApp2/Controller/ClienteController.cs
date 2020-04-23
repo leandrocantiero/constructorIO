@@ -23,7 +23,7 @@ namespace WindowsFormsApp2.Controller
             }
 
             if (cli.getCpfCnpj() == null ||
-                cli.getCpfCnpj().Length < 11)
+                cli.getCpfCnpj().ToString().Length < 11)
             {
                 msgs.Add("CPF/CNPJ é preciso ter a quantidade de caracteres maior que 11.");
                 operacao = false;
@@ -74,9 +74,9 @@ namespace WindowsFormsApp2.Controller
                     operacao = false;
                 }
 
-                if (cli.getEndereco().getLogradouro().Length > 50)
+                if (cli.getEndereco().getComplemento().Length > 50)
                 {
-                    msgs.Add("É preciso informar um logradouro menor.");
+                    msgs.Add("É preciso informar um complemento menor.");
                     operacao = false;
                 }
 

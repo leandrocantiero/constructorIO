@@ -289,10 +289,11 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                            where 
                                  controle_acesso.cod = funcionario.cod_controle_acesso and
                                  login = @login and
-                                 senha = @senha   ";
+                                 senha = @senha";
 
             param.Add("@login", login);
             param.Add("@senha", senha);
+
 
             try
             {
@@ -303,9 +304,9 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                     funcionario = mapLoginSenha(dt.Rows[0]);
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
+                MessageBox.Show(e.ToString(), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
             return funcionario;
@@ -329,9 +330,9 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             ctrAccess.setNivelAcesso(Convert.ToInt32(row["nivel_acesso"]));
 
             // obter das tabelas que faz referência a tabela funcionario
-            endereco = enderecoDAL.obterUm(Convert.ToInt32(row["cod_endereco"]));
-            contato = contatoDAL.obterUm(Convert.ToInt32(row["cod_contato"]));
-            cargo = cargoDAL.obterUm(Convert.ToInt32(row["cod_cargo"]));
+            //endereco = enderecoDAL.obterUm(Convert.ToInt32(row["cod_endereco"]));
+            //contato = contatoDAL.obterUm(Convert.ToInt32(row["cod_contato"]));
+            //cargo = cargoDAL.obterUm(Convert.ToInt32(row["cod_cargo"]));
             ctrAccess = controleAcessoDAL.obterUm(Convert.ToInt32(row["cod_controle_acesso"]));
 
             // atualizar obj "Model.Funcionario funcionario"

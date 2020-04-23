@@ -75,7 +75,7 @@ namespace WindowsFormsApp2.Controller
                 }
                 else
                 {
-                    MessageBox.Show("Login ou senha não incorreta.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Login ou senha incorretos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                 }
 

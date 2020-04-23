@@ -10,7 +10,7 @@ namespace WindowsFormsApp2.Model
     {
         private int cod;
         private string cep;
-        private string logradouro;
+        private string complemento;
         private string rua;
         private int numero;
         private string bairro;
@@ -18,7 +18,7 @@ namespace WindowsFormsApp2.Model
 
         public int Cod { get => cod; set => cod = value; }
         public string Cep { get => cep; set => cep = value; }
-        public string Logradouro { get => logradouro; set => logradouro = value; }
+        public string Complemento { get => complemento; set => complemento = value; }
         public string Rua { get => rua; set => rua = value; }
         public int Numero { get => numero; set => numero = value; }
         public string Bairro { get => bairro; set => bairro = value; }
@@ -28,19 +28,19 @@ namespace WindowsFormsApp2.Model
         {
             this.cod = 0;
             this.cep = "";
-            this.logradouro = "";
+            this.complemento = "";
             this.rua = "";
             this.numero = 0;
             this.bairro = "";
             this.cidade = null;
         }
 
-        public Endereco(string cep, string logradouro, string rua,
+        public Endereco(string cep, string complemento, string rua,
             int numero, string bairro, Model.Cidade cidade)
         {
             this.cod = 0;
             this.cep = cep;
-            this.logradouro = logradouro;
+            this.complemento = complemento;
             this.rua = rua;
             this.numero = numero;
             this.bairro = bairro;
@@ -48,12 +48,12 @@ namespace WindowsFormsApp2.Model
         }
 
 
-        public Endereco(int cod, string cep, string logradouro, string rua, 
+        public Endereco(int cod, string cep, string complemento, string rua, 
             int numero, string bairro, Model.Cidade cidade)
         {
             this.cod = cod;
             this.cep = cep;
-            this.logradouro = logradouro;
+            this.complemento = complemento;
             this.rua = rua;
             this.numero = numero;
             this.bairro = bairro;
@@ -70,9 +70,9 @@ namespace WindowsFormsApp2.Model
             return this.cep;
         }
 
-        public string getLogradouro()
+        public string getComplemento()
         {
-            return this.logradouro;
+            return this.complemento;
         }
 
         public string getRua()
@@ -105,9 +105,9 @@ namespace WindowsFormsApp2.Model
             this.cep = cep;
         }
 
-        public void setLogradouro(string logradouro)
+        public void setComplemento(string complemento)
         {
-            this.logradouro = logradouro;
+            this.complemento = complemento;
         }
 
         public void setRua(string rua)

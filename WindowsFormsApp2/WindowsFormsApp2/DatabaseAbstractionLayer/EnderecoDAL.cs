@@ -25,15 +25,15 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             if (endereco.getCod() == 0)
             {
                 sql = @"insert into endereco 
-                        (cep, logradouro, rua, numero, bairro, cod_cidade) 
-                        values (@cep, @logradouro, @rua, @numero, @bairro, @cod_cidade) RETURNING COD;";
+                        (cep, complemento, rua, numero, bairro, cod_cidade) 
+                        values (@cep, @complemento, @rua, @numero, @bairro, @cod_cidade) RETURNING COD;";
             }
             else
             {
                 sql = @"update endereco 
                         set 
                            cep=@cep, 
-                            logradouro=@logradouro, 
+                            complemento=@complemento, 
                             rua=@rua, numero=@numero, 
                             bairro=@bairro, 
                             cod_cidade=@cod_cidade 
@@ -42,7 +42,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
 
             param.Add("@cod", endereco.getCod());
             param.Add("@cep", endereco.getCep());
-            param.Add("@logradouro", endereco.getLogradouro());
+            param.Add("@complemento", endereco.getComplemento());
             param.Add("@rua", endereco.getRua());
             param.Add("@numero", endereco.getNumero());
             param.Add("@bairro", endereco.getBairro());
@@ -92,7 +92,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             string sql = @"select 
                                 endereco.cod as end_cod, 
                                 cep,
-                                logradouro,
+                                complemento,
                                 rua,
                                 numero,
                                 bairro,
@@ -135,7 +135,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             string sql = @"select 
                                 endereco.cod as end_cod, 
                                 cep,
-                                logradouro,
+                                complemento,
                                 rua,
                                 numero,
                                 bairro,
@@ -184,7 +184,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
 
             endereco.setCod(Convert.ToInt32(row["end_cod"]));
             endereco.setCep(row["cep"].ToString());
-            endereco.setLogradouro(row["logradouro"].ToString());
+            endereco.setComplemento(row["complemento"].ToString());
             endereco.setRua(row["rua"].ToString());
             endereco.setNumero(Convert.ToInt32(row["numero"]));
             endereco.setBairro(row["bairro"].ToString());

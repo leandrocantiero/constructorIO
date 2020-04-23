@@ -48,7 +48,7 @@
             this.txtBairro = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtLogradouro = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtComplemento = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
             this.txtCEP = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
@@ -346,20 +346,20 @@
             this.materialLabel11.TabIndex = 26;
             this.materialLabel11.Text = "Estado";
             // 
-            // txtLogradouro
+            // txtComplemento
             // 
-            this.txtLogradouro.Depth = 0;
-            this.txtLogradouro.Hint = "";
-            this.txtLogradouro.Location = new System.Drawing.Point(513, 189);
-            this.txtLogradouro.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtLogradouro.Name = "txtLogradouro";
-            this.txtLogradouro.PasswordChar = '\0';
-            this.txtLogradouro.SelectedText = "";
-            this.txtLogradouro.SelectionLength = 0;
-            this.txtLogradouro.SelectionStart = 0;
-            this.txtLogradouro.Size = new System.Drawing.Size(179, 23);
-            this.txtLogradouro.TabIndex = 29;
-            this.txtLogradouro.UseSystemPasswordChar = false;
+            this.txtComplemento.Depth = 0;
+            this.txtComplemento.Hint = "";
+            this.txtComplemento.Location = new System.Drawing.Point(513, 189);
+            this.txtComplemento.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtComplemento.Name = "txtComplemento";
+            this.txtComplemento.PasswordChar = '\0';
+            this.txtComplemento.SelectedText = "";
+            this.txtComplemento.SelectionLength = 0;
+            this.txtComplemento.SelectionStart = 0;
+            this.txtComplemento.Size = new System.Drawing.Size(179, 23);
+            this.txtComplemento.TabIndex = 29;
+            this.txtComplemento.UseSystemPasswordChar = false;
             // 
             // materialLabel12
             // 
@@ -370,9 +370,9 @@
             this.materialLabel12.Location = new System.Drawing.Point(509, 157);
             this.materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel12.Name = "materialLabel12";
-            this.materialLabel12.Size = new System.Drawing.Size(86, 19);
+            this.materialLabel12.Size = new System.Drawing.Size(104, 19);
             this.materialLabel12.TabIndex = 28;
-            this.materialLabel12.Text = "Logradouro";
+            this.materialLabel12.Text = "Complemento";
             // 
             // txtCEP
             // 
@@ -790,7 +790,7 @@
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.txtCEP);
             this.Controls.Add(this.materialLabel13);
-            this.Controls.Add(this.txtLogradouro);
+            this.Controls.Add(this.txtComplemento);
             this.Controls.Add(this.materialLabel12);
             this.Controls.Add(this.materialLabel11);
             this.Controls.Add(this.txtBairro);
@@ -842,7 +842,7 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField txtBairro;
         private MaterialSkin.Controls.MaterialLabel materialLabel9;
         private MaterialSkin.Controls.MaterialLabel materialLabel11;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtLogradouro;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtComplemento;
         private MaterialSkin.Controls.MaterialLabel materialLabel12;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtCEP;
         private MaterialSkin.Controls.MaterialLabel materialLabel13;

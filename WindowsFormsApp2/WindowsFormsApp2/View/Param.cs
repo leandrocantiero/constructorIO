@@ -40,7 +40,7 @@ namespace WindowsFormsApp2.View
 
             //limpa endereco
             txtCEP.Text = "";
-            txtLogradouro.Text = "";
+            txtComplemento.Text = "";
             txtRua.Text = "";
             txtNumero.Text = "";
             txtBairro.Text = "";
@@ -130,7 +130,7 @@ namespace WindowsFormsApp2.View
             //endereco
             enderecoTela.setCod(this.paramTela != null && paramTela.getEndereco() != null ? this.paramTela.getEndereco().getCod() : 0);
             enderecoTela.setCep(txtCEP.Text.ToString());
-            enderecoTela.setLogradouro(txtLogradouro.Text);
+            enderecoTela.setComplemento(txtComplemento.Text);
             enderecoTela.setRua(txtRua.Text);
 
             try
@@ -205,6 +205,70 @@ namespace WindowsFormsApp2.View
                     }
                     this.limparTela();
                     this.initTela();
+                }
+            }
+        }
+
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            //define as propriedades do controle 
+            //OpenFileDialog
+            this.ofd1.Multiselect = false;
+            this.ofd1.Title = "Selecionar Foto";
+            //filtra para exibir somente arquivos de imagens
+            ofd1.Filter = "Images (*.BMP;*.JPG;*.GIF,*.PNG,*.TIFF)|*.BMP;*.JPG;*.GIF;*.PNG;*.TIFF|" + "All files (*.*)|*.*";
+            ofd1.CheckFileExists = true;
+            ofd1.CheckPathExists = true;
+            ofd1.FilterIndex = 2;
+            ofd1.RestoreDirectory = true;
+            ofd1.ReadOnlyChecked = true;
+            ofd1.ShowReadOnly = true;
+
+            DialogResult dr = this.ofd1.ShowDialog();
+
+            if (dr == System.Windows.Forms.DialogResult.OK)
+            {
+                    // cria um PictureBox
+                    try
+                    {
+                        Image Imagem = Image.FromFile(ofd1.FileName);
+                        pbLogoMenor.SizeMode = PictureBoxSizeMode.StretchImage;
+                        pbLogoMenor.Image = Imagem;
+                    }
+                    catch (Exception)
+                    {
+                    }
+            }
+        }
+
+        private void pbLogoMaior_Click(object sender, EventArgs e)
+        {
+            //define as propriedades do controle 
+            //OpenFileDialog
+            this.ofd1.Multiselect = false;
+            this.ofd1.Title = "Selecionar Foto";
+            //filtra para exibir somente arquivos de imagens
+            ofd1.Filter = "Images (*.BMP;*.JPG;*.GIF,*.PNG,*.TIFF)|*.BMP;*.JPG;*.GIF;*.PNG;*.TIFF|" + "All files (*.*)|*.*";
+            ofd1.CheckFileExists = true;
+            ofd1.CheckPathExists = true;
+            ofd1.FilterIndex = 2;
+            ofd1.RestoreDirectory = true;
+            ofd1.ReadOnlyChecked = true;
+            ofd1.ShowReadOnly = true;
+
+            DialogResult dr = this.ofd1.ShowDialog();
+
+            if (dr == System.Windows.Forms.DialogResult.OK)
+            {
+                // cria um PictureBox
+                try
+                {
+                    Image Imagem = Image.FromFile(ofd1.FileName);
+                    pbLogoMaior.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pbLogoMaior.Image = Imagem;
+                }
+                catch (Exception)
+                {
                 }
             }
         }

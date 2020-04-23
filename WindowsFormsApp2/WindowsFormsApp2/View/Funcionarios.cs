@@ -274,7 +274,7 @@ namespace WindowsFormsApp2.View
             //endereco
             enderecoTela.setCod(this.funcTela != null && funcTela.getEndereco() != null ? this.funcTela.getEndereco().getCod() : 0);
             enderecoTela.setCep(txtCEP.Text.ToString());
-            enderecoTela.setLogradouro(txtLogradouro.Text);
+            enderecoTela.setComplemento(txtComplemento.Text);
             enderecoTela.setRua(txtRua.Text);
 
             try
@@ -425,7 +425,7 @@ namespace WindowsFormsApp2.View
 
             //limpa endereco
             txtCEP.Text = "";
-            txtLogradouro.Text = "";
+            txtComplemento.Text = "";
             txtRua.Text = ""; 
             txtNumero.Text = ""; 
             txtBairro.Text = "";
@@ -464,7 +464,7 @@ namespace WindowsFormsApp2.View
 
             //enderecos
             txtCEP.Text = this.funcTela.getEndereco().getCep();
-            txtLogradouro.Text = this.funcTela.getEndereco().getLogradouro();
+            txtComplemento.Text = this.funcTela.getEndereco().getComplemento();
             txtRua.Text = this.funcTela.getEndereco().getRua();
             txtNumero.Text = this.funcTela.getEndereco().getNumero().ToString();
             txtBairro.Text = this.funcTela.getEndereco().getBairro();

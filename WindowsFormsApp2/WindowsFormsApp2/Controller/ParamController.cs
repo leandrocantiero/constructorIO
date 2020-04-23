@@ -68,9 +68,9 @@ namespace WindowsFormsApp2.Controller
                     operacao = false;
                 }
 
-                if (param.getEndereco().getLogradouro().Length > 50)
+                if (param.getEndereco().getComplemento().Length > 50)
                 {
-                    msgs.Add("É preciso informar um logradouro menor.");
+                    msgs.Add("É preciso informar um complemento menor.");
                     operacao = false;
                 }
 

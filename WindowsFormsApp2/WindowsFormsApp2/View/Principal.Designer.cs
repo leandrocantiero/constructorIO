@@ -39,9 +39,9 @@
             this.btnFuncionarios = new System.Windows.Forms.Button();
             this.btnContasPagar = new System.Windows.Forms.Button();
             this.btnContasReceber = new System.Windows.Forms.Button();
-            this.btnPedidos = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,6 +49,7 @@
             // 
             this.panelMenu.AutoSize = true;
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.panelMenu.Controls.Add(this.button3);
             this.panelMenu.Controls.Add(this.btnObras);
             this.panelMenu.Controls.Add(this.button1);
             this.panelMenu.Controls.Add(this.materialDivider1);
@@ -59,7 +60,6 @@
             this.panelMenu.Controls.Add(this.btnFuncionarios);
             this.panelMenu.Controls.Add(this.btnContasPagar);
             this.panelMenu.Controls.Add(this.btnContasReceber);
-            this.panelMenu.Controls.Add(this.btnPedidos);
             this.panelMenu.Controls.Add(this.btnClientes);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
@@ -125,7 +125,7 @@
             this.btnAgendamentos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgendamentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgendamentos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgendamentos.Location = new System.Drawing.Point(0, 635);
+            this.btnAgendamentos.Location = new System.Drawing.Point(-1, 571);
             this.btnAgendamentos.Name = "btnAgendamentos";
             this.btnAgendamentos.Size = new System.Drawing.Size(201, 54);
             this.btnAgendamentos.TabIndex = 7;
@@ -144,7 +144,7 @@
             this.btnCompras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCompras.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCompras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCompras.Location = new System.Drawing.Point(1, 575);
+            this.btnCompras.Location = new System.Drawing.Point(0, 511);
             this.btnCompras.Name = "btnCompras";
             this.btnCompras.Size = new System.Drawing.Size(201, 54);
             this.btnCompras.TabIndex = 6;
@@ -163,7 +163,7 @@
             this.btnRelatorios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRelatorios.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRelatorios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRelatorios.Location = new System.Drawing.Point(0, 695);
+            this.btnRelatorios.Location = new System.Drawing.Point(-1, 631);
             this.btnRelatorios.Name = "btnRelatorios";
             this.btnRelatorios.Size = new System.Drawing.Size(201, 54);
             this.btnRelatorios.TabIndex = 5;
@@ -247,25 +247,6 @@
             this.btnContasReceber.UseVisualStyleBackColor = false;
             this.btnContasReceber.Click += new System.EventHandler(this.btnContasReceber_Click);
             // 
-            // btnPedidos
-            // 
-            this.btnPedidos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.btnPedidos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPedidos.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnPedidos.FlatAppearance.BorderSize = 0;
-            this.btnPedidos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnPedidos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkCyan;
-            this.btnPedidos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPedidos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPedidos.Location = new System.Drawing.Point(0, 515);
-            this.btnPedidos.Name = "btnPedidos";
-            this.btnPedidos.Size = new System.Drawing.Size(201, 54);
-            this.btnPedidos.TabIndex = 1;
-            this.btnPedidos.Text = "Pedidos";
-            this.btnPedidos.UseVisualStyleBackColor = false;
-            this.btnPedidos.Click += new System.EventHandler(this.btnPedidos_Click);
-            // 
             // btnClientes
             // 
             this.btnClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
@@ -304,6 +285,25 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkCyan;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(0, 691);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(201, 54);
+            this.button3.TabIndex = 10;
+            this.button3.Text = "Configurações";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -333,11 +333,11 @@
         private System.Windows.Forms.Button btnFuncionarios;
         private System.Windows.Forms.Button btnContasPagar;
         private System.Windows.Forms.Button btnContasReceber;
-        private System.Windows.Forms.Button btnPedidos;
         private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.Button button1;
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
         private System.Windows.Forms.Button btnObras;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
