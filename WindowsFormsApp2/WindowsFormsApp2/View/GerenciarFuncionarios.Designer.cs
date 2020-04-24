@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp2.View
 {
-    partial class Funcionarios
+    partial class GerenciarFuncionarios
     {
         /// <summary>
         /// Required designer variable.
@@ -50,7 +50,6 @@
             this.materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
             this.txtComplemento = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtCEP = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
             this.btnInsert = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnEdit = new MaterialSkin.Controls.MaterialFlatButton();
@@ -68,16 +67,24 @@
             this.cbbEstado = new System.Windows.Forms.ComboBox();
             this.cbbCidade = new System.Windows.Forms.ComboBox();
             this.materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtContato1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel17 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtContato2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.txtDdd1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.txtDdd2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.dgvFuncionarios = new System.Windows.Forms.DataGridView();
             this.txtBuscarNome = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.btnCancel = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.txtCEP = new System.Windows.Forms.MaskedTextBox();
+            this.txtContato1 = new System.Windows.Forms.MaskedTextBox();
+            this.txtContato2 = new System.Windows.Forms.MaskedTextBox();
+            this.txtCpf = new System.Windows.Forms.MaskedTextBox();
+            this.materialLabel18 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel19 = new MaterialSkin.Controls.MaterialLabel();
+            this.txtRg = new System.Windows.Forms.MaskedTextBox();
+            this.materialLabel20 = new MaterialSkin.Controls.MaterialLabel();
+            this.txtDdd1 = new System.Windows.Forms.MaskedTextBox();
+            this.txtDdd2 = new System.Windows.Forms.MaskedTextBox();
+            this.materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
             this.gbNivelAcesso.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionarios)).BeginInit();
             this.SuspendLayout();
@@ -91,9 +98,9 @@
             this.materialLabel1.Location = new System.Drawing.Point(12, 76);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(50, 19);
+            this.materialLabel1.Size = new System.Drawing.Size(120, 19);
             this.materialLabel1.TabIndex = 0;
-            this.materialLabel1.Text = "Nome";
+            this.materialLabel1.Text = "Nome Completo";
             // 
             // txtNome
             // 
@@ -122,7 +129,7 @@
             this.txtRegistro.SelectionLength = 0;
             this.txtRegistro.SelectionStart = 0;
             this.txtRegistro.Size = new System.Drawing.Size(150, 23);
-            this.txtRegistro.TabIndex = 5;
+            this.txtRegistro.TabIndex = 2;
             this.txtRegistro.UseSystemPasswordChar = false;
             // 
             // materialLabel3
@@ -134,16 +141,16 @@
             this.materialLabel3.Location = new System.Drawing.Point(334, 76);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(65, 19);
+            this.materialLabel3.Size = new System.Drawing.Size(151, 19);
             this.materialLabel3.TabIndex = 4;
-            this.materialLabel3.Text = "Registro";
+            this.materialLabel3.Text = "Registro (CAL/CREA)";
             // 
             // dtNascimento
             // 
             this.dtNascimento.Location = new System.Drawing.Point(712, 108);
             this.dtNascimento.Name = "dtNascimento";
             this.dtNascimento.Size = new System.Drawing.Size(221, 20);
-            this.dtNascimento.TabIndex = 6;
+            this.dtNascimento.TabIndex = 4;
             // 
             // materialLabel4
             // 
@@ -164,7 +171,7 @@
             this.lblDtDemissao.Depth = 0;
             this.lblDtDemissao.Font = new System.Drawing.Font("Roboto", 11F);
             this.lblDtDemissao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblDtDemissao.Location = new System.Drawing.Point(768, 312);
+            this.lblDtDemissao.Location = new System.Drawing.Point(573, 383);
             this.lblDtDemissao.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblDtDemissao.Name = "lblDtDemissao";
             this.lblDtDemissao.Size = new System.Drawing.Size(130, 19);
@@ -174,9 +181,9 @@
             // dtDemissao
             // 
             this.dtDemissao.Enabled = false;
-            this.dtDemissao.Location = new System.Drawing.Point(772, 344);
+            this.dtDemissao.Location = new System.Drawing.Point(577, 405);
             this.dtDemissao.Name = "dtDemissao";
-            this.dtDemissao.Size = new System.Drawing.Size(200, 20);
+            this.dtDemissao.Size = new System.Drawing.Size(218, 20);
             this.dtDemissao.TabIndex = 8;
             // 
             // materialLabel2
@@ -185,7 +192,7 @@
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(540, 312);
+            this.materialLabel2.Location = new System.Drawing.Point(573, 327);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(130, 19);
@@ -194,7 +201,7 @@
             // 
             // dtAdmissao
             // 
-            this.dtAdmissao.Location = new System.Drawing.Point(544, 344);
+            this.dtAdmissao.Location = new System.Drawing.Point(577, 349);
             this.dtAdmissao.Name = "dtAdmissao";
             this.dtAdmissao.Size = new System.Drawing.Size(217, 20);
             this.dtAdmissao.TabIndex = 10;
@@ -211,7 +218,7 @@
             this.cbUserAtivo.Name = "cbUserAtivo";
             this.cbUserAtivo.Ripple = true;
             this.cbUserAtivo.Size = new System.Drawing.Size(123, 30);
-            this.cbUserAtivo.TabIndex = 14;
+            this.cbUserAtivo.TabIndex = 21;
             this.cbUserAtivo.Text = "Usuário Ativo ?";
             this.cbUserAtivo.UseVisualStyleBackColor = true;
             // 
@@ -261,7 +268,7 @@
             this.txtRua.SelectionLength = 0;
             this.txtRua.SelectionStart = 0;
             this.txtRua.Size = new System.Drawing.Size(292, 23);
-            this.txtRua.TabIndex = 19;
+            this.txtRua.TabIndex = 5;
             this.txtRua.UseSystemPasswordChar = false;
             // 
             // materialLabel7
@@ -289,7 +296,7 @@
             this.txtNumero.SelectionLength = 0;
             this.txtNumero.SelectionStart = 0;
             this.txtNumero.Size = new System.Drawing.Size(121, 23);
-            this.txtNumero.TabIndex = 21;
+            this.txtNumero.TabIndex = 6;
             this.txtNumero.UseSystemPasswordChar = false;
             // 
             // materialLabel8
@@ -317,7 +324,7 @@
             this.txtBairro.SelectionLength = 0;
             this.txtBairro.SelectionStart = 0;
             this.txtBairro.Size = new System.Drawing.Size(179, 23);
-            this.txtBairro.TabIndex = 23;
+            this.txtBairro.TabIndex = 3;
             this.txtBairro.UseSystemPasswordChar = false;
             // 
             // materialLabel9
@@ -358,7 +365,7 @@
             this.txtComplemento.SelectionLength = 0;
             this.txtComplemento.SelectionStart = 0;
             this.txtComplemento.Size = new System.Drawing.Size(179, 23);
-            this.txtComplemento.TabIndex = 29;
+            this.txtComplemento.TabIndex = 7;
             this.txtComplemento.UseSystemPasswordChar = false;
             // 
             // materialLabel12
@@ -373,21 +380,6 @@
             this.materialLabel12.Size = new System.Drawing.Size(104, 19);
             this.materialLabel12.TabIndex = 28;
             this.materialLabel12.Text = "Complemento";
-            // 
-            // txtCEP
-            // 
-            this.txtCEP.Depth = 0;
-            this.txtCEP.Hint = "";
-            this.txtCEP.Location = new System.Drawing.Point(338, 262);
-            this.txtCEP.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtCEP.Name = "txtCEP";
-            this.txtCEP.PasswordChar = '\0';
-            this.txtCEP.SelectedText = "";
-            this.txtCEP.SelectionLength = 0;
-            this.txtCEP.SelectionStart = 0;
-            this.txtCEP.Size = new System.Drawing.Size(142, 23);
-            this.txtCEP.TabIndex = 31;
-            this.txtCEP.UseSystemPasswordChar = false;
             // 
             // materialLabel13
             // 
@@ -407,13 +399,13 @@
             this.btnInsert.AutoSize = true;
             this.btnInsert.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnInsert.Depth = 0;
-            this.btnInsert.Location = new System.Drawing.Point(657, 440);
+            this.btnInsert.Location = new System.Drawing.Point(639, 437);
             this.btnInsert.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnInsert.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Primary = false;
             this.btnInsert.Size = new System.Drawing.Size(91, 36);
-            this.btnInsert.TabIndex = 32;
+            this.btnInsert.TabIndex = 23;
             this.btnInsert.Text = "Cadastrar";
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnCadastrar);
@@ -423,7 +415,7 @@
             this.btnEdit.AutoSize = true;
             this.btnEdit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnEdit.Depth = 0;
-            this.btnEdit.Location = new System.Drawing.Point(756, 440);
+            this.btnEdit.Location = new System.Drawing.Point(738, 437);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEdit.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEdit.Name = "btnEdit";
@@ -439,7 +431,7 @@
             this.btnRemove.AutoSize = true;
             this.btnRemove.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnRemove.Depth = 0;
-            this.btnRemove.Location = new System.Drawing.Point(823, 440);
+            this.btnRemove.Location = new System.Drawing.Point(805, 437);
             this.btnRemove.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnRemove.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnRemove.Name = "btnRemove";
@@ -478,7 +470,7 @@
             this.txtBuscarRegistro.SelectionLength = 0;
             this.txtBuscarRegistro.SelectionStart = 0;
             this.txtBuscarRegistro.Size = new System.Drawing.Size(186, 23);
-            this.txtBuscarRegistro.TabIndex = 36;
+            this.txtBuscarRegistro.TabIndex = 25;
             this.txtBuscarRegistro.UseSystemPasswordChar = false;
             // 
             // txtLogin
@@ -493,7 +485,7 @@
             this.txtLogin.SelectionLength = 0;
             this.txtLogin.SelectionStart = 0;
             this.txtLogin.Size = new System.Drawing.Size(292, 23);
-            this.txtLogin.TabIndex = 38;
+            this.txtLogin.TabIndex = 18;
             this.txtLogin.UseSystemPasswordChar = false;
             // 
             // materialLabel14
@@ -521,7 +513,7 @@
             this.txtSenha.SelectionLength = 0;
             this.txtSenha.SelectionStart = 0;
             this.txtSenha.Size = new System.Drawing.Size(292, 23);
-            this.txtSenha.TabIndex = 40;
+            this.txtSenha.TabIndex = 19;
             this.txtSenha.UseSystemPasswordChar = false;
             // 
             // materialLabel15
@@ -549,7 +541,7 @@
             this.cbDemitir.Name = "cbDemitir";
             this.cbDemitir.Ripple = true;
             this.cbDemitir.Size = new System.Drawing.Size(75, 30);
-            this.cbDemitir.TabIndex = 41;
+            this.cbDemitir.TabIndex = 22;
             this.cbDemitir.Text = "Demitir";
             this.cbDemitir.UseVisualStyleBackColor = true;
             // 
@@ -560,7 +552,7 @@
             this.gbNivelAcesso.Location = new System.Drawing.Point(338, 311);
             this.gbNivelAcesso.Name = "gbNivelAcesso";
             this.gbNivelAcesso.Size = new System.Drawing.Size(172, 56);
-            this.gbNivelAcesso.TabIndex = 42;
+            this.gbNivelAcesso.TabIndex = 20;
             this.gbNivelAcesso.TabStop = false;
             this.gbNivelAcesso.Text = "Nível de acesso";
             // 
@@ -571,7 +563,7 @@
             this.cbbCargo.Location = new System.Drawing.Point(524, 263);
             this.cbbCargo.Name = "cbbCargo";
             this.cbbCargo.Size = new System.Drawing.Size(121, 21);
-            this.cbbCargo.TabIndex = 43;
+            this.cbbCargo.TabIndex = 15;
             // 
             // materialLabel6
             // 
@@ -593,7 +585,7 @@
             this.cbbEstado.Location = new System.Drawing.Point(16, 264);
             this.cbbEstado.Name = "cbbEstado";
             this.cbbEstado.Size = new System.Drawing.Size(121, 21);
-            this.cbbEstado.TabIndex = 45;
+            this.cbbEstado.TabIndex = 12;
             this.cbbEstado.SelectedIndexChanged += new System.EventHandler(this.cbbEstado_SelectedIndexChanged);
             // 
             // cbbCidade
@@ -603,7 +595,7 @@
             this.cbbCidade.Location = new System.Drawing.Point(162, 263);
             this.cbbCidade.Name = "cbbCidade";
             this.cbbCidade.Size = new System.Drawing.Size(121, 21);
-            this.cbbCidade.TabIndex = 47;
+            this.cbbCidade.TabIndex = 13;
             // 
             // materialLabel16
             // 
@@ -618,85 +610,25 @@
             this.materialLabel16.TabIndex = 46;
             this.materialLabel16.Text = "Cidade";
             // 
-            // txtContato1
-            // 
-            this.txtContato1.Depth = 0;
-            this.txtContato1.Hint = "";
-            this.txtContato1.Location = new System.Drawing.Point(756, 191);
-            this.txtContato1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtContato1.Name = "txtContato1";
-            this.txtContato1.PasswordChar = '\0';
-            this.txtContato1.SelectedText = "";
-            this.txtContato1.SelectionLength = 0;
-            this.txtContato1.SelectionStart = 0;
-            this.txtContato1.Size = new System.Drawing.Size(142, 23);
-            this.txtContato1.TabIndex = 49;
-            this.txtContato1.UseSystemPasswordChar = false;
-            // 
             // materialLabel17
             // 
             this.materialLabel17.AutoSize = true;
             this.materialLabel17.Depth = 0;
             this.materialLabel17.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel17.Location = new System.Drawing.Point(717, 157);
+            this.materialLabel17.Location = new System.Drawing.Point(715, 170);
             this.materialLabel17.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel17.Name = "materialLabel17";
-            this.materialLabel17.Size = new System.Drawing.Size(114, 19);
+            this.materialLabel17.Size = new System.Drawing.Size(92, 19);
             this.materialLabel17.TabIndex = 48;
-            this.materialLabel17.Text = "Contato Padrão";
-            // 
-            // txtContato2
-            // 
-            this.txtContato2.Depth = 0;
-            this.txtContato2.Hint = "";
-            this.txtContato2.Location = new System.Drawing.Point(756, 220);
-            this.txtContato2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtContato2.Name = "txtContato2";
-            this.txtContato2.PasswordChar = '\0';
-            this.txtContato2.SelectedText = "";
-            this.txtContato2.SelectionLength = 0;
-            this.txtContato2.SelectionStart = 0;
-            this.txtContato2.Size = new System.Drawing.Size(158, 23);
-            this.txtContato2.TabIndex = 51;
-            this.txtContato2.UseSystemPasswordChar = false;
-            // 
-            // txtDdd1
-            // 
-            this.txtDdd1.Depth = 0;
-            this.txtDdd1.Hint = "";
-            this.txtDdd1.Location = new System.Drawing.Point(719, 192);
-            this.txtDdd1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtDdd1.Name = "txtDdd1";
-            this.txtDdd1.PasswordChar = '\0';
-            this.txtDdd1.SelectedText = "";
-            this.txtDdd1.SelectionLength = 0;
-            this.txtDdd1.SelectionStart = 0;
-            this.txtDdd1.Size = new System.Drawing.Size(31, 23);
-            this.txtDdd1.TabIndex = 52;
-            this.txtDdd1.UseSystemPasswordChar = false;
-            // 
-            // txtDdd2
-            // 
-            this.txtDdd2.Depth = 0;
-            this.txtDdd2.Hint = "";
-            this.txtDdd2.Location = new System.Drawing.Point(719, 221);
-            this.txtDdd2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtDdd2.Name = "txtDdd2";
-            this.txtDdd2.PasswordChar = '\0';
-            this.txtDdd2.SelectedText = "";
-            this.txtDdd2.SelectionLength = 0;
-            this.txtDdd2.SelectionStart = 0;
-            this.txtDdd2.Size = new System.Drawing.Size(31, 23);
-            this.txtDdd2.TabIndex = 53;
-            this.txtDdd2.UseSystemPasswordChar = false;
+            this.materialLabel17.Text = "Num Celular";
             // 
             // dgvFuncionarios
             // 
             this.dgvFuncionarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFuncionarios.Location = new System.Drawing.Point(12, 482);
             this.dgvFuncionarios.Name = "dgvFuncionarios";
-            this.dgvFuncionarios.Size = new System.Drawing.Size(1020, 167);
+            this.dgvFuncionarios.Size = new System.Drawing.Size(1051, 167);
             this.dgvFuncionarios.TabIndex = 54;
             this.dgvFuncionarios.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvFuncionarios_CellMouseClick);
             // 
@@ -712,7 +644,7 @@
             this.txtBuscarNome.SelectionLength = 0;
             this.txtBuscarNome.SelectionStart = 0;
             this.txtBuscarNome.Size = new System.Drawing.Size(226, 23);
-            this.txtBuscarNome.TabIndex = 55;
+            this.txtBuscarNome.TabIndex = 24;
             this.txtBuscarNome.UseSystemPasswordChar = false;
             // 
             // btnCancel
@@ -720,7 +652,7 @@
             this.btnCancel.AutoSize = true;
             this.btnCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnCancel.Depth = 0;
-            this.btnCancel.Location = new System.Drawing.Point(950, 437);
+            this.btnCancel.Location = new System.Drawing.Point(981, 440);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancel.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancel.Name = "btnCancel";
@@ -757,20 +689,157 @@
             this.materialLabel10.TabIndex = 58;
             this.materialLabel10.Text = "Registro";
             // 
-            // Funcionarios
+            // materialFlatButton1
+            // 
+            this.materialFlatButton1.AutoSize = true;
+            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton1.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.materialFlatButton1.Depth = 0;
+            this.materialFlatButton1.Location = new System.Drawing.Point(981, 402);
+            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton1.Name = "materialFlatButton1";
+            this.materialFlatButton1.Primary = false;
+            this.materialFlatButton1.Size = new System.Drawing.Size(58, 36);
+            this.materialFlatButton1.TabIndex = 59;
+            this.materialFlatButton1.Text = "Listar";
+            this.materialFlatButton1.UseVisualStyleBackColor = false;
+            this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
+            // 
+            // txtCEP
+            // 
+            this.txtCEP.Location = new System.Drawing.Point(338, 264);
+            this.txtCEP.Mask = "#####-###";
+            this.txtCEP.Name = "txtCEP";
+            this.txtCEP.Size = new System.Drawing.Size(100, 20);
+            this.txtCEP.TabIndex = 14;
+            // 
+            // txtContato1
+            // 
+            this.txtContato1.Location = new System.Drawing.Point(753, 195);
+            this.txtContato1.Mask = "#####-####";
+            this.txtContato1.Name = "txtContato1";
+            this.txtContato1.Size = new System.Drawing.Size(100, 20);
+            this.txtContato1.TabIndex = 9;
+            // 
+            // txtContato2
+            // 
+            this.txtContato2.Location = new System.Drawing.Point(932, 195);
+            this.txtContato2.Mask = "####-####";
+            this.txtContato2.Name = "txtContato2";
+            this.txtContato2.Size = new System.Drawing.Size(100, 20);
+            this.txtContato2.TabIndex = 11;
+            // 
+            // txtCpf
+            // 
+            this.txtCpf.Location = new System.Drawing.Point(707, 263);
+            this.txtCpf.Mask = "###.###.###-##";
+            this.txtCpf.Name = "txtCpf";
+            this.txtCpf.Size = new System.Drawing.Size(100, 20);
+            this.txtCpf.TabIndex = 16;
+            // 
+            // materialLabel18
+            // 
+            this.materialLabel18.AutoSize = true;
+            this.materialLabel18.Depth = 0;
+            this.materialLabel18.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel18.Location = new System.Drawing.Point(703, 241);
+            this.materialLabel18.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel18.Name = "materialLabel18";
+            this.materialLabel18.Size = new System.Drawing.Size(36, 19);
+            this.materialLabel18.TabIndex = 64;
+            this.materialLabel18.Text = "CPF";
+            // 
+            // materialLabel19
+            // 
+            this.materialLabel19.AutoSize = true;
+            this.materialLabel19.Depth = 0;
+            this.materialLabel19.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel19.Location = new System.Drawing.Point(833, 241);
+            this.materialLabel19.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel19.Name = "materialLabel19";
+            this.materialLabel19.Size = new System.Drawing.Size(28, 19);
+            this.materialLabel19.TabIndex = 66;
+            this.materialLabel19.Text = "RG";
+            // 
+            // txtRg
+            // 
+            this.txtRg.Location = new System.Drawing.Point(837, 263);
+            this.txtRg.Mask = "##.###.###-###";
+            this.txtRg.Name = "txtRg";
+            this.txtRg.Size = new System.Drawing.Size(100, 20);
+            this.txtRg.TabIndex = 17;
+            // 
+            // materialLabel20
+            // 
+            this.materialLabel20.AutoSize = true;
+            this.materialLabel20.Depth = 0;
+            this.materialLabel20.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel20.Location = new System.Drawing.Point(888, 170);
+            this.materialLabel20.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel20.Name = "materialLabel20";
+            this.materialLabel20.Size = new System.Drawing.Size(127, 19);
+            this.materialLabel20.TabIndex = 67;
+            this.materialLabel20.Text = "Num Telefone Fix";
+            // 
+            // txtDdd1
+            // 
+            this.txtDdd1.Location = new System.Drawing.Point(719, 195);
+            this.txtDdd1.Mask = "###";
+            this.txtDdd1.Name = "txtDdd1";
+            this.txtDdd1.Size = new System.Drawing.Size(28, 20);
+            this.txtDdd1.TabIndex = 8;
+            // 
+            // txtDdd2
+            // 
+            this.txtDdd2.Location = new System.Drawing.Point(898, 195);
+            this.txtDdd2.Mask = "###";
+            this.txtDdd2.Name = "txtDdd2";
+            this.txtDdd2.Size = new System.Drawing.Size(28, 20);
+            this.txtDdd2.TabIndex = 10;
+            // 
+            // materialFlatButton2
+            // 
+            this.materialFlatButton2.AutoSize = true;
+            this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton2.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.materialFlatButton2.Depth = 0;
+            this.materialFlatButton2.Location = new System.Drawing.Point(981, 363);
+            this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton2.Name = "materialFlatButton2";
+            this.materialFlatButton2.Primary = false;
+            this.materialFlatButton2.Size = new System.Drawing.Size(62, 36);
+            this.materialFlatButton2.TabIndex = 70;
+            this.materialFlatButton2.Text = "Limpar";
+            this.materialFlatButton2.UseVisualStyleBackColor = false;
+            this.materialFlatButton2.Click += new System.EventHandler(this.materialFlatButton2_Click);
+            // 
+            // GerenciarFuncionarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1044, 661);
+            this.ClientSize = new System.Drawing.Size(1075, 661);
+            this.Controls.Add(this.materialFlatButton2);
+            this.Controls.Add(this.txtDdd2);
+            this.Controls.Add(this.txtDdd1);
+            this.Controls.Add(this.materialLabel20);
+            this.Controls.Add(this.materialLabel19);
+            this.Controls.Add(this.txtRg);
+            this.Controls.Add(this.materialLabel18);
+            this.Controls.Add(this.txtCpf);
+            this.Controls.Add(this.txtContato2);
+            this.Controls.Add(this.txtContato1);
+            this.Controls.Add(this.txtCEP);
+            this.Controls.Add(this.materialFlatButton1);
             this.Controls.Add(this.materialLabel10);
             this.Controls.Add(this.materialLabel5);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txtBuscarNome);
             this.Controls.Add(this.dgvFuncionarios);
-            this.Controls.Add(this.txtDdd2);
-            this.Controls.Add(this.txtDdd1);
-            this.Controls.Add(this.txtContato2);
-            this.Controls.Add(this.txtContato1);
             this.Controls.Add(this.materialLabel17);
             this.Controls.Add(this.cbbCidade);
             this.Controls.Add(this.materialLabel16);
@@ -788,7 +857,6 @@
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnInsert);
-            this.Controls.Add(this.txtCEP);
             this.Controls.Add(this.materialLabel13);
             this.Controls.Add(this.txtComplemento);
             this.Controls.Add(this.materialLabel12);
@@ -810,8 +878,8 @@
             this.Controls.Add(this.materialLabel3);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.materialLabel1);
-            this.Name = "Funcionarios";
-            this.Text = "Funcionarios";
+            this.Name = "GerenciarFuncionarios";
+            this.Text = "Gerenciar Funcionarios";
             this.gbNivelAcesso.ResumeLayout(false);
             this.gbNivelAcesso.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionarios)).EndInit();
@@ -844,7 +912,6 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel11;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtComplemento;
         private MaterialSkin.Controls.MaterialLabel materialLabel12;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtCEP;
         private MaterialSkin.Controls.MaterialLabel materialLabel13;
         private MaterialSkin.Controls.MaterialFlatButton btnInsert;
         private MaterialSkin.Controls.MaterialFlatButton btnEdit;
@@ -862,15 +929,23 @@
         private System.Windows.Forms.ComboBox cbbEstado;
         private System.Windows.Forms.ComboBox cbbCidade;
         private MaterialSkin.Controls.MaterialLabel materialLabel16;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtContato1;
         private MaterialSkin.Controls.MaterialLabel materialLabel17;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtContato2;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtDdd1;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtDdd2;
         private System.Windows.Forms.DataGridView dgvFuncionarios;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtBuscarNome;
         private MaterialSkin.Controls.MaterialFlatButton btnCancel;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialLabel materialLabel10;
+        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
+        private System.Windows.Forms.MaskedTextBox txtCEP;
+        private System.Windows.Forms.MaskedTextBox txtContato1;
+        private System.Windows.Forms.MaskedTextBox txtContato2;
+        private System.Windows.Forms.MaskedTextBox txtCpf;
+        private MaterialSkin.Controls.MaterialLabel materialLabel18;
+        private MaterialSkin.Controls.MaterialLabel materialLabel19;
+        private System.Windows.Forms.MaskedTextBox txtRg;
+        private MaterialSkin.Controls.MaterialLabel materialLabel20;
+        private System.Windows.Forms.MaskedTextBox txtDdd1;
+        private System.Windows.Forms.MaskedTextBox txtDdd2;
+        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton2;
     }
 }

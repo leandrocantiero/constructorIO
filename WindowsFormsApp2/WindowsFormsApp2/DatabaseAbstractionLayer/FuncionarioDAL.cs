@@ -38,7 +38,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             if (funcionario.getCod() == 0)
             {
                 sql = @"insert into funcionario(dt_demissao, cod_controle_acesso, dt_admissao, 
-						cod_cargo, nome, registro, dtnasc, cod_endereco, cod_contato)
+						cod_cargo, nome, registro, dtnasc, cod_endereco, cod_contato, rg, cpf)
 						values 
                             (@dt_demissao, 
                             @cod_controle_acesso, 
@@ -48,7 +48,9 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                             @registro, 
                             @dtnasc, 
                             @cod_endereco, 
-                            @cod_contato
+                            @cod_contato,
+                            @rg,
+                            @cpf
                         ) RETURNING PES_COD;";
             }
             else
@@ -63,7 +65,9 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                             registro = @registro, 
                             dtnasc = @dtnasc, 
                             cod_endereco = @cod_endereco, 
-                            cod_contato = @cod_contato 
+                            cod_contato = @cod_contato,
+                            rg = @rg,
+                            cpf = @cpf
                         where pes_cod = @pes_cod RETURNING PES_COD;";
             }
 
@@ -73,6 +77,9 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             param.Add("@dt_admissao", funcionario.getDtAdmissao());
             param.Add("@nome", funcionario.getNome());
             param.Add("@registro", funcionario.getRegistro());
+
+            param.Add("@rg", funcionario.getRg());
+            param.Add("@cpf", funcionario.getCpf());
 
             try
             {
@@ -182,7 +189,9 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                                 registro, 
                                 dtnasc, 
                                 cod_endereco, 
-                                cod_contato
+                                cod_contato,
+                                cpf,
+                                rg
                            from funcionario ";
 
             if(nome != null || registro != null)
@@ -240,7 +249,9 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                                 registro, 
                                 dtnasc, 
                                 cod_endereco, 
-                                cod_contato
+                                cod_contato,
+                                rg,
+                                cpf
                            from funcionario 
                            where pes_cod = @cod";
 
@@ -279,6 +290,8 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                                 dtnasc, 
                                 cod_endereco, 
                                 cod_contato,
+                                rg,
+                                cpf,
 
                                 controle_acesso.cod as ctr_cod,
                                 login,
@@ -312,6 +325,64 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             return funcionario;
         }
 
+        internal void gerarUsuarioInicial(int userNivel = 1)
+        {
+            //INSERIR o => [ADM, 1234]
+
+            DatabaseAbstractionLayer.PostgreSQLPersistence psqlp = new DatabaseAbstractionLayer.PostgreSQLPersistence();
+            var param = psqlp.getParams();
+
+            string sql = @"INSERT INTO controle_acesso 
+                (login, senha, usuario_ativo, nivel_acesso)
+                VALUES
+                (@login, @senha, @usuario_ativo, @nivel_acesso)";
+
+            param.Add("@login", "ADM");
+            param.Add("@senha", "1234");
+            param.Add("@usuario_ativo", true);
+            param.Add("@nivel_acesso", 1);
+
+            try
+            {
+                bd.executeNonQuery(sql, param);
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Problema ao gerar o primeiro usuario Master", "Erro", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public int getQuantUserNivelUm(int userNivel = 1)
+        {
+            int quantidade_user_nivel = 0;
+            var param = bd.getParams();
+
+            string sql = @"select  count(*) quantidade_funcionario
+                                                   from controle_acesso
+                                                   where nivel_acesso = @nivel;";
+
+            param.Add("@nivel", userNivel);
+
+
+            try
+            {
+                DataTable dt = bd.executeSelect(sql, param);
+
+                if (dt.Rows.Count > 0)
+                {
+                    quantidade_user_nivel = Convert.ToInt32(dt.Rows[0]["quantidade_funcionario"]);
+                }
+            }
+            catch (Exception e)
+            {
+                quantidade_user_nivel = 0;
+            }
+
+            return quantidade_user_nivel;
+        }
+
         internal Model.Funcionario mapLoginSenha(DataRow row)
         {
             // cria novos obj para atualizar por referência;
@@ -321,6 +392,9 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             Model.Cargo cargo = null;
             Model.ControleAcesso ctrAccess = new Model.ControleAcesso();
 
+            endereco = enderecoDAL.obterUm(Convert.ToInt32(row["cod_endereco"]));
+            contato = contatoDAL.obterUm(Convert.ToInt32(row["cod_contato"]));
+            cargo = cargoDAL.obterUm(Convert.ToInt32(row["cod_cargo"]));
 
             //setar controle acesso
             ctrAccess.setCod(Convert.ToInt32(row["ctr_cod"]));
@@ -366,6 +440,8 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
 
             funcionario.setNome(row["nome"].ToString());
             funcionario.setRegistro(row["registro"].ToString());
+            funcionario.setRg(row["rg"].ToString());
+            funcionario.setCpf(row["cpf"].ToString());
             funcionario.setDtNascimento(Convert.ToDateTime(row["dtnasc"]));
 
             return funcionario;
@@ -417,7 +493,9 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             }
 
             funcionario.setNome(row["nome"].ToString());
-            funcionario.setRegistro(row["registro"].ToString());
+            funcionario.setRegistro(row["registro"].ToString()); 
+            funcionario.setRg(row["rg"].ToString());
+            funcionario.setCpf(row["cpf"].ToString());
             funcionario.setDtNascimento(Convert.ToDateTime(row["dtnasc"]));
 
             return funcionario;

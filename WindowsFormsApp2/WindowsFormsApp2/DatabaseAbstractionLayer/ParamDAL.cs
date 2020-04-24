@@ -168,6 +168,29 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             return parametro;
         }
 
+        public int obterQuantidade()
+        {
+            string sql = @"select count(*) as quantidade_params from parametro;";
+
+            int quantidade=0;
+
+            try
+            {
+                DataTable dt = bd.executeSelect(sql);
+
+                if (dt.Rows.Count > 0)
+                {
+                    quantidade = Convert.ToInt32(dt.Rows[0]["quantidade_params"]);
+                }
+            }
+            catch (Exception ex)
+            {
+                quantidade = 0;
+            }
+
+            return quantidade;
+        }
+
         internal Model.Param map(DataRow row)
         {
             Model.Param parametro = new Model.Param();

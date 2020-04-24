@@ -1,0 +1,1334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.2" last-position="75,0" last-zoom="0.5" max-obj-count="58"
+	 default-schema="public" default-owner="postgres">
+<database name="novo_banco_de_dados" is-template="false" allow-conns="true">
+</database>
+
+<schema name="public" layer="0" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="obra" layer="0" collapse-mode="2" max-obj-count="9">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="796.667" y="0"/>
+	<column name="cod" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="valor_total" not-null="true">
+		<type name="decimal" length="10" precision="2"/>
+	</column>
+	<column name="data_inicio" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="data_conclusao">
+		<type name="date" length="0"/>
+	</column>
+	<column name="data_previsao" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="obra_pk" type="pk-constr" table="public.obra">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="cod_status" index="7"/>
+		<object name="pes_cod_cliente" index="3"/>
+		<object name="pes_cod_funcionario" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="cliente_fk" index="3"/>
+		<object name="funcionario_fk" index="2"/>
+		<object name="status_fk" index="1"/>
+	</customidxs>
+</table>
+
+<table name="etapa" layer="0" collapse-mode="2" max-obj-count="2">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="20" y="0"/>
+	<column name="cod" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="descricao" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<constraint name="etapa_pk" type="pk-constr" table="public.etapa">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="material" layer="0" collapse-mode="2" max-obj-count="6">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="40" y="1000"/>
+	<column name="cod" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="quant" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="unidade" not-null="true">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="descricao" not-null="true">
+		<type name="varchar" length="50"/>
+	</column>
+	<constraint name="material_pk" type="pk-constr" table="public.material">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="cod_categoria_mat" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="categoria_mat_fk" index="1"/>
+	</customidxs>
+</table>
+
+<table name="servico" layer="0" collapse-mode="2" max-obj-count="4">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="380" y="480"/>
+	<column name="cod" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="nome" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<column name="quant_homem_m2" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="observacao" not-null="true">
+		<type name="varchar" length="150"/>
+	</column>
+	<constraint name="servico_pk" type="pk-constr" table="public.servico">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="endereco" layer="0" collapse-mode="2" max-obj-count="8">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1711.73" y="174.682"/>
+	<column name="cod" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="cep" not-null="true">
+		<type name="character" length="11"/>
+	</column>
+	<column name="complemento">
+		<type name="varchar" length="30"/>
+	</column>
+	<column name="rua" not-null="true">
+		<type name="varchar" length="50"/>
+	</column>
+	<column name="numero" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="bairro" not-null="true">
+		<type name="varchar" length="40"/>
+	</column>
+	<constraint name="endereco_pk" type="pk-constr" table="public.endereco">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="cod_cidade" index="6"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="cidade_fk" index="1"/>
+	</customidxs>
+</table>
+
+<table name="tarefa" layer="0" collapse-mode="2" max-obj-count="3">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="20" y="180"/>
+	<column name="cod" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="descricao" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<constraint name="tarefa_pk" type="pk-constr" table="public.tarefa">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="cod_etapa" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="etapa_fk" index="1"/>
+	</customidxs>
+</table>
+
+<table name="etapa_obra" layer="0" collapse-mode="2" max-obj-count="3">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="340" y="0"/>
+</table>
+
+<relationship name="obra_tem_muitos_etapa_obra" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.obra"
+	 dst-table="public.etapa_obra"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+/>
+
+<relationship name="etapa_tem_muitos_etapa_obra" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.etapa"
+	 dst-table="public.etapa_obra"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+/>
+
+<relationship name="etapa_tem_muitos_tarefa" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.etapa"
+	 dst-table="public.tarefa"
+	 src-required="true" dst-required="false"/>
+
+<table name="pessoa" layer="0" collapse-mode="2" max-obj-count="7">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1890.1" y="499.047"/>
+	<column name="pes_cod" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="nome" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<column name="registro" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<column name="dtnasc" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="pessoa_pk" type="pk-constr" table="public.pessoa">
+		<columns names="pes_cod" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="funcionario" layer="0" collapse-mode="2" max-obj-count="14">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1413.78" y="450.635"/>
+	<column name="dt_demissao">
+		<type name="date" length="0"/>
+	</column>
+	<column name="dt_admissao" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="rg" not-null="true">
+		<type name="varchar" length="15"/>
+	</column>
+	<column name="cpf" not-null="true">
+		<type name="varchar" length="11"/>
+	</column>
+
+	<customidxs object-type="column">
+		<object name="cod_cargo" index="4"/>
+		<object name="cod_controle_acesso" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="cargo_fk" index="2"/>
+		<object name="controle_acesso_fk" index="1"/>
+		<object name="funcionario_pk" index="0"/>
+	</customidxs>
+</table>
+
+<relationship name="funcionario_herda_de_pessoa" type="relgen" layer="0"
+	 pk-pattern="{dt}_pk"
+	 src-table="public.funcionario"
+	 dst-table="public.pessoa">
+	<special-pk-cols indexes="0"/>
+</relationship>
+
+<table name="cliente" layer="0" collapse-mode="2" max-obj-count="8">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2018.81" y="66.9524"/>
+	<column name="cpf">
+		<type name="character" length="11"/>
+	</column>
+
+	<customidxs object-type="constraint">
+		<object name="cliente_pk" index="0"/>
+	</customidxs>
+</table>
+
+<relationship name="cliente_herda_de_pessoa" type="relgen" layer="0"
+	 pk-pattern="{dt}_pk"
+	 src-table="public.cliente"
+	 dst-table="public.pessoa">
+	<special-pk-cols indexes="0"/>
+</relationship>
+
+<table name="fornecedor" layer="0" collapse-mode="2" max-obj-count="6">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1642.7" y="776.032"/>
+	<column name="cod" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="nome" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<column name="cnpj" not-null="true">
+		<type name="character" length="18"/>
+	</column>
+	<constraint name="fornecedor_pk" type="pk-constr" table="public.fornecedor">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="contato" layer="0" collapse-mode="2" max-obj-count="6">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2244.77" y="585.556"/>
+	<column name="cod" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="ddd_padrao" not-null="true">
+		<type name="varchar" length="5"/>
+	</column>
+	<column name="numero_padrao" not-null="true">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="numero_alt">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="ddd_alt">
+		<type name="varchar" length="5"/>
+	</column>
+	<constraint name="contato_pk" type="pk-constr" table="public.contato">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="agendamento" layer="0" collapse-mode="2" max-obj-count="8">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2351.67" y="85.1111"/>
+	<column name="cod" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="data" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="hora_final" not-null="true">
+		<type name="time" length="0"/>
+	</column>
+	<column name="hora_inicial" not-null="true">
+		<type name="time" length="0"/>
+	</column>
+	<column name="observacao" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<constraint name="agendamento_pk" type="pk-constr" table="public.agendamento">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="pes_cod_cliente" index="1"/>
+		<object name="pes_cod_funcionario" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="cliente_fk" index="1"/>
+		<object name="funcionario_fk" index="2"/>
+	</customidxs>
+</table>
+
+<relationship name="cliente_tem_muitos_agendamento" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.cliente"
+	 dst-table="public.agendamento"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="funcionario_tem_muitos_agendamento" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.funcionario"
+	 dst-table="public.agendamento"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="funcionario_tem_muitos_obra" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.funcionario"
+	 dst-table="public.obra"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="cliente_tem_muitos_obra" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.cliente"
+	 dst-table="public.obra"
+	 src-required="true" dst-required="false"/>
+
+<table name="tarefa_material" layer="0" collapse-mode="2" max-obj-count="3">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="93.3333" y="702.222"/>
+	<column name="quant" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+
+	<customidxs object-type="column">
+		<object name="cod_consumo_mat_serv" index="2"/>
+		<object name="cod_material" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="consumo_mat_serv_fk" index="2"/>
+		<object name="material_fk" index="1"/>
+		<object name="tarefa_material_pk" index="0"/>
+	</customidxs>
+</table>
+
+<table name="tarefa_servico" layer="0" collapse-mode="2" max-obj-count="4">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="33.3333" y="386.667"/>
+	<column name="quant_homem" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="quant_m2">
+		<type name="decimal" length="10" precision="2"/>
+	</column>
+
+	<customidxs object-type="column">
+		<object name="cod_consumo_mat_serv" index="3"/>
+		<object name="cod_servico" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="consumo_mat_serv_fk" index="2"/>
+		<object name="servico_fk" index="1"/>
+		<object name="tarefa_servico_pk" index="0"/>
+	</customidxs>
+</table>
+
+<relationship name="servico_tem_muitos_tarefa_servico" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.servico"
+	 dst-table="public.tarefa_servico"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+/>
+
+<relationship name="material_tem_muitos_tarefa_material" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.material"
+	 dst-table="public.tarefa_material"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+/>
+
+<table name="escala_trabalho" layer="0" collapse-mode="2" max-obj-count="8">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1045.24" y="377.143"/>
+	<column name="cod" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="data_inicial" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="data_final" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="hora_inicial" not-null="true">
+		<type name="time" length="0"/>
+	</column>
+	<column name="hora_final" not-null="true">
+		<type name="time" length="0"/>
+	</column>
+	<constraint name="escala_trabalho_pk" type="pk-constr" table="public.escala_trabalho">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="cod_obra" index="1"/>
+		<object name="pes_cod_funcionario" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="funcionario_fk" index="2"/>
+		<object name="obra_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="obra_tem_muitos_escala_trabalho" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.obra"
+	 dst-table="public.escala_trabalho"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="funcionario_tem_muitos_escala_trabalho" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.funcionario"
+	 dst-table="public.escala_trabalho"
+	 src-required="true" dst-required="false">
+	<label ref-type="name-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<table name="medicao" layer="0" collapse-mode="2" max-obj-count="12">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="693.333" y="573.365"/>
+	<column name="cod" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="data_inicial" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="data_final" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="valor_cobrado" not-null="true">
+		<type name="decimal" length="10" precision="2"/>
+	</column>
+	<column name="forma_recebe" not-null="true">
+		<type name="varchar" length="10"/>
+	</column>
+	<column name="total_mat" not-null="true">
+		<type name="decimal" length="10" precision="2"/>
+	</column>
+	<column name="total_serv" not-null="true">
+		<type name="decimal" length="10" precision="2"/>
+	</column>
+	<column name="total" not-null="true">
+		<type name="decimal" length="10" precision="2"/>
+	</column>
+	<constraint name="medicao_pk" type="pk-constr" table="public.medicao">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="cod_obra" index="2"/>
+		<object name="pes_cod" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="funcionario_fk" index="2"/>
+		<object name="obra_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="obra_tem_muitos_medicao" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.obra"
+	 dst-table="public.medicao"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="funcionario_tem_muitos_medicao" type="rel1n" layer="0"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.funcionario"
+	 dst-table="public.medicao"
+	 src-required="true" dst-required="false"/>
+
+<table name="medicao_serv" layer="0" collapse-mode="2" max-obj-count="4">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="398.571" y="685.714"/>
+	<column name="qtde" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="valor" not-null="true">
+		<type name="decimal" length="10" precision="2"/>
+	</column>
+
+	<customidxs object-type="column">
+		<object name="cod_medicao" index="0"/>
+		<object name="cod_servico" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="medicao_fk" index="1"/>
+		<object name="medicao_serv_pk" index="0"/>
+		<object name="servico_fk" index="2"/>
+	</customidxs>
+</table>
+
+<table name="medicao_mat" layer="0" collapse-mode="2" max-obj-count="4">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="460" y="900"/>
+	<column name="qtde" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="valor" not-null="true">
+		<type name="decimal" length="10" precision="2"/>
+	</column>
+
+	<customidxs object-type="column">
+		<object name="cod_material" index="0"/>
+		<object name="cod_medicao" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="material_fk" index="1"/>
+		<object name="medicao_fk" index="2"/>
+		<object name="medicao_mat_pk" index="0"/>
+	</customidxs>
+</table>
+
+<relationship name="medicao_tem_muitos_medicao_serv" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.medicao"
+	 dst-table="public.medicao_serv"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+/>
+
+<relationship name="servico_tem_muitos_medicao_serv" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.servico"
+	 dst-table="public.medicao_serv"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+/>
+
+<relationship name="material_tem_muitos_medicao_mat" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.material"
+	 dst-table="public.medicao_mat"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+/>
+
+<relationship name="medicao_tem_muitos_medicao_mat" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.medicao"
+	 dst-table="public.medicao_mat"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+/>
+
+<table name="parcelas_medicao" layer="0" collapse-mode="2" max-obj-count="7">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="584.444" y="284.444"/>
+	<column name="cod" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="valor" not-null="true">
+		<type name="decimal" length="10" precision="2"/>
+	</column>
+	<column name="valor_recebido">
+		<type name="decimal" length="10" precision="2"/>
+	</column>
+	<column name="data_recebido">
+		<type name="date" length="0"/>
+	</column>
+	<column name="data_vencimento" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="parcelas_pk" type="pk-constr" table="public.parcelas_medicao">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="cod_medicao" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="medicao_fk" index="0"/>
+	</customidxs>
+</table>
+
+<relationship name="medicao_tem_muitos_parcelas" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.medicao"
+	 dst-table="public.parcelas_medicao"
+	 src-required="true" dst-required="false"/>
+
+<table name="pedido" layer="0" collapse-mode="2" max-obj-count="6">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="958.572" y="703.714"/>
+	<column name="cod" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="data_pedido" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="data_entregue">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="pedir_material_pk" type="pk-constr" table="public.pedido">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="cod_fornecedor" index="1"/>
+		<object name="cod_obra" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="fornecedor_fk" index="1"/>
+		<object name="obra_fk" index="2"/>
+	</customidxs>
+</table>
+
+<relationship name="fornecedor_tem_muitos_pedir_material" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.fornecedor"
+	 dst-table="public.pedido"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="obra_tem_muitos_pedir_material" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.obra"
+	 dst-table="public.pedido"
+	 src-required="true" dst-required="false"/>
+
+<table name="pedido_material" layer="0" collapse-mode="2" max-obj-count="3">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="734.286" y="965.714"/>
+	<column name="quant" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+
+	<customidxs object-type="column">
+		<object name="cod_material" index="0"/>
+		<object name="cod_pedido" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="material_fk" index="1"/>
+		<object name="pedido_fk" index="2"/>
+		<object name="pedido_material_pk" index="0"/>
+	</customidxs>
+</table>
+
+<relationship name="material_tem_muitos_pedido_material" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.material"
+	 dst-table="public.pedido_material"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+/>
+
+<relationship name="pedido_tem_muitos_pedido_material" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.pedido"
+	 dst-table="public.pedido_material"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+/>
+
+<table name="compra" layer="0" collapse-mode="2" max-obj-count="7">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1150.29" y="916.857"/>
+	<column name="cod" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="data_entrega" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="forma_pagamento" not-null="true">
+		<type name="varchar" length="10"/>
+	</column>
+	<column name="valor" not-null="true">
+		<type name="decimal" length="10" precision="2"/>
+	</column>
+	<constraint name="compra_pk" type="pk-constr" table="public.compra">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="cod_fornecedor" index="2"/>
+		<object name="cod_pedido" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="fornecedor_fk" index="2"/>
+		<object name="pedido_fk" index="1"/>
+	</customidxs>
+</table>
+
+<table name="parcela_compra" layer="0" collapse-mode="2" max-obj-count="7">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1217.71" y="1185.14"/>
+	<column name="cod" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="valor" not-null="true">
+		<type name="decimal" length="10"/>
+	</column>
+	<column name="valor_pago">
+		<type name="decimal" length="10" precision="2"/>
+	</column>
+	<column name="date_pago">
+		<type name="date" length="0"/>
+	</column>
+	<column name="data_vencimento" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="parcela_compra_pk" type="pk-constr" table="public.parcela_compra">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="cod_compra" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="compra_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="compra_tem_muitos_parcela_compra" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.compra"
+	 dst-table="public.parcela_compra"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="pedido_tem_muitos_compra" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.pedido"
+	 dst-table="public.compra"
+	 src-required="true" dst-required="false"/>
+
+<table name="compra_material" layer="0" collapse-mode="2" max-obj-count="4">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="810.857" y="1195.71"/>
+	<column name="valor" not-null="true">
+		<type name="decimal" length="10" precision="2"/>
+	</column>
+	<column name="qntd_entregue" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+
+	<customidxs object-type="column">
+		<object name="cod_compra" index="1"/>
+		<object name="cod_material" index="0"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="compra_fk" index="2"/>
+		<object name="compra_material_pk" index="0"/>
+		<object name="material_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="material_tem_muitos_compra_material" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.material"
+	 dst-table="public.compra_material"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+/>
+
+<relationship name="compra_tem_muitos_compra_material" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.compra"
+	 dst-table="public.compra_material"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+/>
+
+<table name="despesa" layer="0" collapse-mode="2" max-obj-count="6">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1485.71" y="984.126"/>
+	<column name="cod" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="tipo" not-null="true">
+		<type name="varchar" length="10"/>
+	</column>
+	<column name="descricao" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="data_lanc" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="despesa_pk" type="pk-constr" table="public.despesa">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="pes_cod_funcionario" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="funcionario_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="funcionario_tem_muitos_despesa" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.funcionario"
+	 dst-table="public.despesa"
+	 src-required="true" dst-required="false"/>
+
+<table name="parcela_despesa" layer="0" collapse-mode="2" max-obj-count="7">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1847.14" y="1007.14"/>
+	<column name="cod" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="valor" not-null="true">
+		<type name="decimal" length="10" precision="2"/>
+	</column>
+	<column name="valor_pago">
+		<type name="decimal" length="10" precision="2"/>
+	</column>
+	<column name="data_pagamento">
+		<type name="date" length="0"/>
+	</column>
+	<column name="data_vencimento" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="parecela_despesa_pk" type="pk-constr" table="public.parcela_despesa">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="cod_despesa" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="despesa_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="despesa_tem_muitos_parecela_despesa" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.despesa"
+	 dst-table="public.parcela_despesa"
+	 src-required="true" dst-required="false"/>
+
+<table name="consumo_mat_serv" layer="0" collapse-mode="2" max-obj-count="4">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="320" y="180"/>
+	<column name="cod" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="data" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="consumo_mat_serv_pk" type="pk-constr" table="public.consumo_mat_serv">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="cod_obra" index="2"/>
+		<object name="cod_tarefa" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="obra_fk" index="2"/>
+		<object name="tarefa_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="tarefa_tem_muitos_consumo_mat_serv" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.tarefa"
+	 dst-table="public.consumo_mat_serv"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="consumo_mat_serv_tem_muitos_tarefa_material" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.consumo_mat_serv"
+	 dst-table="public.tarefa_material"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+/>
+
+<relationship name="consumo_mat_serv_tem_muitos_tarefa_servico" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.consumo_mat_serv"
+	 dst-table="public.tarefa_servico"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+>
+	<label ref-type="name-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="obra_tem_muitos_consumo_mat_serv" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.obra"
+	 dst-table="public.consumo_mat_serv"
+	 src-required="true" dst-required="false"/>
+
+<table name="hora_extra" layer="0" collapse-mode="2" max-obj-count="7">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1343.71" y="184.048"/>
+	<column name="cod" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="hora_final" not-null="true">
+		<type name="time" length="0"/>
+	</column>
+	<column name="hora_inicial" not-null="true">
+		<type name="time" length="8"/>
+	</column>
+	<column name="data" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="hora_extra_pk" type="pk-constr" table="public.hora_extra">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="cod_obra" index="1"/>
+		<object name="pes_cod_funcionario" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="funcionario_fk" index="2"/>
+		<object name="obra_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="obra_tem_muitos_hora_extra" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.obra"
+	 dst-table="public.hora_extra"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="funcionario_tem_muitos_hora_extra" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.funcionario"
+	 dst-table="public.hora_extra"
+	 src-required="true" dst-required="false"/>
+
+<table name="categoria_mat" layer="0" collapse-mode="2" max-obj-count="2">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="360.667" y="1232"/>
+	<column name="cod" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="descricao" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<constraint name="categoria_mat_pk" type="pk-constr" table="public.categoria_mat">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="categoria_mat_tem_muitos_material" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.categoria_mat"
+	 dst-table="public.material"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="fornecedor_tem_muitos_compra" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.fornecedor"
+	 dst-table="public.compra"
+	 src-required="true" dst-required="false"/>
+
+<table name="controle_acesso" layer="0" collapse-mode="2" max-obj-count="6">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2232.18" y="809.921"/>
+	<column name="cod" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="login" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<column name="senha" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<column name="usuario_ativo" not-null="true">
+		<type name="bool" length="0"/>
+	</column>
+	<column name="nivel_acesso" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="controle_login_pk" type="pk-constr" table="public.controle_acesso">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="controle_acesso_tem_muitos_funcionario" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.controle_acesso"
+	 dst-table="public.funcionario"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="endereco_tem_muitos_pessoa" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.endereco"
+	 dst-table="public.pessoa"
+	 src-required="true" dst-required="false"/>
+
+<table name="cargo" layer="0" collapse-mode="2" max-obj-count="2">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1943.18" y="821.429"/>
+	<column name="cod" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="descricao" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<constraint name="cargo_pk" type="pk-constr" table="public.cargo">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="cargo_tem_muitos_funcionario" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.cargo"
+	 dst-table="public.funcionario"
+	 src-required="true" dst-required="false"/>
+
+<table name="cidade" layer="0" collapse-mode="2" max-obj-count="3">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1357.14" y="1.42857"/>
+	<column name="cod" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="nome" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<constraint name="cidade_pk" type="pk-constr" table="public.cidade">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="uf_estado" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="estado_fk" index="1"/>
+	</customidxs>
+</table>
+
+<table name="estado" layer="0" collapse-mode="2" max-obj-count="2">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1691.43" y="17.1429"/>
+	<column name="uf" not-null="true">
+		<type name="varchar" length="2"/>
+	</column>
+	<column name="nome" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<constraint name="estado_pk" type="pk-constr" table="public.estado">
+		<columns names="uf" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="estado_has_many_cidade" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.estado"
+	 dst-table="public.cidade"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="cidade_has_many_endereco" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.cidade"
+	 dst-table="public.endereco"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="endereco_has_many_fornecedor" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.endereco"
+	 dst-table="public.fornecedor"
+	 src-required="true" dst-required="false"/>
+
+<table name="status" layer="0" collapse-mode="2" max-obj-count="2">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1145" y="8.33333"/>
+	<column name="cod" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="descricao" not-null="true">
+		<type name="varchar" length="20"/>
+	</column>
+	<constraint name="status_pk" type="pk-constr" table="public.status">
+		<columns names="cod" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="status_has_many_obra" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.status"
+	 dst-table="public.obra"
+	 src-required="true" dst-required="false"/>
+
+<table name="parametro" layer="0" collapse-mode="2" max-obj-count="8">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2215.97" y="333"/>
+	<column name="cnpj" not-null="true">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="logo" not-null="true">
+		<type name="varchar" length="100"/>
+	</column>
+	<column name="razao" not-null="true">
+		<type name="varchar" length="50"/>
+	</column>
+	<column name="fantasia" not-null="true">
+		<type name="varchar" length="50"/>
+	</column>
+	<column name="inscricao_estadual" not-null="true">
+		<type name="varchar" length="20"/>
+	</column>
+	<constraint name="parametrizacao_pk" type="pk-constr" table="public.parametro">
+		<columns names="cnpj" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="cod_contato" index="5"/>
+		<object name="cod_endereco" index="6"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="contato_fk" index="1"/>
+		<object name="endereco_fk" index="2"/>
+	</customidxs>
+</table>
+
+<relationship name="contato_has_many_parametrizacao" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.contato"
+	 dst-table="public.parametro"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="endereco_has_many_parametrizacao" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.endereco"
+	 dst-table="public.parametro"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="contato_tem_muitos_fornecedor" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.contato"
+	 dst-table="public.fornecedor"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="contato_tem_muitos_pessoa" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.contato"
+	 dst-table="public.pessoa"
+	 src-required="true" dst-required="false"/>
+
+</dbmodel>

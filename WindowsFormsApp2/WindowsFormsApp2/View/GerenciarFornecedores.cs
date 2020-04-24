@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp2.View
 {
-    public partial class Fornecedores : MaterialSkin.Controls.MaterialForm
+    public partial class GerenciarFornecedores : MaterialSkin.Controls.MaterialForm
     {
-        public Fornecedores()
+        public GerenciarFornecedores()
         {
             InitializeComponent();
         }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp2.View
 {
-    public partial class Agendamentos : MaterialSkin.Controls.MaterialForm
+    public partial class IniciarObra : MaterialSkin.Controls.MaterialForm
     {
-        public Agendamentos()
+        public IniciarObra()
         {
             InitializeComponent();
         }

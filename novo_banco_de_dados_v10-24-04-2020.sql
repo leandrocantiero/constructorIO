@@ -77,7 +77,7 @@ CREATE TABLE public.servico (
 CREATE TABLE public.endereco (
 	cod serial NOT NULL,
 	cep character(11) NOT NULL,
-	logradouro varchar(30),
+	complemento varchar(30),
 	rua varchar(50) NOT NULL,
 	numero integer NOT NULL,
 	bairro varchar(40) NOT NULL,
@@ -157,7 +157,9 @@ CREATE TABLE public.funcionario (
 	dt_demissao date,
 	cod_controle_acesso integer NOT NULL,
 	dt_admissao date NOT NULL,
+	rg varchar(15) NOT NULL,
 	cod_cargo integer NOT NULL,
+	cpf varchar(11) NOT NULL,
 
 -- 	pes_cod integer NOT NULL,
 -- 	nome varchar(30) NOT NULL,
@@ -838,9 +840,9 @@ REFERENCES public.status (cod) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
 
--- object: public.parametrizacao | type: TABLE --
--- DROP TABLE IF EXISTS public.parametrizacao CASCADE;
-CREATE TABLE public.parametrizacao (
+-- object: public.parametro | type: TABLE --
+-- DROP TABLE IF EXISTS public.parametro CASCADE;
+CREATE TABLE public.parametro (
 	cnpj varchar(20) NOT NULL,
 	logo varchar(100) NOT NULL,
 	razao varchar(50) NOT NULL,
@@ -852,19 +854,19 @@ CREATE TABLE public.parametrizacao (
 
 );
 -- ddl-end --
--- ALTER TABLE public.parametrizacao OWNER TO postgres;
+-- ALTER TABLE public.parametro OWNER TO postgres;
 -- ddl-end --
 
 -- object: contato_fk | type: CONSTRAINT --
--- ALTER TABLE public.parametrizacao DROP CONSTRAINT IF EXISTS contato_fk CASCADE;
-ALTER TABLE public.parametrizacao ADD CONSTRAINT contato_fk FOREIGN KEY (cod_contato)
+-- ALTER TABLE public.parametro DROP CONSTRAINT IF EXISTS contato_fk CASCADE;
+ALTER TABLE public.parametro ADD CONSTRAINT contato_fk FOREIGN KEY (cod_contato)
 REFERENCES public.contato (cod) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
 
 -- object: endereco_fk | type: CONSTRAINT --
--- ALTER TABLE public.parametrizacao DROP CONSTRAINT IF EXISTS endereco_fk CASCADE;
-ALTER TABLE public.parametrizacao ADD CONSTRAINT endereco_fk FOREIGN KEY (cod_endereco)
+-- ALTER TABLE public.parametro DROP CONSTRAINT IF EXISTS endereco_fk CASCADE;
+ALTER TABLE public.parametro ADD CONSTRAINT endereco_fk FOREIGN KEY (cod_endereco)
 REFERENCES public.endereco (cod) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --

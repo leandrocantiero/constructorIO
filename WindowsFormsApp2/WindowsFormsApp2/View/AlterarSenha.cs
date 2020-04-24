@@ -17,24 +17,65 @@ namespace WindowsFormsApp2.View
         public AlterarSenha()
         {
             InitializeComponent();
+            mostrarLogin();
             funcAlterado = null;
+        }
+
+        private void mostrarLogin()
+        {
+            string loginStr = "";
+
+            if (Principal.FUNCIONARIO_LOGADO != null)
+            {
+                if (Principal.FUNCIONARIO_LOGADO.getNome() != null && Principal.FUNCIONARIO_LOGADO.getNome().Length > 0)
+                {
+                    loginStr += " " + Principal.FUNCIONARIO_LOGADO.getNome();
+                }
+                else if (Principal.FUNCIONARIO_LOGADO.getControleAcesso() != null &&
+                        Principal.FUNCIONARIO_LOGADO.getControleAcesso().getLogin().Length > 0)
+                {
+                    loginStr += " " + Principal.FUNCIONARIO_LOGADO.getControleAcesso().getLogin();
+                }
+            }
+            else
+            {
+                loginStr += " Você está sem Login, o software pode apresentar problemas, favor entrar em contato com a TI";
+                txtSenhaAtual.Hide();
+                txtSenhaNova.Hide();
+            }
+
+            txtLogin.Text = loginStr;
         }
 
         private void btnAlterarSenha(object sender, EventArgs e)
         {
-            if(txtSenhaAtual.Text != null && txtSenhaAtual.Text != null)
+            if(txtSenhaAtual.Text != null && txtSenhaNova.Text != null && txtSenhaNovaConfirmar.Text != null)
             {
-                Controller.LogarController logarController = new Controller.LogarController();
-                funcAlterado = logarController.trocarSenha(txtSenhaAtual.Text, txtSenhaNova.Text, View.Principal.FUNCIONARIO_LOGADO);
-                
-                if(funcAlterado != null)
-                {
-                    MessageBox.Show("Alterado com sucesso!!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    View.Principal.FUNCIONARIO_LOGADO.getControleAcesso().setSenha(txtSenhaNova.Text);
+                if(txtSenhaNova.Text.ToString() == txtSenhaNovaConfirmar.Text.ToString())
+                {
+                    //tentar alterar//
+                    Controller.LogarController logarController = new Controller.LogarController();
+                    funcAlterado = logarController.trocarSenha(txtSenhaAtual.Text, txtSenhaNova.Text, View.Principal.FUNCIONARIO_LOGADO);
+                
+                    if(funcAlterado != null)
+                    {
+                        MessageBox.Show("Alterado com sucesso!!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        View.Principal.FUNCIONARIO_LOGADO.getControleAcesso().setSenha(txtSenhaNova.Text);
                     
-                    txtSenhaAtual.Text = "";
-                    txtSenhaNova.Text = "";
+                        txtSenhaAtual.Text = "";
+                        txtSenhaNova.Text = "";
+                        txtSenhaNovaConfirmar.Text = "";
+                    }
+                   
+                }
+                else
+                {
+                    MessageBox.Show("Nova senha e nova senha para confirmação não são iguais!!", "Erro", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    txtSenhaNovaConfirmar.Text = "";
                 }
             }
         }

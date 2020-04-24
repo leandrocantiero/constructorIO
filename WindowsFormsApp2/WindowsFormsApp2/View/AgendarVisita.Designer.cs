@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp2.View
 {
-    partial class Obras
+    partial class AgendarVisita
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // Obras
+            // Agendamentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Obras";
+            this.Name = "Agendamentos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Obras";
+            this.Text = "Agendamentos";
             this.ResumeLayout(false);
 
         }

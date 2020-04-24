@@ -167,5 +167,13 @@ namespace WindowsFormsApp2.Controller
 
             return parametro;
         }
+
+        public int obterQuantidade()
+        {
+            DatabaseAbstractionLayer.ParamDAL paramDAL = new DatabaseAbstractionLayer.ParamDAL();
+           int quantidade = paramDAL.obterQuantidade();
+
+            return quantidade;
+        }
     }
 }

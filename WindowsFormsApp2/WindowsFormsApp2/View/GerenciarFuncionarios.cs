@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp2.View
 {
-    public partial class Funcionarios : MaterialSkin.Controls.MaterialForm
+    public partial class GerenciarFuncionarios : MaterialSkin.Controls.MaterialForm
     {
         private Model.Funcionario funcTela;
 
@@ -19,10 +19,70 @@ namespace WindowsFormsApp2.View
         private BindingList<Model.Cidade> cidadeList;
         private BindingList<Model.Cargo> cargoList;
 
-        public Funcionarios()
+        public GerenciarFuncionarios()
         {
             InitializeComponent();
             initTela();
+        }
+
+        public void configurarGridFuncionario(BindingList<Model.Funcionario> funcionarios = null)
+        {
+            dgvFuncionarios.Columns["Cod"].Visible = false;
+
+            dgvFuncionarios.Columns["Nome"].HeaderText = "Nome Completo";
+            dgvFuncionarios.Columns["Nome"].DisplayIndex = 1;
+            dgvFuncionarios.Columns["Nome"].ReadOnly = true;
+
+            dgvFuncionarios.Columns["Registro"].HeaderText = "Registro (CAU/CREA)";
+            dgvFuncionarios.Columns["Registro"].DisplayIndex = 2;
+            dgvFuncionarios.Columns["Registro"].ReadOnly = true;
+
+            dgvFuncionarios.Columns["Cpf"].HeaderText = "CPF";
+            dgvFuncionarios.Columns["Cpf"].DisplayIndex = 3;
+            dgvFuncionarios.Columns["Cpf"].ReadOnly = true;
+
+            dgvFuncionarios.Columns["Rg"].HeaderText = "RG";
+            dgvFuncionarios.Columns["Rg"].DisplayIndex = 4;
+            dgvFuncionarios.Columns["Rg"].ReadOnly = true;
+
+
+            dgvFuncionarios.Columns["Cargo"].HeaderText = "Cargo";
+            dgvFuncionarios.Columns["Cargo"].DisplayIndex = 5;
+            dgvFuncionarios.Columns["Cargo"].ReadOnly = true;
+
+            dgvFuncionarios.Columns["ControleAcesso"].HeaderText = "Controle de Acesso";
+            dgvFuncionarios.Columns["ControleAcesso"].DisplayIndex = 6;
+            dgvFuncionarios.Columns["ControleAcesso"].ReadOnly = true;
+
+            dgvFuncionarios.Columns["Contatos"].HeaderText = "Celular/Telefone Fix";
+            dgvFuncionarios.Columns["Contatos"].DisplayIndex = 7;
+            dgvFuncionarios.Columns["Contatos"].ReadOnly = true;
+
+            dgvFuncionarios.Columns["Endereco"].HeaderText = "Endereco Completo";
+            dgvFuncionarios.Columns["Endereco"].DisplayIndex = 8;
+            dgvFuncionarios.Columns["Endereco"].ReadOnly = true;
+
+            dgvFuncionarios.Columns["DtNascimento"].HeaderText = "Data de Nascimento";
+            dgvFuncionarios.Columns["DtNascimento"].DisplayIndex = 9;
+            dgvFuncionarios.Columns["DtNascimento"].ReadOnly = true;
+
+            dgvFuncionarios.Columns["DtAdmissao"].HeaderText = "Data de Admissao";
+            dgvFuncionarios.Columns["DtAdmissao"].DisplayIndex = 10;
+            dgvFuncionarios.Columns["DtAdmissao"].ReadOnly = true;
+
+            dgvFuncionarios.Columns["DtDemissao"].HeaderText = "Data de Demissao";
+            dgvFuncionarios.Columns["DtDemissao"].DisplayIndex = 11;
+            dgvFuncionarios.Columns["DtDemissao"].ReadOnly = true;
+
+
+            if (funcionarios == null)
+            {
+                dgvFuncionarios.DataSource = this.funcList;
+            }
+            else 
+            {
+                dgvFuncionarios.DataSource = funcionarios;
+            }
         }
 
         private void initTela()
@@ -31,11 +91,14 @@ namespace WindowsFormsApp2.View
             this.carregarCargosTela();
             this.carregarFuncionarios();
             this.carregarEstadosTela();
+            this.configurarGridFuncionario(this.funcList);
+            
 
             rdNivel2.Checked = true;
             dtAdmissao.Enabled = false;
             dtDemissao.Enabled = false;
             dtDemissao.Hide();
+
             lblDtDemissao.Hide();
             cbDemitir.Hide();
             btnInsert.Show();
@@ -66,6 +129,7 @@ namespace WindowsFormsApp2.View
 
             //var source = new BindingSource(funcList, null);
             dgvFuncionarios.DataSource = funcList;
+            configurarGridFuncionario();
         }
 
 
@@ -173,38 +237,51 @@ namespace WindowsFormsApp2.View
         {
             Controller.FuncionarioController funcController = new Controller.FuncionarioController();
 
-            if (funcTela != null && funcTela.getCod() != 0)
+            if(funcTela.getCod() == View.Principal.FUNCIONARIO_LOGADO.getCod())
             {
-                //List<string> msgs = null;
-                bool operacao = false;
-
-                //Criar um MessageBox com os botões Sim e Não e deixar o botão 2(Não) selecionado por padrão e comparar o botão apertado
-                if (DialogResult.Yes == MessageBox.Show("Tem certeza que deseja apagar o registro?", "Confirmação",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2))
-                {
-                    //Sua rotina de exclusão
-                    //Confirmando exclusão para o usuário
-                    operacao = funcController.remover(funcTela.getCod());
-
-                    if (operacao)
-                    {
-                        MessageBox.Show("Registro apagado com sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.limparTela();
-                        this.initTela();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Não foi possível apagar o registro.", 
-                            "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                    }
-                }
-
-
+                MessageBox.Show("Você não pode se auto excluir quando estiver logado.", "Erro", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            //else if(funcTela.getControleAcesso().getNivelAcesso() == 1 && funcController.getQuantUserNivelUm() == 1)
+            //{
+            //    MessageBox.Show("Você não pode excluir o ultimo Usuário nível Master do sistema.", "Erro",
+            //        MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
             else
             {
-                MessageBox.Show("Problema ao deletar");
+                if (funcTela != null && funcTela.getCod() != 0)
+                {
+                    //List<string> msgs = null;
+                    bool operacao = false;
+
+                    //Criar um MessageBox com os botões Sim e Não e deixar o botão 2(Não) selecionado por padrão e comparar o botão apertado
+                    if (DialogResult.Yes == MessageBox.Show("Tem certeza que deseja apagar o registro?", "Confirmação",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2))
+                    {
+                        //Sua rotina de exclusão
+                        //Confirmando exclusão para o usuário
+                        operacao = funcController.remover(funcTela.getCod());
+
+                        if (operacao)
+                        {
+                            MessageBox.Show("Registro apagado com sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.limparTela();
+                            this.initTela();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Não foi possível apagar o registro.", 
+                                "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        }
+                    }
+
+
+                }
+                else
+                {
+                    MessageBox.Show("Problema ao deletar, escolha corretamente um funcionário");
+                }
             }
         }
 
@@ -248,6 +325,7 @@ namespace WindowsFormsApp2.View
 
             //var source = new BindingSource(funcList, null);
             dgvFuncionarios.DataSource = funcList;
+            configurarGridFuncionario();
         }
 
         private Model.Funcionario getFuncionarioTela()
@@ -268,12 +346,13 @@ namespace WindowsFormsApp2.View
 
             //numeros de contato
             contatoTela.setCod(this.funcTela != null && funcTela.getContato() != null ? this.funcTela.getContato().getCod() : 0);
-            contatoTela.setNumeroPadrao(new Model.NumeroContato(txtDdd1.Text, txtContato1.Text));
-            contatoTela.setNumeroAlt(new Model.NumeroContato(txtDdd2.Text, txtContato2.Text));
+            contatoTela.setNumeroPadrao(new Model.NumeroContato(txtDdd1.Text, txtContato1.Text.Replace("-", "")));
+            contatoTela.setNumeroAlt(new Model.NumeroContato(txtDdd2.Text, txtContato2.Text.Replace("-", "")));
 
             //endereco
             enderecoTela.setCod(this.funcTela != null && funcTela.getEndereco() != null ? this.funcTela.getEndereco().getCod() : 0);
-            enderecoTela.setCep(txtCEP.Text.ToString());
+            enderecoTela.setCep(txtCEP.Text.Replace("-",""));
+          
             enderecoTela.setComplemento(txtComplemento.Text);
             enderecoTela.setRua(txtRua.Text);
 
@@ -307,13 +386,19 @@ namespace WindowsFormsApp2.View
             //pessoa e funcionario
             funcTela.setNome(txtNome.Text);
             funcTela.setRegistro(txtRegistro.Text);
+            funcTela.setRg(txtRg.Text.ToString().Replace("-", "").Replace(".", "").Replace(",", ""));
+            funcTela.setCpf(txtCpf.Text.ToString().Replace("-", "").Replace(".", "").Replace(",", ""));
             funcTela.setDtNascimento(dtNascimento.Value.ToString().Length > 0 ? 
                 dtNascimento.Value : Convert.ToDateTime("1992-12-24"));
             funcTela.setDtAdmissao(DateTime.Now);
 
-            if (cbDemitir.Checked || funcTela.getDtDemissao() == null)
+            if (cbDemitir.Checked)
             {
                 funcTela.setDtDemissao(DateTime.Now);
+            }
+            else
+            {
+                funcTela.setDtDemissao(null);
             }
 
             //inserir os objetos no funcionario
@@ -377,11 +462,13 @@ namespace WindowsFormsApp2.View
                 if(funcTela.getDtDemissao() != null)
                 {
                     dtDemissao.Show();
+                    lblDtDemissao.Show();
                     cbDemitir.Hide();
                 }
                 else
                 {
                     dtDemissao.Hide();
+                    lblDtDemissao.Hide();
                     cbDemitir.Show();
                 }
             }
@@ -440,6 +527,8 @@ namespace WindowsFormsApp2.View
             // limpa dados funcionario
             txtNome.Text = "";
             txtRegistro.Text = "";
+            txtCpf.Text = "";
+            txtRg.Text = "";
             dtNascimento.Value = Convert.ToDateTime(DateTime.Now);
             dtAdmissao.Value = Convert.ToDateTime(DateTime.Now);
             dtDemissao.Value = Convert.ToDateTime(DateTime.Now);
@@ -452,53 +541,77 @@ namespace WindowsFormsApp2.View
         private void carregarDadosTela()
         {
             //carrega os comboxes
-            cbbCargo.SelectedIndex = cargoList.IndexOf(this.funcTela.getCargo());
-            cbbCidade.SelectedIndex = cidadeList.IndexOf(this.funcTela.getEndereco().getCidade());
-            cbbEstado.SelectedIndex = estadoList.IndexOf(this.funcTela.getEndereco().getCidade().getEstado());
+            if (this.funcTela.getCargo() != null)
+                cbbCargo.SelectedIndex = cargoList.IndexOf(this.funcTela.getCargo());
+
 
             //carrega os contatos
-            txtDdd1.Text = this.funcTela.getContato().getNumeroPadrao().getDdd();
-            txtContato1.Text = this.funcTela.getContato().getNumeroPadrao().getNumero();
-            txtDdd2.Text = this.funcTela.getContato().getNumeroAlt().getDdd();
-            txtContato2.Text = this.funcTela.getContato().getNumeroAlt().getDdd();
-
-            //enderecos
-            txtCEP.Text = this.funcTela.getEndereco().getCep();
-            txtComplemento.Text = this.funcTela.getEndereco().getComplemento();
-            txtRua.Text = this.funcTela.getEndereco().getRua();
-            txtNumero.Text = this.funcTela.getEndereco().getNumero().ToString();
-            txtBairro.Text = this.funcTela.getEndereco().getBairro();
-
-
-            //controle acesso
-            txtLogin.Text = this.funcTela.getControleAcesso().getLogin();
-            txtSenha.Text = this.funcTela.getControleAcesso().getSenha();
-            
-            bool userAtivo = this.funcTela.getControleAcesso().getUsuarioAtivo();
-            if(userAtivo)
+            if (this.funcTela.getContato() != null)
             {
-                cbUserAtivo.Checked = true;
-            }
-            else
-            {
-                cbUserAtivo.Checked = false;
+                if (this.funcTela.getContato().getNumeroAlt() != null)
+                {
+                    txtDdd2.Text = this.funcTela.getContato().getNumeroAlt().getDdd();
+                    txtContato2.Text = this.funcTela.getContato().getNumeroAlt().getDdd();
+                }
+
+                if (this.funcTela.getContato().getNumeroPadrao() != null)
+                {
+                    txtDdd1.Text = this.funcTela.getContato().getNumeroPadrao().getDdd();
+                    txtContato1.Text = this.funcTela.getContato().getNumeroPadrao().getNumero();
+                }
             }
 
-            int nivelAcesso = this.funcTela.getControleAcesso().getNivelAcesso();
-            if(nivelAcesso == 1)
+            if (this.funcTela.getEndereco() != null)
             {
-                rdNivel1.Checked = true;
+                //enderecos
+                txtCEP.Text = this.funcTela.getEndereco().getCep();
+                txtComplemento.Text = this.funcTela.getEndereco().getComplemento();
+                txtRua.Text = this.funcTela.getEndereco().getRua();
+                txtNumero.Text = this.funcTela.getEndereco().getNumero().ToString();
+                txtBairro.Text = this.funcTela.getEndereco().getBairro();
+
+                //carrega os comboxes
+                if (this.funcTela.getEndereco().getCidade() != null)
+                    cbbCidade.SelectedIndex = cidadeList.IndexOf(this.funcTela.getEndereco().getCidade());
+
+                if (this.funcTela.getEndereco().getCidade().getEstado() != null)
+                    cbbEstado.SelectedIndex = estadoList.IndexOf(this.funcTela.getEndereco().getCidade().getEstado());
             }
-            else if(nivelAcesso == 2)
+
+            if (this.funcTela.getControleAcesso() != null)
             {
-                rdNivel2.Checked = true;
+                //controle acesso
+                txtLogin.Text = this.funcTela.getControleAcesso().getLogin();
+                txtSenha.Text = this.funcTela.getControleAcesso().getSenha();
+
+                bool userAtivo = this.funcTela.getControleAcesso().getUsuarioAtivo();
+                if (userAtivo)
+                {
+                    cbUserAtivo.Checked = true;
+                }
+                else
+                {
+                    cbUserAtivo.Checked = false;
+                }
+
+                int nivelAcesso = this.funcTela.getControleAcesso().getNivelAcesso();
+                if (nivelAcesso == 1)
+                {
+                    rdNivel1.Checked = true;
+                }
+                else if (nivelAcesso == 2)
+                {
+                    rdNivel2.Checked = true;
+                }
             }
 
             txtNome.Text = this.funcTela.getNome();
             txtRegistro.Text = this.funcTela.getRegistro();
+            txtRg.Text = this.funcTela.getRg();
+            txtCpf.Text = this.funcTela.getCpf();
             dtNascimento.Value = Convert.ToDateTime(this.funcTela.getDtNascimento());
             dtAdmissao.Value = Convert.ToDateTime(this.funcTela.getDtAdmissao());
-            dtDemissao.Value = (this.funcTela.getDtDemissao() == null) ? 
+            dtDemissao.Value = (this.funcTela.getDtDemissao() == null) ?
                 Convert.ToDateTime("1992-12-24") :
                 Convert.ToDateTime(this.funcTela.getDtDemissao());
 
@@ -535,6 +648,21 @@ namespace WindowsFormsApp2.View
                     this.initTela();
                 }
             }
+        }
+
+        private void materialFlatButton1_Click(object sender, EventArgs e)
+        {
+            txtBuscarNome.Text = "";
+            txtBuscarRegistro.Text = "";
+            this.carregarFuncionarios();
+            this.configurarGridFuncionario();
+        }
+
+
+        private void materialFlatButton2_Click(object sender, EventArgs e)
+        {
+            this.limparTela();
+            this.initTela();
         }
     }
 }

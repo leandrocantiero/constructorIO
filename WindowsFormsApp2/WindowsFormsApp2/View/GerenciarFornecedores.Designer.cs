@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp2.View
 {
-    partial class Fornecedores
+    partial class GerenciarFornecedores
     {
         /// <summary>
         /// Required designer variable.

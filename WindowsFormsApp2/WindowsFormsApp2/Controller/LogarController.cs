@@ -40,10 +40,22 @@ namespace WindowsFormsApp2.Controller
 
             if (operacao)
             {
+                //tenta obter o funcionario inteiro
                 DatabaseAbstractionLayer.FuncionarioDAL funcionarioDAL = new DatabaseAbstractionLayer.FuncionarioDAL();
                 funcLogado = funcionarioDAL.obterUmPorEmailSenha(ctrAccess.getLogin(), ctrAccess.getSenha());
 
-                if (funcLogado != null)
+                if(funcLogado == null)
+                {
+                    //obtem somente o controle de acesso
+                    DatabaseAbstractionLayer.ControleAcessoDAL controleAcessoDAL = new DatabaseAbstractionLayer.ControleAcessoDAL();
+                    ctrAccess = controleAcessoDAL.obterUmPorLoginSenha(ctrAccess);
+
+                    funcLogado = new Model.Funcionario();
+                    funcLogado.setControleAcesso(ctrAccess);
+                }
+
+
+                if (funcLogado != null && funcLogado.getControleAcesso() != null)
                 {
                     if (funcLogado.getControleAcesso().getLogin() != ctrAccess.getLogin() ||
                         funcLogado.getControleAcesso().getSenha() != ctrAccess.getSenha())
@@ -51,32 +63,32 @@ namespace WindowsFormsApp2.Controller
                         MessageBox.Show("Login ou senha incorretos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         funcLogado = null;
                     }
-
-                    if (funcLogado.getControleAcesso().getNivelAcesso() > 1)
-                    {
-                        MessageBox.Show("Você não tem nível suficiente para se logar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        funcLogado = null;
-
-                    }
-
-                    if (funcLogado.getControleAcesso().getUsuarioAtivo() == false)
+                    else if (funcLogado.getControleAcesso().getUsuarioAtivo() != null && 
+                            funcLogado.getControleAcesso().getUsuarioAtivo() == false)
                     {
                         MessageBox.Show("Seu usuário não está ativo para realizar o login.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         funcLogado = null;
 
                     }
-
-                    if (funcLogado.getDtDemissao() != null)
+                    else if (funcLogado.getDtDemissao() != null)
                     {
                         MessageBox.Show("Você foi demitido, não será possível realizar o login.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         funcLogado = null;
 
                     }
+
+
+                    //else if (funcLogado.getControleAcesso().getNivelAcesso() > 1)
+                    //{
+                    //    MessageBox.Show("Você não tem nível suficiente para se logar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    //    funcLogado = null;
+
+                    //}
                 }
                 else
                 {
-                    MessageBox.Show("Login ou senha incorretos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
+                    MessageBox.Show("Login ou senha incorretos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    funcLogado = null;
                 }
 
                 //tem q verificar se login e senha sao iguais...
@@ -104,12 +116,24 @@ namespace WindowsFormsApp2.Controller
                 }
                 else
                 {
-                    DatabaseAbstractionLayer.FuncionarioDAL funcionarioDAL = 
-                        new DatabaseAbstractionLayer.FuncionarioDAL();
+                    DatabaseAbstractionLayer.ControleAcessoDAL controleAcessoDAL = 
+                        new DatabaseAbstractionLayer.ControleAcessoDAL();
 
                     funcionario.getControleAcesso().setSenha(senhaNova);
-                    
-                    if( !funcionarioDAL.inserir(funcionario))
+                    Model.ControleAcesso novoControleAcesso = new Model.ControleAcesso();
+
+                    novoControleAcesso.setCod(funcionario.getControleAcesso().getCod());
+                    novoControleAcesso.setLogin(funcionario.getControleAcesso().getLogin());
+                    novoControleAcesso.setSenha(funcionario.getControleAcesso().getSenha());
+                    novoControleAcesso.setNivelAcesso(funcionario.getControleAcesso().getNivelAcesso());
+                    novoControleAcesso.setUsuarioAtivo(funcionario.getControleAcesso().getUsuarioAtivo());
+
+
+                    if (controleAcessoDAL.inserir(novoControleAcesso))
+                    {
+                        funcionario.setControleAcesso(novoControleAcesso);
+                    }
+                    else
                     {
                         funcionario = null;
                     }
