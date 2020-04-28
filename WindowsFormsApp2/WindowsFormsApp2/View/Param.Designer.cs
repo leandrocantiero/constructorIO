@@ -133,6 +133,7 @@
             this.cbbEstado.Name = "cbbEstado";
             this.cbbEstado.Size = new System.Drawing.Size(115, 21);
             this.cbbEstado.TabIndex = 73;
+            this.cbbEstado.SelectedIndexChanged += new System.EventHandler(this.cbbEstado_SelectedIndexChanged_1);
             // 
             // txtCEP
             // 

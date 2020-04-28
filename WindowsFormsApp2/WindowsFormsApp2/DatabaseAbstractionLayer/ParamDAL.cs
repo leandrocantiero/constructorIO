@@ -29,35 +29,48 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             var parametrosBD = bd.getParams();
             string sql;
 
-            if (param.getCod() == 0)
+
+            if (obterQuantidade() == 0)
             {
-                sql = @"insert into parametro(razaoSocial, fantasia, cnpj, inscEstadual, cod_endereco, cod_contato)
+                sql = @"insert into parametro(razao, fantasia, cnpj, inscricao_estadual, logo_menor, logo_maior, email, site, cod_endereco, cod_contato)
 						values 
-                            (@razaoSocial, 
+                            (@razao, 
                             @fantasia,
                             @cnpj,
-                            @inscEstadual, 
+                            @inscricao_estadual, 
+                            @logo_menor,
+                            @logo_maior,
+                            @email,
+                            @site,
                             @cod_endereco, 
                             @cod_contato
-                        ) RETURNING PES_COD;";
+                        ) RETURNING cod;";
             }
             else
             {
                 sql = @"update parametro 
                         set 
-                            razaoSocial = @razaoSocial,
+                            razao = @razao,
                             fantasia = @fantasia,
                             cnpj = @cnpj,
-                            inscEstadual = @inscEstadual, 
+                            inscricao_estadual = @inscricao_estadual,
+                            @logo_menor,
+                            @logo_maior,
+                            @email,
+                            @site,
                             cod_endereco = @cod_endereco, 
                             cod_contato = @cod_contato 
-                        where pes_cod = @pes_cod RETURNING PES_COD;";
+                        where cnpj = @cnpj RETURNING cod;";
             }
 
-            parametrosBD.Add("@razaoSocial", param.getRazaoSocial());
+            parametrosBD.Add("@razao", param.getRazaoSocial());
             parametrosBD.Add("@fantasia", param.getFantasia());
             parametrosBD.Add("@cnpj", param.getCnpj());
-            parametrosBD.Add("@inscEstadual", param.getInscEstadual());
+            parametrosBD.Add("@inscricao_estadual", param.getInscEstadual());
+            parametrosBD.Add("@logo_menor", param.getLogoMenor());
+            parametrosBD.Add("@logo_maior", param.getLogoMaior());
+            parametrosBD.Add("@email", param.getEmail());
+            parametrosBD.Add("@site", param.getSite());
 
             try
             {
@@ -80,10 +93,8 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                     parametrosBD.Add("@cod_endereco", param.getEndereco().getCod());
                     parametrosBD.Add("@cod_contato", param.getContato().getCod());
 
-
                     // inserir de fato o "parametro" ja com os objetos atualizados
                     sucesso = bd.executeNonQuery(sql, parametrosBD);
-                    param.setCod(bd.getUltimoCod());
                 }
             }
             catch (Exception)
@@ -94,19 +105,19 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             return sucesso;
         }
 
-        public bool remover(int cod)
+        public bool remover(string cnpj)
         {
             bool sucesso;
 
             var param = bd.getParams();
             string sql = @"delete from parametro  
-                           where cod = @cod RETURNING cod;";
+                           where cnpj = @cnpj RETURNING cod;";
 
-            param.Add("@cod", cod);
+            param.Add("@cnpj", cnpj);
 
             try
             {
-                Model.Param parametro = this.obterUm(cod);
+                Model.Param parametro = this.obterUm(cnpj);
                 if (parametro != null)
                 {
                     // remover na tabelas que faz referência a tabela parametro
@@ -133,23 +144,16 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             return sucesso;
         }
 
-        public Model.Param obterUm(int cod)
+        public Model.Param obterUm(string cnpj)
         {
             Model.Param parametro = null;
             var param = bd.getParams();
 
-            string sql = @"select 
-                                cod, 
-                                razaoSocial,
-                                fantasia,
-                                cnpj,
-                                inscEstadual, 
-                                cod_endereco, 
-                                cod_contato
+            string sql = @"select *
                            from parametro 
-                           where cod = @cod";
+                           where cnpj = @cnpj";
 
-            param.Add("@cod", cod);
+            param.Add("@cnpj", cnpj);
 
             try
             {
@@ -203,21 +207,14 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             parametro.setEndereco(endereco);
             parametro.setContato(contato);
 
-            parametro.setCod(Convert.ToInt32(row["cod"]));
-
-            try
-            {
-                parametro.setCod(Convert.ToInt16(row["cod"]));
-            }
-            catch (Exception)
-            {
-                parametro.setCod(0);
-            }
-
-            parametro.setRazaoSocial(row["razaoSocial"].ToString());
+            parametro.setRazaoSocial(row["razao"].ToString());
             parametro.setFantasia(row["fantasia"].ToString());
             parametro.setCnpj(row["cnpj"].ToString());
-            parametro.setInscEstadual(row["inscEstadual"].ToString());
+            parametro.setInscEstadual(row["inscricao_estadual"].ToString());
+            parametro.setLogoMenor(row["logo_menor"].ToString());
+            parametro.setLogoMaior(row["logo_maior"].ToString());
+            parametro.setEmail(row["email"].ToString());
+            parametro.setSite(row["site"].ToString());
 
             return parametro;
         }

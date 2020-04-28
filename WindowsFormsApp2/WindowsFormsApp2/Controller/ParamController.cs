@@ -37,9 +37,10 @@ namespace WindowsFormsApp2.Controller
             }
 
             if (param.getCnpj() == null ||
-                param.getCnpj().Length < 11)
+                param.getCnpj().Length < 11 ||
+                param.getCnpj().Length > 20)
             {
-                msgs.Add("CPF/CNPJ é preciso ter a quantidade de caracteres maior que 11.");
+                msgs.Add("CPF/CNPJ é preciso ter a quantidade de caracteres maior que 11 e menor que 20.");
                 operacao = false;
             }
 
@@ -84,12 +85,6 @@ namespace WindowsFormsApp2.Controller
                 }
 
                 if (param.getEndereco().getCidade() == null)
-                {
-                    msgs.Add("Cidade está completamente nulo.");
-                    operacao = false;
-                }
-
-                if (param.getEndereco().getCidade().getEstado() == null)
                 {
                     msgs.Add("Cidade está completamente nulo.");
                     operacao = false;
@@ -152,18 +147,18 @@ namespace WindowsFormsApp2.Controller
             return (msgs, operacao);
         }
 
-        public bool remover(int cod)
+        public bool remover(string cnpj)
         {
             DatabaseAbstractionLayer.ParamDAL paramDAL = new DatabaseAbstractionLayer.ParamDAL();
-            bool sucesso = paramDAL.remover(cod);
+            bool sucesso = paramDAL.remover(cnpj);
 
             return sucesso;
         }
 
-        public Model.Param obterUm(int cod)
+        public Model.Param obterUm(string cnpj)
         {
             DatabaseAbstractionLayer.ParamDAL paramDAL = new DatabaseAbstractionLayer.ParamDAL();
-            Model.Param parametro = paramDAL.obterUm(cod);
+            Model.Param parametro = paramDAL.obterUm(cnpj);
 
             return parametro;
         }

@@ -51,6 +51,10 @@ namespace WindowsFormsApp2.View
             txtFantasia.Text = "";
             txtCnpj.Text = "";
             txtInscEstadual.Text = "";
+            pbLogoMenor.Text = "";
+            pbLogoMenor.Text = "";
+            txtEmail.Text = "";
+            txtSite.Text = "";
 
             paramTela = this.getParamTela();
 
@@ -79,16 +83,6 @@ namespace WindowsFormsApp2.View
             }
 
             cbbEstado.DataSource = this.estadoList;
-        }
-
-        private void cbbEstado_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Model.Estado estado = (Model.Estado)cbbEstado.SelectedItem;
-
-            if (estado != null)
-            {
-                this.carregarCidadeTela(estado.getUf());
-            }
         }
 
         private void carregarCidadeTela(string uf)
@@ -149,11 +143,14 @@ namespace WindowsFormsApp2.View
             paramTela.setFantasia(txtFantasia.Text);
             paramTela.setCnpj(txtCnpj.Text);
             paramTela.setInscEstadual(txtInscEstadual.Text);
+            paramTela.setLogoMenor(pbLogoMenor.ImageLocation);
+            paramTela.setLogoMaior(pbLogoMenor.ImageLocation);
+            paramTela.setEmail(txtEmail.Text);
+            paramTela.setSite(txtSite.Text);
 
             //inserir os objetos no clinete
             paramTela.setEndereco(enderecoTela);
             paramTela.setContato(contatoTela);
-            paramTela.setCod(this.paramTela != null ? this.paramTela.getCod() : 0);
 
 
             return paramTela;
@@ -270,6 +267,16 @@ namespace WindowsFormsApp2.View
                 catch (Exception)
                 {
                 }
+            }
+        }
+
+        private void cbbEstado_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            Model.Estado estado = (Model.Estado)cbbEstado.SelectedItem;
+
+            if (estado != null)
+            {
+                this.carregarCidadeTela(estado.getUf());
             }
         }
     }

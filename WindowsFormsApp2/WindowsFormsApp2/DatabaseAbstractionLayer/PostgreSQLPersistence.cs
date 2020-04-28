@@ -19,7 +19,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
         public PostgreSQLPersistence()
         {
             //string strConn = "Server=localhost;Port=5432;Database=constructorio;User Id=postgres;Password=postgres;";
-            string strConn = "Server=localhost;Port=5432;Database=postgres;User Id=postgres;Password=postgres123;";
+            string strConn = "Server=localhost;Port=5432;Database=constructorio;User Id=postgres;Password=postgres;";
 
             try
             {
@@ -106,7 +106,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                 ultimoCod = (int) cmd.ExecuteScalar();
                 sucesso = true;
             }
-            catch(Exception)
+            catch(Exception e)
             {
                 ultimoCod = 0;
             }
