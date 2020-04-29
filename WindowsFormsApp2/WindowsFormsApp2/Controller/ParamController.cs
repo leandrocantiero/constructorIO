@@ -147,18 +147,10 @@ namespace WindowsFormsApp2.Controller
             return (msgs, operacao);
         }
 
-        public bool remover(string cnpj)
+        public Model.Param obterParam()
         {
             DatabaseAbstractionLayer.ParamDAL paramDAL = new DatabaseAbstractionLayer.ParamDAL();
-            bool sucesso = paramDAL.remover(cnpj);
-
-            return sucesso;
-        }
-
-        public Model.Param obterUm(string cnpj)
-        {
-            DatabaseAbstractionLayer.ParamDAL paramDAL = new DatabaseAbstractionLayer.ParamDAL();
-            Model.Param parametro = paramDAL.obterUm(cnpj);
+            Model.Param parametro = paramDAL.obterParam();
 
             return parametro;
         }

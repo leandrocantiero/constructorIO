@@ -31,7 +31,7 @@ namespace WindowsFormsApp2.View
             this.carregarClientes();
             this.carregarEstadosTela();
 
-            btnAtivo.Checked = true;
+            cbAtivo.Checked = true;
             btnSave.Show();
             btnRemove.Hide();
             btnCancel.Hide();
@@ -79,8 +79,9 @@ namespace WindowsFormsApp2.View
 
             //pessoa e cliente
             cliTela.setNome(txtNome.Text);
-            cliTela.setCpfCnpj(txtCPFCNPJ.Text);
+            cliTela.setRegistro(txtCPFCNPJ.Text);
             cliTela.setEmail(txtEmail.Text);
+            cliTela.setAtivo(cbAtivo.Checked);
             cliTela.setDtNascimento(dtNascimento.Value.ToString().Length > 0 ?
                 dtNascimento.Value : Convert.ToDateTime("1992-12-24"));
 
@@ -179,6 +180,10 @@ namespace WindowsFormsApp2.View
 
             // limpa dados cliente
             txtNome.Text = "";
+            txtEmail.Text = "";
+            txtCPFCNPJ.Text = "";
+            txtNomeBusca.Text = "";
+            txtCPFCNPJBusca.Text = "";
             dtNascimento.Value = Convert.ToDateTime(DateTime.Now);
 
 
@@ -207,6 +212,9 @@ namespace WindowsFormsApp2.View
 
 
             txtNome.Text = this.cliTela.getNome();
+            txtCPFCNPJ.Text = this.cliTela.getRegistro();
+            txtEmail.Text = this.cliTela.getEmail();
+            cbAtivo.Checked = this.cliTela.getAtivo();
             dtNascimento.Value = Convert.ToDateTime(this.cliTela.getDtNascimento());
         }
 
@@ -338,6 +346,11 @@ namespace WindowsFormsApp2.View
             {
                 this.carregarCidadeTela(estado.getUf());
             }
+        }
+
+        private void materialFlatButton3_Click(object sender, EventArgs e)
+        {
+            carregarClientes(txtNomeBusca.Text, txtCPFCNPJBusca.Text);
         }
     }
 }

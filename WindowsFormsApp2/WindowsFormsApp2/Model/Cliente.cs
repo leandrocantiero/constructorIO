@@ -8,34 +8,22 @@ namespace WindowsFormsApp2.Model
 {
     class Cliente : Model.Pessoa
     {
-        private string cpf_cnpj;
         private string email;
+        private bool ativo;
 
-        public string Cpf_cnpj { get => cpf_cnpj; set => cpf_cnpj = value; }
         public string Email { get => email; set => email = value; }
-
+        public bool Ativo { get => ativo; set => ativo = value; }
 
         public Cliente() : base()
         {
-            this.cpf_cnpj = null;
             this.email = null;
         }
 
         public Cliente(string cpf_cnpj, string email) : base()
         {
-            this.cpf_cnpj = cpf_cnpj;
             this.email = email;
         }
 
-        public void setCpfCnpj(string cpf_cnpj)
-        {
-            this.cpf_cnpj = cpf_cnpj;
-        }
-
-        public string getCpfCnpj()
-        {
-            return this.cpf_cnpj;
-        }
 
         public void setEmail(string email)
         {
@@ -45,6 +33,16 @@ namespace WindowsFormsApp2.Model
         public string getEmail()
         {
             return this.email;
+        }
+
+        public void setAtivo(bool ativo)
+        {
+            this.ativo = ativo;
+        }
+
+        public bool getAtivo()
+        {
+            return this.ativo;
         }
     }
 }

@@ -55,15 +55,75 @@ namespace WindowsFormsApp2.View
             pbLogoMenor.Text = "";
             txtEmail.Text = "";
             txtSite.Text = "";
-
-            paramTela = this.getParamTela();
-
         }
 
         private void initTela()
         {
             paramTela = null;
             this.carregarEstadosTela();
+
+            Controller.ParamController paramC = new Controller.ParamController();
+            paramTela = paramC.obterParam();
+            carregarDadosTela();
+        }
+
+        private void carregarDadosTela()
+        {
+            //carrega os contatos
+            if (this.paramTela.getContato() != null)
+            {
+                if (this.paramTela.getContato().getNumeroAlt() != null)
+                {
+                    txtDdd2.Text = this.paramTela.getContato().getNumeroAlt().getDdd();
+                    txtContato2.Text = this.paramTela.getContato().getNumeroAlt().getDdd();
+                }
+
+                if (this.paramTela.getContato().getNumeroPadrao() != null)
+                {
+                    txtDdd1.Text = this.paramTela.getContato().getNumeroPadrao().getDdd();
+                    txtContato1.Text = this.paramTela.getContato().getNumeroPadrao().getNumero();
+                }
+            }
+
+            if (this.paramTela.getEndereco() != null)
+            {
+                //enderecos
+                txtCEP.Text = this.paramTela.getEndereco().getCep();
+                txtComplemento.Text = this.paramTela.getEndereco().getComplemento();
+                txtRua.Text = this.paramTela.getEndereco().getRua();
+                txtNumero.Text = this.paramTela.getEndereco().getNumero().ToString();
+                txtBairro.Text = this.paramTela.getEndereco().getBairro();
+
+                //carrega os comboxes
+                if (this.paramTela.getEndereco().getCidade() != null)
+                    cbbCidade.SelectedIndex = cidadeList.IndexOf(this.paramTela.getEndereco().getCidade());
+
+                if (this.paramTela.getEndereco().getCidade().getEstado() != null)
+                    cbbEstado.SelectedIndex = estadoList.IndexOf(this.paramTela.getEndereco().getCidade().getEstado());
+            }
+
+            txtRazaoSocial.Text = this.paramTela.getRazaoSocial();
+            txtFantasia.Text = this.paramTela.getFantasia();
+            txtInscEstadual.Text = this.paramTela.getInscEstadual();
+            txtCnpj.Text = this.paramTela.getCnpj();
+            txtEmail.Text = this.paramTela.getEmail();
+            txtSite.Text = this.paramTela.getSite();
+
+            try
+            {
+                Image logoMenor = Image.FromFile(this.paramTela.getLogoMenor());
+                pbLogoMenor.SizeMode = PictureBoxSizeMode.StretchImage;
+                pbLogoMenor.Image = logoMenor;
+                pbLogoMenor.ImageLocation = this.paramTela.getLogoMenor();
+
+                Image logoMaior = Image.FromFile(this.paramTela.getLogoMaior());
+                pbLogoMaior.SizeMode = PictureBoxSizeMode.StretchImage;
+                pbLogoMaior.Image = logoMaior;
+                pbLogoMaior.ImageLocation = this.paramTela.getLogoMaior();
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void carregarEstadosTela()
@@ -144,7 +204,7 @@ namespace WindowsFormsApp2.View
             paramTela.setCnpj(txtCnpj.Text);
             paramTela.setInscEstadual(txtInscEstadual.Text);
             paramTela.setLogoMenor(pbLogoMenor.ImageLocation);
-            paramTela.setLogoMaior(pbLogoMenor.ImageLocation);
+            paramTela.setLogoMaior(pbLogoMaior.ImageLocation);
             paramTela.setEmail(txtEmail.Text);
             paramTela.setSite(txtSite.Text);
 
@@ -231,6 +291,7 @@ namespace WindowsFormsApp2.View
                         Image Imagem = Image.FromFile(ofd1.FileName);
                         pbLogoMenor.SizeMode = PictureBoxSizeMode.StretchImage;
                         pbLogoMenor.Image = Imagem;
+                        pbLogoMenor.ImageLocation = ofd1.FileName;
                     }
                     catch (Exception)
                     {
@@ -263,6 +324,7 @@ namespace WindowsFormsApp2.View
                     Image Imagem = Image.FromFile(ofd1.FileName);
                     pbLogoMaior.SizeMode = PictureBoxSizeMode.StretchImage;
                     pbLogoMaior.Image = Imagem;
+                    pbLogoMaior.ImageLocation = ofd1.FileName;
                 }
                 catch (Exception)
                 {
@@ -278,6 +340,11 @@ namespace WindowsFormsApp2.View
             {
                 this.carregarCidadeTela(estado.getUf());
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

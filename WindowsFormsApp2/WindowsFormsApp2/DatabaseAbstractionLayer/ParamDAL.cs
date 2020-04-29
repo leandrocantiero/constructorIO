@@ -54,13 +54,13 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                             fantasia = @fantasia,
                             cnpj = @cnpj,
                             inscricao_estadual = @inscricao_estadual,
-                            @logo_menor,
-                            @logo_maior,
-                            @email,
-                            @site,
+                            logo_menor = @logo_menor,
+                            logo_maior = @logo_maior,
+                            email = @email,
+                            site = @site,
                             cod_endereco = @cod_endereco, 
                             cod_contato = @cod_contato 
-                        where cnpj = @cnpj RETURNING cod;";
+                        where cnpj = @cnpj RETURNING 0;";
             }
 
             parametrosBD.Add("@razao", param.getRazaoSocial());
@@ -105,59 +105,15 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             return sucesso;
         }
 
-        public bool remover(string cnpj)
-        {
-            bool sucesso;
-
-            var param = bd.getParams();
-            string sql = @"delete from parametro  
-                           where cnpj = @cnpj RETURNING cod;";
-
-            param.Add("@cnpj", cnpj);
-
-            try
-            {
-                Model.Param parametro = this.obterUm(cnpj);
-                if (parametro != null)
-                {
-                    // remover na tabelas que faz referência a tabela parametro
-
-                    sucesso = bd.executeNonQuery(sql, param);
-
-                    if (sucesso)
-                        sucesso = enderecoDAL.remover(parametro.getEndereco().getCod());
-                    if (sucesso)
-                        sucesso = contatoDAL.remover(parametro.getContato().getCod());
-                }
-                else
-                {
-                    sucesso = false;
-                    MessageBox.Show("Há registro associados.");
-                }
-            }
-            catch (Exception)
-            {
-                sucesso = false;
-                MessageBox.Show("Problema no banco");
-            }
-
-            return sucesso;
-        }
-
-        public Model.Param obterUm(string cnpj)
+        public Model.Param obterParam()
         {
             Model.Param parametro = null;
-            var param = bd.getParams();
 
-            string sql = @"select *
-                           from parametro 
-                           where cnpj = @cnpj";
-
-            param.Add("@cnpj", cnpj);
+            string sql = @"select * from parametro";
 
             try
             {
-                DataTable dt = bd.executeSelect(sql, param);
+                DataTable dt = bd.executeSelect(sql);
 
                 if (dt.Rows.Count > 0)
                 {

@@ -32,12 +32,13 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
 
             if (cliente.getCod() == 0)
             {
-                sql = @"insert into cliente(nome, cpf_cnpj, email, dtnasc, cod_endereco, cod_contato)
+                sql = @"insert into cliente(nome, registro, email, dtnasc, ativo, cod_endereco, cod_contato)
 						values 
                             (@nome, 
-                            @cpf_cnpj,
+                            @registro,
                             @email,
                             @dtnasc, 
+                            @ativo, 
                             @cod_endereco, 
                             @cod_contato
                         ) RETURNING PES_COD;";
@@ -47,9 +48,10 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                 sql = @"update cliente 
                         set 
                             nome = @nome,
-                            cpf_cnpj = @cpf_cnpj,
+                            registro = @registro,
                             email = @email,
                             dtnasc = @dtnasc, 
+                            ativo = @ativo, 
                             cod_endereco = @cod_endereco, 
                             cod_contato = @cod_contato 
                         where pes_cod = @pes_cod RETURNING PES_COD;";
@@ -58,8 +60,9 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             param.Add("@pes_cod", cliente.getCod());
             param.Add("@dtnasc", cliente.getDtNascimento());
             param.Add("@nome", cliente.getNome());
-            param.Add("@cpf_cnpj", cliente.getCpfCnpj());
+            param.Add("@registro", cliente.getRegistro());
             param.Add("@email", cliente.getEmail());
+            param.Add("@ativo", cliente.getAtivo());
 
             try
             {
@@ -137,36 +140,28 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             return sucesso;
         }
 
-        public List<Model.Cliente> obterTodos(string nome = null, string pes_cod = null)
+        public List<Model.Cliente> obterTodos(string nome = null, string registro = null)
         {
             List<Model.Cliente> clientes = null;
             var param = bd.getParams();
 
-            string sql = @"select
-                                pes_cod
-                                nome,
-                                cpf_cnpj,
-                                email,
-                                dtnasc, 
-                                cod_endereco, 
-                                cod_contato
-                           from cliente ";
+            string sql = @"select * from cliente ";
 
-            if (nome != null || pes_cod != null)
+            if (nome != "" || registro != "")
             {
                 sql += " where ";
 
-                if (nome != null)
+                if (nome != "")
                 {
-                    sql += " nome like @nome";
+                    sql += " nome ilike @nome";
                     param.Add("@nome", "%" + nome + "%");
                 }
 
-                if (pes_cod != null)
+                if (registro != "")
                 {
-                    if (nome != null) sql += " and ";
-                    sql += " pes_cod like @pes_cod;";
-                    param.Add("@pes_cod", "%" + pes_cod + "%");
+                    if (nome != "") sql += " and ";
+                    sql += " registro ilike @registro;";
+                    param.Add("@registro", "%" + registro + "%");
                 }
 
             }
@@ -197,16 +192,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             Model.Cliente cliente = null;
             var param = bd.getParams();
 
-            string sql = @"select 
-                                pes_cod, 
-                                nome,
-                                cpf_cnpj,
-                                email,
-                                dtnasc, 
-                                cod_endereco, 
-                                cod_contato
-                           from cliente 
-                           where pes_cod = @cod";
+            string sql = @"select * from cliente where pes_cod = @cod";
 
             param.Add("@cod", cod);
 
@@ -258,8 +244,9 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
 
             cliente.setNome(row["nome"].ToString());
             cliente.setDtNascimento(Convert.ToDateTime(row["dtnasc"]));
-            cliente.setCpfCnpj(row["cpf_cnpj"].ToString());
+            cliente.setRegistro(row["registro"].ToString());
             cliente.setEmail(row["email"].ToString());
+            cliente.setAtivo(Convert.ToBoolean(row["ativo"]));
 
             return cliente;
         }

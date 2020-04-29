@@ -22,8 +22,8 @@ namespace WindowsFormsApp2.Controller
                 operacao = false;
             }
 
-            if (cli.getCpfCnpj() == null ||
-                cli.getCpfCnpj().ToString().Length < 11)
+            if (cli.getRegistro() == null ||
+                cli.getRegistro().ToString().Length < 11)
             {
                 msgs.Add("CPF/CNPJ é preciso ter a quantidade de caracteres maior que 11.");
                 operacao = false;
@@ -166,12 +166,10 @@ namespace WindowsFormsApp2.Controller
             return sucesso;
         }
 
-        public List<Model.Cliente> obterTodos(string nome = null, string cod = null)
+        public List<Model.Cliente> obterTodos(string nome = null, string registro = null)
         {
             DatabaseAbstractionLayer.ClienteDAL cliDAL = new DatabaseAbstractionLayer.ClienteDAL();
-            List<Model.Cliente> Clientes = cliDAL.obterTodos(nome, cod);
-
-            return Clientes;
+            return cliDAL.obterTodos(nome, registro);
         }
 
         public Model.Cliente obterUm(int cod)
