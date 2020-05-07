@@ -109,6 +109,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             catch(Exception e)
             {
                 ultimoCod = 0;
+                MessageBox.Show(e.ToString());
             }
 
             fechar();

@@ -32,7 +32,8 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
 
             if (obterQuantidade() == 0)
             {
-                sql = @"insert into parametro(razao, fantasia, cnpj, inscricao_estadual, logo_menor, logo_maior, email, site, cod_endereco, cod_contato)
+                sql = @"insert into 
+                        parametro(razao, fantasia, cnpj, inscricao_estadual, logo_menor, logo_maior, email, site, cod_endereco, cod_contato)
 						values 
                             (@razao, 
                             @fantasia,
@@ -44,12 +45,11 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                             @site,
                             @cod_endereco, 
                             @cod_contato
-                        ) RETURNING cod;";
+                        ) RETURNING 0;";
             }
             else
             {
-                sql = @"update parametro 
-                        set 
+                sql = @"update parametro set 
                             razao = @razao,
                             fantasia = @fantasia,
                             cnpj = @cnpj,

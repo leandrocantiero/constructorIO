@@ -69,6 +69,8 @@ namespace WindowsFormsApp2.View
 
         private void carregarDadosTela()
         {
+            if (this.paramTela == null)
+                return;
             //carrega os contatos
             if (this.paramTela.getContato() != null)
             {
@@ -334,7 +336,7 @@ namespace WindowsFormsApp2.View
 
         private void cbbEstado_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            Model.Estado estado = (Model.Estado)cbbEstado.SelectedItem;
+            Model.Estado estado = (Model.Estado) cbbEstado.SelectedItem;
 
             if (estado != null)
             {

@@ -54,13 +54,14 @@ namespace WindowsFormsApp2.View
             int heigh = 35;
             string color = "#374670";
             string color2 = "#FFFFFF";
+            string color3 = "#FFF";
 
             Button btnIniciarObra = new MaterialSkin.Controls.MaterialFlatButton();
             btnIniciarObra.AutoSize = true;
-            btnIniciarObra.ForeColor = System.Drawing.ColorTranslator.FromHtml(color2);
+            btnIniciarObra.ForeColor = System.Drawing.ColorTranslator.FromHtml(color);
             btnIniciarObra.Text = "Iniciar Obra";
             btnIniciarObra.Size = new Size(width, heigh);
-            btnIniciarObra.BackColor = System.Drawing.ColorTranslator.FromHtml(color);
+            btnIniciarObra.BackColor = System.Drawing.ColorTranslator.FromHtml(color2);
             btnIniciarObra.Click += new System.EventHandler(this.onClickBtnIniciarObras);
 
             Button btnGerenciarFuncionarios = new MaterialSkin.Controls.MaterialFlatButton();

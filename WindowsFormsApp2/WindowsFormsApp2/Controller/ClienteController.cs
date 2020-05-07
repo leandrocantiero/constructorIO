@@ -8,6 +8,79 @@ namespace WindowsFormsApp2.Controller
 {
     class ClienteController
     {
+        public static bool IsCpf(string cpf)
+        {
+            int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+            string tempCpf;
+            string digito;
+            int soma;
+            int resto;
+            cpf = cpf.Trim();
+            cpf = cpf.Replace(".", "").Replace("-", "");
+            cpf = cpf.Replace(",", "").Replace("-", "");
+            if (cpf.Length != 11)
+                return false;
+            tempCpf = cpf.Substring(0, 9);
+            soma = 0;
+
+            for (int i = 0; i < 9; i++)
+                soma += int.Parse(tempCpf[i].ToString()) * multiplicador1[i];
+            resto = soma % 11;
+            if (resto < 2)
+                resto = 0;
+            else
+                resto = 11 - resto;
+            digito = resto.ToString();
+            tempCpf = tempCpf + digito;
+            soma = 0;
+            for (int i = 0; i < 10; i++)
+                soma += int.Parse(tempCpf[i].ToString()) * multiplicador2[i];
+            resto = soma % 11;
+            if (resto < 2)
+                resto = 0;
+            else
+                resto = 11 - resto;
+            digito = digito + resto.ToString();
+            return cpf.EndsWith(digito);
+        }
+
+        public static bool IsCnpj(string cnpj)
+        {
+            int[] multiplicador1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int[] multiplicador2 = new int[13] { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int soma;
+            int resto;
+            string digito;
+            string tempCnpj;
+            cnpj = cnpj.Trim();
+            cnpj = cnpj.Replace(".", "").Replace("-", "").Replace("/", "");
+            cnpj = cnpj.Replace(",", "").Replace("-", "").Replace("/", "");
+            if (cnpj.Length != 14)
+                return false;
+            tempCnpj = cnpj.Substring(0, 12);
+            soma = 0;
+            for (int i = 0; i < 12; i++)
+                soma += int.Parse(tempCnpj[i].ToString()) * multiplicador1[i];
+            resto = (soma % 11);
+            if (resto < 2)
+                resto = 0;
+            else
+                resto = 11 - resto;
+            digito = resto.ToString();
+            tempCnpj = tempCnpj + digito;
+            soma = 0;
+            for (int i = 0; i < 13; i++)
+                soma += int.Parse(tempCnpj[i].ToString()) * multiplicador2[i];
+            resto = (soma % 11);
+            if (resto < 2)
+                resto = 0;
+            else
+                resto = 11 - resto;
+            digito = digito + resto.ToString();
+            return cnpj.EndsWith(digito);
+        }
+
         public (List<string>, bool) cadastrar(Model.Cliente cli)
         {
             List<string> msgs = new List<string>();
@@ -22,15 +95,24 @@ namespace WindowsFormsApp2.Controller
                 operacao = false;
             }
 
+            if (cli.getRegistro().Length > 15 && !IsCnpj(cli.getRegistro()))
+            {
+                msgs.Add("CNPJ inválido");
+                operacao = false;
+            } else if (cli.getRegistro().Length < 15 && !IsCpf(cli.getRegistro()))
+            {
+                msgs.Add("CPF inválido");
+                operacao = false;
+            }
+
             if (cli.getRegistro() == null ||
-                cli.getRegistro().ToString().Length < 11)
+                cli.getRegistro().ToString().Length < 14)
             {
                 msgs.Add("CPF/CNPJ é preciso ter a quantidade de caracteres maior que 11.");
                 operacao = false;
             }
 
-            if (cli.getEmail() == null ||
-                cli.getEmail().Length < 10)
+            if (cli.getEmail().Length < 10)
             {
                 msgs.Add("E-mail é preciso ter a quantidade de caracteres maior que 10.");
                 operacao = false;
@@ -39,7 +121,6 @@ namespace WindowsFormsApp2.Controller
 
             if (cli.getDtNascimento().ToString().Split(' ')[0].Split('/').Length != 3)
             {
-                msgs.Add("Data de Nascimento é preciso ter dia, Mês e ano.");
                 operacao = false;
             }
 
@@ -118,7 +199,7 @@ namespace WindowsFormsApp2.Controller
                         operacao = false;
                     }
 
-                    if (cli.getContato().getNumeroPadrao().getNumero().Length == 0 ||
+                    if (cli.getContato().getNumeroPadrao().getNumero().Length < 10 ||
                         cli.getContato().getNumeroPadrao().getNumero().Length > 20)
                     {
                         msgs.Add("Número principal é preciso ter pelo menos 20 caracteres.");

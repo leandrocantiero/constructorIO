@@ -35,6 +35,12 @@ namespace WindowsFormsApp2.View
             btnSave.Show();
             btnRemove.Hide();
             btnCancel.Hide();
+
+            txtCNPJ.Visible = false;
+            txtCPF.Visible = true;
+
+            txtCNPJBusca.Visible = false;
+            txtCPFBusca.Visible = true;
         }
 
         private void iniciarVariaveisGlobais()
@@ -79,7 +85,7 @@ namespace WindowsFormsApp2.View
 
             //pessoa e cliente
             cliTela.setNome(txtNome.Text);
-            cliTela.setRegistro(txtCPFCNPJ.Text);
+            cliTela.setRegistro(txtCPF.Text != "   ,   ,   -" ? txtCPF.Text : txtCNPJ.Text);
             cliTela.setEmail(txtEmail.Text);
             cliTela.setAtivo(cbAtivo.Checked);
             cliTela.setDtNascimento(dtNascimento.Value.ToString().Length > 0 ?
@@ -179,11 +185,14 @@ namespace WindowsFormsApp2.View
 
 
             // limpa dados cliente
+            txtCodigo.Text = "";
             txtNome.Text = "";
             txtEmail.Text = "";
-            txtCPFCNPJ.Text = "";
+            txtCPF.Text = "";
+            txtCNPJ.Text = "";
             txtNomeBusca.Text = "";
-            txtCPFCNPJBusca.Text = "";
+            txtCPFBusca.Text = "";
+            txtCNPJBusca.Text = "";
             dtNascimento.Value = Convert.ToDateTime(DateTime.Now);
 
 
@@ -211,8 +220,22 @@ namespace WindowsFormsApp2.View
             txtBairro.Text = this.cliTela.getEndereco().getBairro();
 
 
+            txtCodigo.Text = this.cliTela.getCod().ToString();
             txtNome.Text = this.cliTela.getNome();
-            txtCPFCNPJ.Text = this.cliTela.getRegistro();
+            if (this.cliTela.getRegistro().Length > 15)
+            {
+                txtCNPJ.Text = this.cliTela.getRegistro();
+                rdCNPJ.Checked = true;
+                txtCNPJ.Visible = true;
+                txtCPF.Visible = false;
+            }
+            else
+            {
+                txtCPF.Text = this.cliTela.getRegistro();
+                rdCPF.Checked = true;
+                txtCNPJ.Visible = false;
+                txtCPF.Visible = true;
+            }
             txtEmail.Text = this.cliTela.getEmail();
             cbAtivo.Checked = this.cliTela.getAtivo();
             dtNascimento.Value = Convert.ToDateTime(this.cliTela.getDtNascimento());
@@ -350,7 +373,32 @@ namespace WindowsFormsApp2.View
 
         private void materialFlatButton3_Click(object sender, EventArgs e)
         {
-            carregarClientes(txtNomeBusca.Text, txtCPFCNPJBusca.Text);
+            string registro = txtCPFBusca.Text != "" ? txtCPFBusca.Text : txtCNPJBusca.Text;
+            carregarClientes(txtNomeBusca.Text, registro);
+        }
+
+        private void radioButton2_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtCNPJ.Visible = true;
+            txtCPF.Visible = false;
+        }
+
+        private void radioButton1_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtCNPJ.Visible = false;
+            txtCPF.Visible = true;
+        }
+
+        private void rdCNPJBusca_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtCNPJBusca.Visible = true;
+            txtCPFBusca.Visible = false;
+        }
+
+        private void rdCPFBusca_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtCNPJBusca.Visible = false;
+            txtCPFBusca.Visible = true;
         }
     }
 }

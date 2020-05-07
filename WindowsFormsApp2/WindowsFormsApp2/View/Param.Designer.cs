@@ -33,7 +33,6 @@
             this.cbbCidade = new System.Windows.Forms.ComboBox();
             this.materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
             this.cbbEstado = new System.Windows.Forms.ComboBox();
-            this.txtCEP = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
             this.txtComplemento = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
@@ -48,14 +47,11 @@
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.txtDdd2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtDdd1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.txtContato2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.txtContato1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel17 = new MaterialSkin.Controls.MaterialLabel();
             this.txtRazaoSocial = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.txtFantasia = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtCnpj = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.txtInscEstadual = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
@@ -68,6 +64,10 @@
             this.pbLogoMaior = new System.Windows.Forms.PictureBox();
             this.materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel15 = new MaterialSkin.Controls.MaterialLabel();
+            this.txtCEP = new System.Windows.Forms.MaskedTextBox();
+            this.txtCnpj = new System.Windows.Forms.MaskedTextBox();
+            this.txtContato1 = new System.Windows.Forms.MaskedTextBox();
+            this.txtContato2 = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoMenor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoMaior)).BeginInit();
             this.SuspendLayout();
@@ -122,9 +122,9 @@
             this.materialLabel16.Location = new System.Drawing.Point(313, 348);
             this.materialLabel16.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel16.Name = "materialLabel16";
-            this.materialLabel16.Size = new System.Drawing.Size(55, 19);
+            this.materialLabel16.Size = new System.Drawing.Size(61, 19);
             this.materialLabel16.TabIndex = 74;
-            this.materialLabel16.Text = "Cidade";
+            this.materialLabel16.Text = "Cidade*";
             // 
             // cbbEstado
             // 
@@ -136,21 +136,6 @@
             this.cbbEstado.TabIndex = 73;
             this.cbbEstado.SelectedIndexChanged += new System.EventHandler(this.cbbEstado_SelectedIndexChanged_1);
             // 
-            // txtCEP
-            // 
-            this.txtCEP.Depth = 0;
-            this.txtCEP.Hint = "";
-            this.txtCEP.Location = new System.Drawing.Point(24, 382);
-            this.txtCEP.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtCEP.Name = "txtCEP";
-            this.txtCEP.PasswordChar = '\0';
-            this.txtCEP.SelectedText = "";
-            this.txtCEP.SelectionLength = 0;
-            this.txtCEP.SelectionStart = 0;
-            this.txtCEP.Size = new System.Drawing.Size(142, 23);
-            this.txtCEP.TabIndex = 72;
-            this.txtCEP.UseSystemPasswordChar = false;
-            // 
             // materialLabel13
             // 
             this.materialLabel13.AutoSize = true;
@@ -160,9 +145,9 @@
             this.materialLabel13.Location = new System.Drawing.Point(20, 350);
             this.materialLabel13.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel13.Name = "materialLabel13";
-            this.materialLabel13.Size = new System.Drawing.Size(37, 19);
+            this.materialLabel13.Size = new System.Drawing.Size(43, 19);
             this.materialLabel13.TabIndex = 71;
-            this.materialLabel13.Text = "CEP";
+            this.materialLabel13.Text = "CEP*";
             // 
             // txtComplemento
             // 
@@ -201,9 +186,9 @@
             this.materialLabel11.Location = new System.Drawing.Point(188, 349);
             this.materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel11.Name = "materialLabel11";
-            this.materialLabel11.Size = new System.Drawing.Size(56, 19);
+            this.materialLabel11.Size = new System.Drawing.Size(62, 19);
             this.materialLabel11.TabIndex = 68;
-            this.materialLabel11.Text = "Estado";
+            this.materialLabel11.Text = "Estado*";
             // 
             // txtBairro
             // 
@@ -229,9 +214,9 @@
             this.materialLabel9.Location = new System.Drawing.Point(447, 348);
             this.materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel9.Name = "materialLabel9";
-            this.materialLabel9.Size = new System.Drawing.Size(49, 19);
+            this.materialLabel9.Size = new System.Drawing.Size(55, 19);
             this.materialLabel9.TabIndex = 66;
-            this.materialLabel9.Text = "Bairro";
+            this.materialLabel9.Text = "Bairro*";
             // 
             // txtNumero
             // 
@@ -257,9 +242,9 @@
             this.materialLabel8.Location = new System.Drawing.Point(944, 348);
             this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel8.Name = "materialLabel8";
-            this.materialLabel8.Size = new System.Drawing.Size(63, 19);
+            this.materialLabel8.Size = new System.Drawing.Size(69, 19);
             this.materialLabel8.TabIndex = 64;
-            this.materialLabel8.Text = "Número";
+            this.materialLabel8.Text = "Número*";
             // 
             // txtRua
             // 
@@ -285,9 +270,9 @@
             this.materialLabel7.Location = new System.Drawing.Point(661, 348);
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
-            this.materialLabel7.Size = new System.Drawing.Size(34, 19);
+            this.materialLabel7.Size = new System.Drawing.Size(40, 19);
             this.materialLabel7.TabIndex = 62;
-            this.materialLabel7.Text = "Rua";
+            this.materialLabel7.Text = "Rua*";
             // 
             // materialDivider1
             // 
@@ -343,36 +328,6 @@
             this.txtDdd1.TabIndex = 80;
             this.txtDdd1.UseSystemPasswordChar = false;
             // 
-            // txtContato2
-            // 
-            this.txtContato2.Depth = 0;
-            this.txtContato2.Hint = "";
-            this.txtContato2.Location = new System.Drawing.Point(912, 112);
-            this.txtContato2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtContato2.Name = "txtContato2";
-            this.txtContato2.PasswordChar = '\0';
-            this.txtContato2.SelectedText = "";
-            this.txtContato2.SelectionLength = 0;
-            this.txtContato2.SelectionStart = 0;
-            this.txtContato2.Size = new System.Drawing.Size(150, 23);
-            this.txtContato2.TabIndex = 79;
-            this.txtContato2.UseSystemPasswordChar = false;
-            // 
-            // txtContato1
-            // 
-            this.txtContato1.Depth = 0;
-            this.txtContato1.Hint = "";
-            this.txtContato1.Location = new System.Drawing.Point(700, 112);
-            this.txtContato1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtContato1.Name = "txtContato1";
-            this.txtContato1.PasswordChar = '\0';
-            this.txtContato1.SelectedText = "";
-            this.txtContato1.SelectionLength = 0;
-            this.txtContato1.SelectionStart = 0;
-            this.txtContato1.Size = new System.Drawing.Size(156, 23);
-            this.txtContato1.TabIndex = 78;
-            this.txtContato1.UseSystemPasswordChar = false;
-            // 
             // materialLabel17
             // 
             this.materialLabel17.AutoSize = true;
@@ -382,9 +337,9 @@
             this.materialLabel17.Location = new System.Drawing.Point(661, 78);
             this.materialLabel17.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel17.Name = "materialLabel17";
-            this.materialLabel17.Size = new System.Drawing.Size(75, 19);
+            this.materialLabel17.Size = new System.Drawing.Size(81, 19);
             this.materialLabel17.TabIndex = 77;
-            this.materialLabel17.Text = "Contato 1";
+            this.materialLabel17.Text = "Contato 1*";
             // 
             // txtRazaoSocial
             // 
@@ -410,9 +365,9 @@
             this.materialLabel1.Location = new System.Drawing.Point(14, 80);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(95, 19);
+            this.materialLabel1.Size = new System.Drawing.Size(101, 19);
             this.materialLabel1.TabIndex = 83;
-            this.materialLabel1.Text = "Razão social";
+            this.materialLabel1.Text = "Razão social*";
             // 
             // txtFantasia
             // 
@@ -442,21 +397,6 @@
             this.materialLabel2.TabIndex = 85;
             this.materialLabel2.Text = "Fantasia";
             // 
-            // txtCnpj
-            // 
-            this.txtCnpj.Depth = 0;
-            this.txtCnpj.Hint = "";
-            this.txtCnpj.Location = new System.Drawing.Point(18, 182);
-            this.txtCnpj.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtCnpj.Name = "txtCnpj";
-            this.txtCnpj.PasswordChar = '\0';
-            this.txtCnpj.SelectedText = "";
-            this.txtCnpj.SelectionLength = 0;
-            this.txtCnpj.SelectionStart = 0;
-            this.txtCnpj.Size = new System.Drawing.Size(307, 23);
-            this.txtCnpj.TabIndex = 88;
-            this.txtCnpj.UseSystemPasswordChar = false;
-            // 
             // materialLabel3
             // 
             this.materialLabel3.AutoSize = true;
@@ -466,9 +406,9 @@
             this.materialLabel3.Location = new System.Drawing.Point(14, 150);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(47, 19);
+            this.materialLabel3.Size = new System.Drawing.Size(53, 19);
             this.materialLabel3.TabIndex = 87;
-            this.materialLabel3.Text = "CNPJ";
+            this.materialLabel3.Text = "CNPJ*";
             // 
             // txtInscEstadual
             // 
@@ -602,11 +542,47 @@
             this.materialLabel15.TabIndex = 99;
             this.materialLabel15.Text = "Logo maior";
             // 
+            // txtCEP
+            // 
+            this.txtCEP.Location = new System.Drawing.Point(18, 384);
+            this.txtCEP.Mask = "#####-###";
+            this.txtCEP.Name = "txtCEP";
+            this.txtCEP.Size = new System.Drawing.Size(142, 20);
+            this.txtCEP.TabIndex = 100;
+            // 
+            // txtCnpj
+            // 
+            this.txtCnpj.Location = new System.Drawing.Point(18, 185);
+            this.txtCnpj.Mask = "##.###.###/####-##";
+            this.txtCnpj.Name = "txtCnpj";
+            this.txtCnpj.Size = new System.Drawing.Size(306, 20);
+            this.txtCnpj.TabIndex = 101;
+            // 
+            // txtContato1
+            // 
+            this.txtContato1.Location = new System.Drawing.Point(714, 116);
+            this.txtContato1.Mask = "#####-####";
+            this.txtContato1.Name = "txtContato1";
+            this.txtContato1.Size = new System.Drawing.Size(142, 20);
+            this.txtContato1.TabIndex = 102;
+            // 
+            // txtContato2
+            // 
+            this.txtContato2.Location = new System.Drawing.Point(920, 115);
+            this.txtContato2.Mask = "#####-####";
+            this.txtContato2.Name = "txtContato2";
+            this.txtContato2.Size = new System.Drawing.Size(142, 20);
+            this.txtContato2.TabIndex = 103;
+            // 
             // Param
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1092, 580);
+            this.Controls.Add(this.txtContato2);
+            this.Controls.Add(this.txtContato1);
+            this.Controls.Add(this.txtCnpj);
+            this.Controls.Add(this.txtCEP);
             this.Controls.Add(this.materialLabel15);
             this.Controls.Add(this.materialLabel14);
             this.Controls.Add(this.pbLogoMaior);
@@ -617,7 +593,6 @@
             this.Controls.Add(this.materialLabel6);
             this.Controls.Add(this.txtInscEstadual);
             this.Controls.Add(this.materialLabel4);
-            this.Controls.Add(this.txtCnpj);
             this.Controls.Add(this.materialLabel3);
             this.Controls.Add(this.txtFantasia);
             this.Controls.Add(this.materialLabel2);
@@ -626,14 +601,11 @@
             this.Controls.Add(this.materialLabel5);
             this.Controls.Add(this.txtDdd2);
             this.Controls.Add(this.txtDdd1);
-            this.Controls.Add(this.txtContato2);
-            this.Controls.Add(this.txtContato1);
             this.Controls.Add(this.materialLabel17);
             this.Controls.Add(this.materialDivider1);
             this.Controls.Add(this.cbbCidade);
             this.Controls.Add(this.materialLabel16);
             this.Controls.Add(this.cbbEstado);
-            this.Controls.Add(this.txtCEP);
             this.Controls.Add(this.materialLabel13);
             this.Controls.Add(this.txtComplemento);
             this.Controls.Add(this.materialLabel12);
@@ -663,7 +635,6 @@
         private System.Windows.Forms.ComboBox cbbCidade;
         private MaterialSkin.Controls.MaterialLabel materialLabel16;
         private System.Windows.Forms.ComboBox cbbEstado;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtCEP;
         private MaterialSkin.Controls.MaterialLabel materialLabel13;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtComplemento;
         private MaterialSkin.Controls.MaterialLabel materialLabel12;
@@ -678,14 +649,11 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtDdd2;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtDdd1;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtContato2;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtContato1;
         private MaterialSkin.Controls.MaterialLabel materialLabel17;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtRazaoSocial;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtFantasia;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtCnpj;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtInscEstadual;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
@@ -698,5 +666,9 @@
         private System.Windows.Forms.PictureBox pbLogoMaior;
         private MaterialSkin.Controls.MaterialLabel materialLabel14;
         private MaterialSkin.Controls.MaterialLabel materialLabel15;
+        private System.Windows.Forms.MaskedTextBox txtCEP;
+        private System.Windows.Forms.MaskedTextBox txtCnpj;
+        private System.Windows.Forms.MaskedTextBox txtContato1;
+        private System.Windows.Forms.MaskedTextBox txtContato2;
     }
 }
