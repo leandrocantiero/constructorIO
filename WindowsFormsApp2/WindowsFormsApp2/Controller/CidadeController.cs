@@ -9,7 +9,7 @@ namespace WindowsFormsApp2.Controller
     public class CidadeController
     {
 
-        public List<Model.Cidade> obterTodos(string uf)
+        public List<object> obterTodos(string uf)
         {
             DatabaseAbstractionLayer.CidadeDAL cidadeDAL = null;
             List<Model.Cidade> cidades = null;
@@ -20,7 +20,7 @@ namespace WindowsFormsApp2.Controller
                 cidades = cidadeDAL.obterTodos(uf);
             }
             
-            return cidades;
+            return new List<object>(cidades);
         }
     }
 }

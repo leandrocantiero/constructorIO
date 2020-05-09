@@ -109,7 +109,9 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             catch(Exception e)
             {
                 ultimoCod = 0;
-                MessageBox.Show(e.ToString());
+
+                //Não precisa exibir erro aqui!!é normal entrar nesse catch se o sql nao tiver retornando um cod por exemplo.
+                //basta colocar pra retornar um numero por exemplo no sql
             }
 
             fechar();

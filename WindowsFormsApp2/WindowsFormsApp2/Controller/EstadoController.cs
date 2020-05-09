@@ -8,13 +8,13 @@ namespace WindowsFormsApp2.Controller
 {
     public class EstadoController
     {
-        public List<Model.Estado> obterTodos()
+        public List<object> obterTodos()
         {
             DatabaseAbstractionLayer.EstadoDAL estadoDAL = new DatabaseAbstractionLayer.EstadoDAL();
 
             List<Model.Estado> estados = estadoDAL.obterTodos();
 
-            return estados;
+            return new List<object>(estados);
         }
     }
 }

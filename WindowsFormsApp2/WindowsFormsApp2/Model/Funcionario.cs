@@ -101,5 +101,10 @@ namespace WindowsFormsApp2.Model
         {
             return this.cpf;
         }
+
+        public override string ToString()
+        {
+            return this.Nome + ".";
+        }
     }
 }

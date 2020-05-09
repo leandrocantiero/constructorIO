@@ -134,13 +134,13 @@ namespace WindowsFormsApp2.View
             this.estadoList = new BindingList<Model.Estado>();
 
             Controller.EstadoController estadoController = new Controller.EstadoController();
-            List<Model.Estado> estados = estadoController.obterTodos();
+            List<object> estados = estadoController.obterTodos();
 
             if (estados != null && estados.Count > 0)
             {
                 foreach (var estado in estados)
                 {
-                    estadoList.Add(estado);
+                    estadoList.Add((Model.Estado)estado);
                 }
             }
 
@@ -153,13 +153,13 @@ namespace WindowsFormsApp2.View
             this.cidadeList = new BindingList<Model.Cidade>();
 
             Controller.CidadeController cidadeController = new Controller.CidadeController();
-            List<Model.Cidade> cidades = cidadeController.obterTodos(uf);
+            List<object> cidades = cidadeController.obterTodos(uf);
 
             if (cidades != null)
             {
                 foreach (var cidade in cidades)
                 {
-                    this.cidadeList.Add(cidade);
+                    this.cidadeList.Add((Model.Cidade)cidade);
                 }
 
             }

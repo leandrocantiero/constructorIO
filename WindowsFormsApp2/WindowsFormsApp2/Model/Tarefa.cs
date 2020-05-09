@@ -59,5 +59,16 @@ namespace WindowsFormsApp2.Model
         {
             this._etapa = etapa;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+
+            if (obj.GetType() != typeof(Model.Tarefa))
+                return false;
+
+            return ((Model.Tarefa)obj).getCod() == this.getCod();
+        }
     }
 }

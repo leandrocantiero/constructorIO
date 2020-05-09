@@ -36,7 +36,7 @@ namespace WindowsFormsApp2.Model
             return this._cod;
         }
 
-        public string setDescricao()
+        public string getDescricao()
         {
             return this._descricao;
         }
@@ -44,6 +44,20 @@ namespace WindowsFormsApp2.Model
         public void setDescricao(string descricao)
         {
             this._descricao = descricao;
+        }
+
+        public override string ToString()
+        {
+            return this._descricao + ".";
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj.GetType() != typeof(Model.Status))
+                return false;
+
+
+            return obj != null && this.Cod == ((Model.Status) obj).getCod();
         }
     }
 }

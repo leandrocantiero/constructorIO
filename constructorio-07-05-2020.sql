@@ -37,7 +37,7 @@ CREATE TABLE public.obra (
 -- DROP TABLE IF EXISTS public.etapa CASCADE;
 CREATE TABLE public.etapa (
 	cod serial NOT NULL,
-	descricao varchar(30) NOT NULL,
+	descricao varchar(100) NOT NULL,
 	CONSTRAINT etapa_pk PRIMARY KEY (cod)
 
 );
@@ -99,7 +99,7 @@ CREATE TABLE public.endereco (
 CREATE TABLE public.tarefa (
 	cod serial NOT NULL,
 	cod_etapa integer NOT NULL,
-	descricao varchar(30) NOT NULL,
+	descricao varchar(100) NOT NULL,
 	CONSTRAINT tarefa_pk PRIMARY KEY (cod)
 
 );

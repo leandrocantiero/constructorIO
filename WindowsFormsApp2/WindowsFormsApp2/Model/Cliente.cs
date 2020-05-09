@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp2.Model
 {
-    class Cliente : Model.Pessoa
+    public class Cliente : Model.Pessoa
     {
         private string email;
         private bool ativo;
@@ -43,6 +43,11 @@ namespace WindowsFormsApp2.Model
         public bool getAtivo()
         {
             return this.ativo;
+        }
+
+        public override string ToString()
+        {
+            return this.Nome + ".";
         }
     }
 }

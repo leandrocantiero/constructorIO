@@ -85,6 +85,7 @@
     <Compile Include="Controller\EstadoController.cs" />
     <Compile Include="Controller\FuncionarioController.cs" />
     <Compile Include="Controller\LogarController.cs" />
+    <Compile Include="Controller\ObrasController.cs" />
     <Compile Include="Controller\ParamController.cs" />
     <Compile Include="DatabaseAbstractionLayer\ClienteDAL.cs" />
     <Compile Include="DatabaseAbstractionLayer\ControleAcessoDAL.cs" />
@@ -93,10 +94,13 @@
     <Compile Include="DatabaseAbstractionLayer\ContatoDAL.cs" />
     <Compile Include="DatabaseAbstractionLayer\EnderecoDAL.cs" />
     <Compile Include="DatabaseAbstractionLayer\EstadoDAL.cs" />
+    <Compile Include="DatabaseAbstractionLayer\EtapaDAL.cs" />
     <Compile Include="DatabaseAbstractionLayer\FuncionarioDAL.cs" />
     <Compile Include="DatabaseAbstractionLayer\ObraDAL.cs" />
     <Compile Include="DatabaseAbstractionLayer\ParamDAL.cs" />
     <Compile Include="DatabaseAbstractionLayer\PostgreSQLPersistence.cs" />
+    <Compile Include="DatabaseAbstractionLayer\StatusDAL.cs" />
+    <Compile Include="DatabaseAbstractionLayer\TarefaDAL.cs" />
     <Compile Include="Model\Cargo.cs" />
     <Compile Include="Model\Cidade.cs" />
     <Compile Include="Model\Cliente.cs" />
