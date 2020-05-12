@@ -79,7 +79,7 @@ namespace WindowsFormsApp2.View
 
                 ((View.IniciarObra)iniciarObra).setarClienteTela(cliente);
 
-                MessageBox.Show("Clientes carregados", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Cliente carregado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {

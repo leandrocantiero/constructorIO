@@ -59,7 +59,7 @@ namespace WindowsFormsApp2.View
 
                 ((View.IniciarObra)iniciarObra).setarFuncionarioTela(funcionarioSelecionado);
 
-                MessageBox.Show("Funcionarios carregados", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Funcionario carregado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {

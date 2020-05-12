@@ -190,7 +190,7 @@ namespace WindowsFormsApp2.Controller
 
                 if(obra.getFuncionario() == null || obra.getFuncionario().getCod() == 0)
                 {
-                    msgs.Add("Cliente está nulo, selecione um.");
+                    msgs.Add("Funcionário está nulo, selecione um.");
                     operacao = false;
                 }
 

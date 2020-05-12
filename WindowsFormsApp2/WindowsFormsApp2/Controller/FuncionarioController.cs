@@ -443,6 +443,11 @@ namespace WindowsFormsApp2.Controller
             return new Model.Endereco();
         }
 
+        public Model.Status GetStatus()
+        {
+            return new Model.Status();
+        }
+
         public Model.ControleAcesso GetControleAcesso()
         {
             return new Model.ControleAcesso();

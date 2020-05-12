@@ -40,7 +40,7 @@
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClientes.Location = new System.Drawing.Point(12, 140);
             this.dgvClientes.Name = "dgvClientes";
-            this.dgvClientes.Size = new System.Drawing.Size(593, 290);
+            this.dgvClientes.Size = new System.Drawing.Size(922, 290);
             this.dgvClientes.TabIndex = 0;
             // 
             // txtNomeCliente
@@ -63,7 +63,7 @@
             this.btnBuscarCliente.AutoSize = true;
             this.btnBuscarCliente.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnBuscarCliente.Depth = 0;
-            this.btnBuscarCliente.Location = new System.Drawing.Point(380, 95);
+            this.btnBuscarCliente.Location = new System.Drawing.Point(709, 95);
             this.btnBuscarCliente.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnBuscarCliente.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnBuscarCliente.Name = "btnBuscarCliente";
@@ -79,7 +79,7 @@
             this.materialFlatButton1.AutoSize = true;
             this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.Location = new System.Drawing.Point(455, 95);
+            this.materialFlatButton1.Location = new System.Drawing.Point(784, 95);
             this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialFlatButton1.Name = "materialFlatButton1";
@@ -94,7 +94,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(617, 442);
+            this.ClientSize = new System.Drawing.Size(946, 442);
             this.Controls.Add(this.materialFlatButton1);
             this.Controls.Add(this.txtNomeCliente);
             this.Controls.Add(this.btnBuscarCliente);

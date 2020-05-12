@@ -56,7 +56,7 @@ namespace WindowsFormsApp2.Model
 
         public decimal getValor()
         {
-            return this._cod;
+            return this._valor;
         }
 
         public void setValor(decimal valor)

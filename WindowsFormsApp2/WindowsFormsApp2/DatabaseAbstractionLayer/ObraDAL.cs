@@ -86,14 +86,15 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             {
                 operacao = bd.executeNonQuery(sql, param);
                 obra.setCod(bd.getUltimoCod());
+                operacao = true;
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-
             }
 
 
-            return true;
+            return operacao;
         }
 
         internal List<Obra> obterTodas(string rua, string nomeCliente)
@@ -117,6 +118,8 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
 
             List<Model.Obra> obras = null;
             List<Model.Obra> obrasFiltrados = null;
+
+
 
             try
             {
@@ -185,7 +188,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             obra.setFuncionario(funcionarioDAL.obterUm(Convert.ToInt32(row["pes_cod_funcionario"])));
             obra.setEndereco(enderecoDAL.obterUm(Convert.ToInt32(row["cod_endereco"])));
             
-            obra.setValor(Convert.ToInt32(row["valor_total"]));
+            obra.setValor(Convert.ToDecimal(row["valor_total"]));
             obra.setDataInicio(Convert.ToDateTime(row["data_inicio"]));
             obra.setDataPrevFim(Convert.ToDateTime(row["data_previsao"]));
 

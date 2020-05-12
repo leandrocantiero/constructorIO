@@ -60,7 +60,53 @@ namespace WindowsFormsApp2.View
             configurarFormsIniciais();
             carregarDadosIniciais();
             limparTela();
+
+            //AplicarEventos();
         }
+
+
+        // ----------------------------------------------------------------------------- configurar campo valor
+
+        //private void AplicarEventos()
+        //{
+
+
+        //    txtValor.Enter += TirarMascara;
+        //    txtValor.Leave += RetornarMascara;
+        //    txtValor.KeyPress += ApenasValorNumerico;
+        //}
+
+        //private void RetornarMascara(object sender, EventArgs e)
+        //{
+        //    TextBox txt = (TextBox)sender;
+        //    txt.Text = double.Parse(txt.Text).ToString("C2");
+        //}
+
+        //private void TirarMascara(object sender, EventArgs e)
+        //{
+        //    TextBox txt = (TextBox)sender;
+        //    txt.Text = txt.Text.Replace("R$", "").Trim();
+        //}
+
+        private void ApenasValorNumerico(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+            if ((e.KeyChar == ',') && txtValor.Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
+
+        }
+
+        // ----------------------------------------------------------------------------- configurar campo valor
+
 
         private void limparTela()
         {
@@ -85,6 +131,12 @@ namespace WindowsFormsApp2.View
 
         private void configurarFormsIniciais()
         {
+            //mascara valor
+            //this.txtValor.Mask = "999.999.999,00";
+            txtValor.KeyPress += ApenasValorNumerico;
+
+
+
             objFuncionario.Text = "Responsável não selecionado";
             objCliente.Text = "Cliente não selecionado";
 
@@ -93,6 +145,7 @@ namespace WindowsFormsApp2.View
             
             btnCancelar.Hide();
             btnAlterar.Hide();
+            btnInserir.Show();
 
             lblStatus.Hide();
             cbbStatus.Hide();
@@ -109,6 +162,11 @@ namespace WindowsFormsApp2.View
 
         private void carregarDadosIniciais()
         {
+            this.obraTela = null;
+            this.clienteSelecionado = null;
+            this.funcionarioSelecionado = null;
+            this.dgvTarefasSelecionadas.DataSource = new BindingList<object>();
+
             List<object> etapaList = obrasController.getTodasEtapas();
             configurarGridEtapasDisponiveis(etapaList);
 
@@ -160,11 +218,48 @@ namespace WindowsFormsApp2.View
             this.dgvObras.DataSource = null;
             this.dgvObras.DataSource = this.obras;
 
-            ////if (this.obras.Count > 0)
-            ////{
-            ////    dgvEtapasDisponiveis.Columns["Cod"].Visible = false;
-            ////    dgvEtapasDisponiveis.Columns["Descricao"].HeaderText = "Descrição";
-            ////}
+            if (this.obras.Count > 0)
+            {
+                dgvEtapasDisponiveis.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+                dgvObras.Columns["Cod"].Visible = false;
+                dgvObras.Columns["Descricao"].Visible = false;
+
+
+                dgvObras.Columns["Cliente"].HeaderText = "Cliente";
+                dgvObras.Columns["Cliente"].DisplayIndex = 1;
+                dgvObras.Columns["Cliente"].ReadOnly = true;
+
+
+                dgvObras.Columns["Funcionario"].HeaderText = "Funcionario";
+                dgvObras.Columns["Funcionario"].DisplayIndex = 2;
+                dgvObras.Columns["Funcionario"].ReadOnly = true;
+
+
+                dgvObras.Columns["Endereco"].HeaderText = "Descrição";
+                dgvObras.Columns["Endereco"].DisplayIndex = 3;
+                dgvObras.Columns["Endereco"].ReadOnly = true;
+                dgvObras.Columns["Endereco"].ReadOnly = true;
+
+                dgvObras.Columns["Valor"].HeaderText = "Valor";
+                dgvObras.Columns["Valor"].DisplayIndex = 4;
+                dgvObras.Columns["Valor"].ReadOnly = true;
+
+                dgvObras.Columns["Status"].HeaderText = "Status da obra";
+                dgvObras.Columns["Status"].DisplayIndex = 5;
+                dgvObras.Columns["Status"].ReadOnly = true;
+
+
+                dgvObras.Columns["DtInicio"].HeaderText = "Data de início";
+                dgvObras.Columns["DtInicio"].DisplayIndex = 6;
+                dgvObras.Columns["DtInicio"].ReadOnly = true;
+
+
+                dgvObras.Columns["DtPrevFim"].HeaderText = "Data Previsto fim";
+                dgvObras.Columns["DtPrevFim"].DisplayIndex = 7;
+                dgvObras.Columns["DtPrevFim"].ReadOnly = true;
+
+            }
 
         }
 
@@ -179,8 +274,8 @@ namespace WindowsFormsApp2.View
 
             if(this.etapasDisponiveis.Count > 0)
             {
+                dgvEtapasDisponiveis.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                 dgvEtapasDisponiveis.Columns["Cod"].Visible = false;
-                dgvEtapasDisponiveis.Columns["Descricao"].HeaderText = "Descrição";
             }
         }
 
@@ -196,9 +291,14 @@ namespace WindowsFormsApp2.View
 
             if (this.tarefasDisponiveis.Count > 0)
             {
+                dgvTarefasDisponiveis.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                 dgvTarefasDisponiveis.Columns["Cod"].Visible = false;
+
                 dgvTarefasDisponiveis.Columns["Etapa"].Visible = false;
-                dgvTarefasDisponiveis.Columns["Descricao"].HeaderText = "Descrição"; ;
+
+                dgvTarefasDisponiveis.Columns["Descricao"].HeaderText = "Descrição";
+                dgvTarefasDisponiveis.Columns["Descricao"].DisplayIndex = 1;
+                dgvTarefasDisponiveis.Columns["Descricao"].ReadOnly = true;
 
             }
         }
@@ -214,9 +314,14 @@ namespace WindowsFormsApp2.View
 
             if(tarefasSelecionadas.Count > 0)
             {
+                dgvTarefasSelecionadas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
                 dgvTarefasSelecionadas.Columns["Cod"].Visible = false;
                 dgvTarefasSelecionadas.Columns["Etapa"].Visible = false;
+
                 dgvTarefasSelecionadas.Columns["Descricao"].HeaderText = "Descrição";
+                dgvTarefasSelecionadas.Columns["Descricao"].DisplayIndex = 1;
+                dgvTarefasSelecionadas.Columns["Descricao"].ReadOnly = true;
             }
         }
 
@@ -333,10 +438,13 @@ namespace WindowsFormsApp2.View
 
             this.obraTela = getObraTela();
 
-            (msgs, operacao) = obrasController.inserir(this.obraTela, tarefasObjs);
-            
+            if(this.obraTela != null)
+            {
+                (msgs, operacao) = obrasController.inserir(this.obraTela, tarefasObjs);
+            }
 
-            if(msgs != null && msgs.Count > 0)
+
+            if (msgs != null && msgs.Count > 0)
             {
                 if(operacao)
                 {
@@ -411,9 +519,10 @@ namespace WindowsFormsApp2.View
             if (obraTela == null)
                 obraTela = new Model.Obra();
 
-            Model.Endereco endereco = new Model.Endereco();
+            Model.Endereco endereco = new Controller.FuncionarioController().GetEndereco(); ;
+
             Model.Cidade cidadeTela = null;
-            Model.Status statusTela = new Model.Status();
+            Model.Status statusTela = new Controller.FuncionarioController().GetStatus();
 
             obraTela.setFuncionario(this.funcionarioSelecionado);
             obraTela.setCliente(this.clienteSelecionado);
@@ -471,7 +580,19 @@ namespace WindowsFormsApp2.View
             }
 
             //valor
-            obraTela.setValor(Convert.ToDecimal(txtValor.Text));
+            //decimal valorTotal = 0;
+            //string[] valores = txtValor.Text.Trim().Split('.');
+
+            //for(int i=0; i < valores.Length-1; i++)
+            //{
+            //    valorTotal += Convert.ToDecimal(valores[i]);
+            //}
+            //valorTotal += Convert.ToDecimal(valores[valores.Length - 2]);
+
+            if(!formatarValorDecimal(obraTela, txtValor.Text))
+            {
+                return null;
+            }
 
             //descricao
             obraTela.setDescricao(txtDescricaoObra.Text);
@@ -480,6 +601,59 @@ namespace WindowsFormsApp2.View
             obraTela.setStatus(statusTela);
 
             return obraTela;
+        }
+
+        private bool formatarValorDecimal(Model.Obra obraTela, string valor)
+        {
+            if (valor.Length == 0)
+            {
+                MessageBox.Show("É necessário um valor para a obra!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            try
+            {
+
+                if(valor.IndexOf(',') > -1)
+                {
+                    string valorFormatado = valor;
+                    
+                    string[] valorVirgula = valorFormatado.Split(',');
+                    if (valorVirgula.Length > 0 && valorVirgula[1].Length > 0)
+                    {
+                        valorFormatado = valorVirgula[0];
+                        valorFormatado += ',';
+
+                        string valorDecimal = valorVirgula[1];
+                        if (valorDecimal.Length > 2)
+                        {
+                            valorFormatado += valorDecimal.Substring(0, 2);
+                        }
+                        else
+                        {
+                            valorFormatado += valorDecimal;
+                        }
+                    }
+                    else
+                    {
+                        valorFormatado = valor.Replace(",", "");
+                    }
+                    obraTela.setValor(Convert.ToDecimal(valorFormatado));
+                }
+                else
+                {
+                    obraTela.setValor(Convert.ToDecimal(valor));
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Valor da obra so aceita números!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
         }
 
         private void carregaLinhaTela()
@@ -502,7 +676,7 @@ namespace WindowsFormsApp2.View
             txtBairro.Text = this.obraTela.getEndereco().getBairro();
             
             //valor
-            txtValor.Text = this.obraTela.getValor().ToString();
+            txtValor.Text = this.obraTela.getValor().ToString("N2");
 
             //estado
             //cidade
