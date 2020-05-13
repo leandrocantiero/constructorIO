@@ -17,9 +17,8 @@ namespace WindowsFormsApp2.View
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //Application.Run(new Login());
+            Application.Run(new Login());
 
-            Application.Run(new IniciarObra());
             /*
              INSERTS -----------------------------------------------------------
 
