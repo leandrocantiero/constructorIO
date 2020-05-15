@@ -20,26 +20,22 @@ namespace WindowsFormsApp2.View
             Application.Run(new Login());
 
             /*
-             INSERTS -----------------------------------------------------------
+                ****************************************************************************************
+                //OPCIONAL
+                insert into parametro(cnpj, razao, fantasia, inscricao_estadual, 
+                                          cod_contato, cod_endereco, logo_menor, logo_maior, email, site)
+                    values('123123123', 'asdasdasd', 'asdasdasd', 123123123, 1,1,'123123123','123123123','123123123','123123123');
 
 
-                *****************************************
-                * excluir todas TABELAS;
-                * 
+             INSERTS ---------------------------------------------------------------------------------------------------------
+
+                -- excluir todas TABELAS;
+                 
                 drop schema public cascade;
 
                 create schema public;
 
                  * *****
-
-
-            ****************************************************************************************
-            insert into parametro(cnpj, razao, fantasia, inscricao_estadual, 
-                                      cod_contato, cod_endereco, logo_menor, logo_maior, email, site)
-                values('123123123', 'asdasdasd', 'asdasdasd', 123123123, 1,1,'123123123','123123123','123123123','123123123');
-            ****************************************************************************************
-
-
 
               ***********************************************  SQL NECESSÁRIOS!! ***************************
 
@@ -101,8 +97,6 @@ namespace WindowsFormsApp2.View
                 insert into cidade(uf_estado, nome) values('AC', 'Jordao');
                 insert into cidade(uf_estado, nome) values('AC', 'Rio Branco');
                 insert into cidade(uf_estado, nome) values('AC', 'Tarauaca');
-
-
 
 
                 insert into etapa(descricao) values('Serviços Preliminares');

@@ -63,12 +63,48 @@ namespace WindowsFormsApp2.View
         {
             dgvClientes.DataSource = null;
 
-
             this.clientes = new BindingList<object>(clientes);
 
             dgvClientes.DataSource = this.clientes;
-            ///config grid depois
 
+            if (this.clientes.Count > 0)
+            {
+
+                dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+                dgvClientes.Columns["Cod"].Visible = false;
+
+                dgvClientes.Columns["Nome"].HeaderText = "Nome Completo";
+                dgvClientes.Columns["Nome"].DisplayIndex = 1;
+                dgvClientes.Columns["Nome"].ReadOnly = true;
+
+                dgvClientes.Columns["Registro"].HeaderText = "CPF/CNPJ";
+                dgvClientes.Columns["Registro"].DisplayIndex = 2;
+                dgvClientes.Columns["Registro"].ReadOnly = true;
+
+
+                dgvClientes.Columns["DtNascimento"].HeaderText = "Data de nascimento";
+                dgvClientes.Columns["DtNascimento"].DisplayIndex = 3;
+                dgvClientes.Columns["DtNascimento"].ReadOnly = true;
+
+
+                dgvClientes.Columns["Contatos"].HeaderText = "Contatos";
+                dgvClientes.Columns["Contatos"].DisplayIndex = 4;
+                dgvClientes.Columns["Contatos"].ReadOnly = true;
+
+
+                dgvClientes.Columns["Endereco"].HeaderText = "Endereço";
+                dgvClientes.Columns["Endereco"].DisplayIndex = 5;
+                dgvClientes.Columns["Endereco"].ReadOnly = true;
+
+                dgvClientes.Columns["Email"].HeaderText = "Email";
+                dgvClientes.Columns["Email"].DisplayIndex = 6;
+                dgvClientes.Columns["Email"].ReadOnly = true;
+
+                dgvClientes.Columns["Ativo"].HeaderText = "Ativo";
+                dgvClientes.Columns["Ativo"].DisplayIndex = 7;
+                dgvClientes.Columns["Ativo"].ReadOnly = true;
+            }
         }
 
         private void onClickSelecionarCliente(object sender, EventArgs e)

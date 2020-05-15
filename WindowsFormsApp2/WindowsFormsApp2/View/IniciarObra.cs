@@ -33,6 +33,8 @@ namespace WindowsFormsApp2.View
         {
             InitializeComponent();
 
+            dtpDataPrevTermino.Value = DateTime.Now.AddDays(30);
+
             funcionarioSelecionado = null;
             clienteSelecionado = null;
             obraTela = null;
@@ -60,33 +62,8 @@ namespace WindowsFormsApp2.View
             configurarFormsIniciais();
             carregarDadosIniciais();
             limparTela();
-
-            //AplicarEventos();
         }
 
-
-        // ----------------------------------------------------------------------------- configurar campo valor
-
-        //private void AplicarEventos()
-        //{
-
-
-        //    txtValor.Enter += TirarMascara;
-        //    txtValor.Leave += RetornarMascara;
-        //    txtValor.KeyPress += ApenasValorNumerico;
-        //}
-
-        //private void RetornarMascara(object sender, EventArgs e)
-        //{
-        //    TextBox txt = (TextBox)sender;
-        //    txt.Text = double.Parse(txt.Text).ToString("C2");
-        //}
-
-        //private void TirarMascara(object sender, EventArgs e)
-        //{
-        //    TextBox txt = (TextBox)sender;
-        //    txt.Text = txt.Text.Replace("R$", "").Trim();
-        //}
 
         private void ApenasValorNumerico(object sender, KeyPressEventArgs e)
         {
@@ -136,7 +113,6 @@ namespace WindowsFormsApp2.View
             txtValor.KeyPress += ApenasValorNumerico;
 
 
-
             objFuncionario.Text = "Responsável não selecionado";
             objCliente.Text = "Cliente não selecionado";
 
@@ -150,13 +126,86 @@ namespace WindowsFormsApp2.View
             lblStatus.Hide();
             cbbStatus.Hide();
 
-            dtpDataInicio.Enabled = false;
+
+            cbbStatus.Enabled = true;
+            dtpDataPrevTermino.Enabled = true;
+
+
+            //alterar para inserir
+            modoInserirAlterarNaoFinalizado();
+
+
+
+        }
+        private void modoInserirAlterarNaoFinalizado()
+        {
+            btnBuscarCliente.Enabled = true;
+            btnBuscarEngenheiro.Enabled = true;
+
+            txtRua.Enabled = true;
+            txtNumero.Enabled = true;
+            txtBairro.Enabled = true;
+            txtComplemento.Enabled = true;
+            txtCEP.Enabled = true;
+            cbbCidade.Enabled = true;
+            cbbEstado.Enabled = true;
+            txtDescricaoObra.Enabled = true;
+
+            txtValor.Enabled = true;
+            dtpDataInicio.Enabled = true;
+            dtpDataPrevTermino.Enabled = true;
+            txtBuscarEtapa.Enabled = true;
+            btnBuscarEtapa.Enabled = true;
+
 
             btnInserirTarefa.Enabled = true;
             btnRemoverTarefa.Enabled = true;
 
-            cbbStatus.Enabled = true;
-            dtpDataPrevTermino.Enabled = true;
+            //txtBuscarObraEndereco.Enabled = true;
+            //txtBuscarObraClienteNome.Enabled = true;
+            //btnBuscarObra.Enabled = true;
+            btnAlterar.Enabled = true;
+
+            btnInserir.Enabled = true;
+
+            dgvEtapasDisponiveis.Enabled = true;
+            dgvTarefasDisponiveis.Enabled = true;
+            dgvTarefasSelecionadas.Enabled = true;
+        }
+
+        private void modoInserirAlterarFinalizado() {
+            btnBuscarCliente.Enabled = false;
+            btnBuscarEngenheiro.Enabled = false;
+
+            txtRua.Enabled = false;
+            txtNumero.Enabled = false;
+            txtBairro.Enabled = false;
+            txtComplemento.Enabled = false;
+            txtCEP.Enabled = false;
+            cbbCidade.Enabled = false;
+            cbbEstado.Enabled = false;
+            txtDescricaoObra.Enabled = false;
+
+            txtValor.Enabled = false;
+            dtpDataInicio.Enabled = false;
+            dtpDataPrevTermino.Enabled = false;
+            txtBuscarEtapa.Enabled = false;
+            btnBuscarEtapa.Enabled = false;
+
+
+            btnInserirTarefa.Enabled = false;
+            btnRemoverTarefa.Enabled = false;
+
+            //txtBuscarObraEndereco.Enabled = false;
+            //txtBuscarObraClienteNome.Enabled = false;
+            //btnBuscarObra.Enabled = false;
+            btnAlterar.Enabled = false;
+
+            btnInserir.Enabled = false;
+
+            dgvEtapasDisponiveis.Enabled = false;
+            dgvTarefasDisponiveis.Enabled = false;
+            dgvTarefasSelecionadas.Enabled = false;
         }
 
 
@@ -165,7 +214,10 @@ namespace WindowsFormsApp2.View
             this.obraTela = null;
             this.clienteSelecionado = null;
             this.funcionarioSelecionado = null;
-            this.dgvTarefasSelecionadas.DataSource = new BindingList<object>();
+
+            this.tarefasSelecionadas.Clear();
+            this.dgvTarefasSelecionadas.DataSource = null;
+            this.dgvTarefasSelecionadas.DataSource = tarefasSelecionadas;
 
             List<object> etapaList = obrasController.getTodasEtapas();
             configurarGridEtapasDisponiveis(etapaList);
@@ -317,10 +369,14 @@ namespace WindowsFormsApp2.View
                 dgvTarefasSelecionadas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
                 dgvTarefasSelecionadas.Columns["Cod"].Visible = false;
-                dgvTarefasSelecionadas.Columns["Etapa"].Visible = false;
 
-                dgvTarefasSelecionadas.Columns["Descricao"].HeaderText = "Descrição";
-                dgvTarefasSelecionadas.Columns["Descricao"].DisplayIndex = 1;
+                dgvTarefasSelecionadas.Columns["Etapa"].Visible = true;
+                dgvTarefasSelecionadas.Columns["Etapa"].HeaderText = "Etapa";
+                dgvTarefasSelecionadas.Columns["Etapa"].DisplayIndex = 1;
+                dgvTarefasSelecionadas.Columns["Etapa"].ReadOnly = true;
+
+                dgvTarefasSelecionadas.Columns["Descricao"].HeaderText = "Tarefa";
+                dgvTarefasSelecionadas.Columns["Descricao"].DisplayIndex = 2;
                 dgvTarefasSelecionadas.Columns["Descricao"].ReadOnly = true;
             }
         }
@@ -546,6 +602,20 @@ namespace WindowsFormsApp2.View
                 MessageBox.Show("Digite um número válido para o endereco");
                 return null;
             }
+
+            //check data prev termino
+            DateTime datePrev = this.dtpDataPrevTermino.Value;
+            DateTime dateInicio = this.dtpDataInicio.Value;
+
+            int retornoData = DateTime.Compare(dateInicio, datePrev);
+            if (retornoData >= 0)
+            {
+                MessageBox.Show("Data de previsão tem que ser maior que data de início.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+            //----
+
             endereco.setBairro(txtBairro.Text);
             endereco.setCidade(cidadeTela);
 
@@ -730,6 +800,11 @@ namespace WindowsFormsApp2.View
 
                     btnInserirTarefa.Enabled = false;
                     btnRemoverTarefa.Enabled = false;
+
+                    //remover coisas
+               
+                    modoInserirAlterarFinalizado();
+
                 }
                 else
                 {
@@ -738,6 +813,9 @@ namespace WindowsFormsApp2.View
 
                     cbbStatus.Enabled = true;
                     dtpDataPrevTermino.Enabled = true;
+
+                    //alterar não finalizado
+                    modoInserirAlterarNaoFinalizado();
                 }
 
                 List<object> tarefasSelecionadas = obrasController.obterTodasTarefasPorObra(this.obraTela.getCod());

@@ -65,7 +65,7 @@
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.txtRua = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialFlatButton8 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.btnBuscarEtapa = new MaterialSkin.Controls.MaterialFlatButton();
             this.dgvTarefasSelecionadas = new System.Windows.Forms.DataGridView();
             this.btnCancelar = new MaterialSkin.Controls.MaterialFlatButton();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -567,21 +567,21 @@
             this.materialLabel10.TabIndex = 109;
             this.materialLabel10.Text = "Rua";
             // 
-            // materialFlatButton8
+            // btnBuscarEtapa
             // 
-            this.materialFlatButton8.AutoSize = true;
-            this.materialFlatButton8.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton8.Depth = 0;
-            this.materialFlatButton8.Location = new System.Drawing.Point(149, 10);
-            this.materialFlatButton8.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton8.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton8.Name = "materialFlatButton8";
-            this.materialFlatButton8.Primary = false;
-            this.materialFlatButton8.Size = new System.Drawing.Size(65, 36);
-            this.materialFlatButton8.TabIndex = 117;
-            this.materialFlatButton8.Text = "Buscar";
-            this.materialFlatButton8.UseVisualStyleBackColor = true;
-            this.materialFlatButton8.Click += new System.EventHandler(this.btnOnLickBuscarEtapa);
+            this.btnBuscarEtapa.AutoSize = true;
+            this.btnBuscarEtapa.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnBuscarEtapa.Depth = 0;
+            this.btnBuscarEtapa.Location = new System.Drawing.Point(149, 10);
+            this.btnBuscarEtapa.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnBuscarEtapa.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnBuscarEtapa.Name = "btnBuscarEtapa";
+            this.btnBuscarEtapa.Primary = false;
+            this.btnBuscarEtapa.Size = new System.Drawing.Size(111, 36);
+            this.btnBuscarEtapa.TabIndex = 117;
+            this.btnBuscarEtapa.Text = "Buscar Etapa";
+            this.btnBuscarEtapa.UseVisualStyleBackColor = true;
+            this.btnBuscarEtapa.Click += new System.EventHandler(this.btnOnLickBuscarEtapa);
             // 
             // dgvTarefasSelecionadas
             // 
@@ -631,9 +631,9 @@
             this.materialLabel17.Location = new System.Drawing.Point(12, 57);
             this.materialLabel17.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel17.Name = "materialLabel17";
-            this.materialLabel17.Size = new System.Drawing.Size(84, 19);
+            this.materialLabel17.Size = new System.Drawing.Size(94, 19);
             this.materialLabel17.TabIndex = 112;
-            this.materialLabel17.Text = "Engenheiro";
+            this.materialLabel17.Text = "Responsável";
             // 
             // materialLabel15
             // 
@@ -755,7 +755,7 @@
             this.panel4.Controls.Add(this.materialLabel3);
             this.panel4.Controls.Add(this.dgvTarefasDisponiveis);
             this.panel4.Controls.Add(this.materialLabel5);
-            this.panel4.Controls.Add(this.materialFlatButton8);
+            this.panel4.Controls.Add(this.btnBuscarEtapa);
             this.panel4.Controls.Add(this.dgvTarefasSelecionadas);
             this.panel4.Location = new System.Drawing.Point(523, 171);
             this.panel4.Name = "panel4";
@@ -894,7 +894,7 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtRua;
         private MaterialSkin.Controls.MaterialLabel materialLabel10;
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton8;
+        private MaterialSkin.Controls.MaterialFlatButton btnBuscarEtapa;
         private System.Windows.Forms.DataGridView dgvTarefasSelecionadas;
         private MaterialSkin.Controls.MaterialFlatButton btnCancelar;
         private System.Windows.Forms.Panel panel1;

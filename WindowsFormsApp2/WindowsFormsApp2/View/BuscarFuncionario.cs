@@ -47,7 +47,58 @@ namespace WindowsFormsApp2.View
             
             dgvFuncionarios.DataSource = this.funcionarios;
 
-            ///config grid depois
+            if(this.funcionarios.Count > 0)
+            {
+                ///config grid depois
+                ///   dgvClientes.Columns["Nome"].HeaderText = "Nome Completo";
+                dgvFuncionarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+                dgvFuncionarios.Columns["Cod"].Visible = false;
+
+                dgvFuncionarios.Columns["Nome"].HeaderText = "Nome Completo";
+                dgvFuncionarios.Columns["Nome"].DisplayIndex = 1;
+                dgvFuncionarios.Columns["Nome"].ReadOnly = true;
+
+                dgvFuncionarios.Columns["Registro"].HeaderText = "Registro (CAU/CREA)";
+                dgvFuncionarios.Columns["Registro"].DisplayIndex = 2;
+                dgvFuncionarios.Columns["Registro"].ReadOnly = true;
+
+                dgvFuncionarios.Columns["Cpf"].HeaderText = "CPF";
+                dgvFuncionarios.Columns["Cpf"].DisplayIndex = 3;
+                dgvFuncionarios.Columns["Cpf"].ReadOnly = true;
+
+                dgvFuncionarios.Columns["Rg"].HeaderText = "RG";
+                dgvFuncionarios.Columns["Rg"].DisplayIndex = 4;
+                dgvFuncionarios.Columns["Rg"].ReadOnly = true;
+
+                dgvFuncionarios.Columns["Cargo"].HeaderText = "Cargo";
+                dgvFuncionarios.Columns["Cargo"].DisplayIndex = 5;
+                dgvFuncionarios.Columns["Cargo"].ReadOnly = true;
+
+                dgvFuncionarios.Columns["Contatos"].HeaderText = "Celular/Telefone Fix";
+                dgvFuncionarios.Columns["Contatos"].DisplayIndex = 6;
+                dgvFuncionarios.Columns["Contatos"].ReadOnly = true;
+
+                dgvFuncionarios.Columns["Endereco"].HeaderText = "Endereco Completo";
+                dgvFuncionarios.Columns["Endereco"].DisplayIndex = 7;
+                dgvFuncionarios.Columns["Endereco"].ReadOnly = true;
+
+                dgvFuncionarios.Columns["DtNascimento"].HeaderText = "Data de Nascimento";
+                dgvFuncionarios.Columns["DtNascimento"].DisplayIndex = 8;
+                dgvFuncionarios.Columns["DtNascimento"].ReadOnly = true;
+
+                dgvFuncionarios.Columns["ControleAcesso"].HeaderText = "Login";
+                dgvFuncionarios.Columns["ControleAcesso"].DisplayIndex = 9;
+                dgvFuncionarios.Columns["ControleAcesso"].ReadOnly = true;
+
+                dgvFuncionarios.Columns["DtAdmissao"].HeaderText = "Data de Admissao";
+                dgvFuncionarios.Columns["DtAdmissao"].DisplayIndex = 10;
+                dgvFuncionarios.Columns["DtAdmissao"].ReadOnly = true;
+
+                dgvFuncionarios.Columns["DtDemissao"].HeaderText = "Data de Demissao";
+                dgvFuncionarios.Columns["DtDemissao"].DisplayIndex = 11;
+                dgvFuncionarios.Columns["DtDemissao"].ReadOnly = true;
+            }
 
         }
 
