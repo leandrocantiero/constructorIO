@@ -283,12 +283,12 @@ namespace WindowsFormsApp2.View
                 dgvObras.Columns["Cliente"].ReadOnly = true;
 
 
-                dgvObras.Columns["Funcionario"].HeaderText = "Funcionario";
+                dgvObras.Columns["Funcionario"].HeaderText = "Funcionário";
                 dgvObras.Columns["Funcionario"].DisplayIndex = 2;
                 dgvObras.Columns["Funcionario"].ReadOnly = true;
 
 
-                dgvObras.Columns["Endereco"].HeaderText = "Descrição";
+                dgvObras.Columns["Endereco"].HeaderText = "Endereço";
                 dgvObras.Columns["Endereco"].DisplayIndex = 3;
                 dgvObras.Columns["Endereco"].ReadOnly = true;
                 dgvObras.Columns["Endereco"].ReadOnly = true;

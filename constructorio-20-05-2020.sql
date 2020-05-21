@@ -37,7 +37,7 @@ CREATE TABLE public.obra (
 -- DROP TABLE IF EXISTS public.etapa CASCADE;
 CREATE TABLE public.etapa (
 	cod serial NOT NULL,
-	descricao varchar(100) NOT NULL,
+	descricao varchar(30) NOT NULL,
 	CONSTRAINT etapa_pk PRIMARY KEY (cod)
 
 );
@@ -50,10 +50,9 @@ CREATE TABLE public.etapa (
 CREATE TABLE public.material (
 	cod serial NOT NULL,
 	cod_categoria_mat integer NOT NULL,
-	unidade integer NOT NULL,
+	unidade varchar(20) NOT NULL,
 	descricao varchar(50) NOT NULL,
-	estoqueminimo integer NOT NULL,
-	observacao varchar(100) NOT NULL,
+	estoque integer NOT NULL,
 	nome varchar(25) NOT NULL,
 	valor numeric(10,4),
 	CONSTRAINT material_pk PRIMARY KEY (cod)
@@ -68,7 +67,7 @@ CREATE TABLE public.material (
 CREATE TABLE public.servico (
 	cod serial NOT NULL,
 	nome varchar(30) NOT NULL,
-	quant_homem_m2 integer NOT NULL,
+	quant_homem integer NOT NULL,
 	observacao varchar(150) NOT NULL,
 	CONSTRAINT servico_pk PRIMARY KEY (cod)
 
@@ -99,7 +98,7 @@ CREATE TABLE public.endereco (
 CREATE TABLE public.tarefa (
 	cod serial NOT NULL,
 	cod_etapa integer NOT NULL,
-	descricao varchar(100) NOT NULL,
+	descricao varchar(30) NOT NULL,
 	CONSTRAINT tarefa_pk PRIMARY KEY (cod)
 
 );
