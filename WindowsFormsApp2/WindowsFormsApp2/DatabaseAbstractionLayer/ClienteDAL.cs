@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp2.DatabaseAbstractionLayer
 {
-    class ClienteDAL
+    public class ClienteDAL
     {
         DatabaseAbstractionLayer.PostgreSQLPersistence bd;
 

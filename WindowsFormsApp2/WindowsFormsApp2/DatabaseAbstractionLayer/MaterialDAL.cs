@@ -20,23 +20,25 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
         public List<Model.Material> obterTodas(string nome = null)
         {
             List<Model.Material> materiais = null;
-            string sql = @"select material.cod as material_cod, 
-                            cod_categoria_mat, 
-                            unidade, 
-                            descricao, 
-                            estoque, 
-                            nome, 
-                            valor,
-                            categoria.descricao as descricao_cat
-                           from material, categoria_mat
-                            where categoria_mat.cod = cod_categoria_mat";
+            string sql = @" select 
+                                material.cod as material_cod, 
+                                cod_categoria_mat, 
+                                unidade, 
+                                material.descricao as descricao_mat, 
+                                estoque, 
+                                nome, 
+                                valor,
+                                categoria_mat.descricao as descricao_cat
+                            from 
+                                material, categoria_mat
+                            where 
+	                            cod_categoria_mat = categoria_mat.cod ";
             var param = bd.getParams();
             
 
             if (nome != null)
             {
-                sql += " where ";
-                sql += " nome like @nome";
+                sql += " and nome like @nome ";
                 param.Add("@nome", "%" + nome + "%");
             }
 
@@ -63,6 +65,45 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             return materiais;
         }
 
+        public Model.Material obterUm(int codMaterial)
+        {
+            Model.Material material = null;
+            string sql = @" select 
+                                material.cod as material_cod, 
+                                cod_categoria_mat, 
+                                unidade, 
+                                material.descricao as descricao_mat, 
+                                estoque, 
+                                nome, 
+                                valor,
+                                categoria_mat.descricao as descricao_cat
+                            from 
+                                material, categoria_mat
+                            where 
+	                            cod_categoria_mat = categoria_mat.cod and
+                                material.cod = @cod";
+            var param = bd.getParams();
+            param.Add("@cod", codMaterial);
+
+            try
+            {
+                DataTable dt = bd.executeSelect(sql, param);
+
+                if (dt.Rows.Count > 0)
+                {
+                    material = new Model.Material();
+
+                    material = map(dt.Rows[0]);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return material;
+        }
+
         internal Model.Material map(DataRow row)
         {
             Model.Material material = new Model.Material();
@@ -70,9 +111,11 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
 
             categoria.Cod = Convert.ToInt32(row["cod_categoria_mat"]);
             categoria.Descricao = row["descricao_cat"].ToString();
+            material.setCategoria(categoria);
 
             material.Cod = Convert.ToInt32(row["material_cod"]);
-            material.Descricao = row["descricao"].ToString();
+            material.Descricao = row["descricao_mat"].ToString();
+            material.Unidade = row["unidade"].ToString();
             material.Estoque = Convert.ToInt32(row["estoque"]);
             material.Valor = Convert.ToDecimal(row["valor"]);
             material.Nome = row["nome"].ToString();

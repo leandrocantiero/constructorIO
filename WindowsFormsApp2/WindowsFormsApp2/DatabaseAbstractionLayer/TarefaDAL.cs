@@ -59,7 +59,8 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             return tarefas;
         }
 
-        public List<Model.Tarefa> obterTodasPorObra(int codObra)
+
+        public List<Model.Tarefa> obterTodasPorDescricao(string descricao = null)
         {
             List<Model.Tarefa> tarefas = null;
             string sql = @"select 
@@ -67,13 +68,16 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                                 cod_etapa, 
                                 tarefa.descricao as tarefa_descricao, 
                                 etapa.descricao as etapa_descricao
-                           from tarefa, etapa, tarefa_obra
-                                where cod_etapa = etapa.cod and
-                                tarefa_obra.cod_tarefa = tarefa.cod and
-                                tarefa_obra.cod_obra = @codObra";
+                           from tarefa, etapa
+                                where tarefa.cod = etapa.cod ";
 
             var param = bd.getParams();
-            param.Add("@codObra", codObra);
+
+            if (descricao != null)
+            {
+                sql += " and tarefa.descricao = @tarefa_descricao;";
+                param.Add("@tarefa_descricao", descricao);
+            }
 
 
             try
@@ -98,6 +102,59 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
 
             return tarefas;
         }
+
+        public List<Model.Tarefa> obterTodasPorObra(int codObra, string descricao = null)
+        {
+            List<Model.Tarefa> tarefas = null;
+            string sql = @"select 
+                                tarefa.cod as cod_tarefa, 
+                                cod_etapa, 
+                                tarefa.descricao as tarefa_descricao, 
+                                etapa.descricao as etapa_descricao
+                           from tarefa, etapa, tarefa_obra
+                                where cod_etapa = etapa.cod and
+                                tarefa_obra.cod_tarefa = tarefa.cod and
+                                tarefa_obra.cod_obra = @codObra ";
+
+            var param = bd.getParams();
+
+            param.Add("@codObra", codObra);
+
+            if(descricao != null)
+            {
+                sql += " and tarefa.descricao like @descricao_tarefa ;";
+                param.Add("@descricao_tarefa", descricao);
+
+                //    if (nome != null) sql += " and ";
+                //sql += " registro like @registro;";
+                //param.Add("@registro", "%" + registro + "%");
+            }
+
+
+            try
+            {
+                DataTable dt = bd.executeSelect(sql, param);
+
+                if (dt.Rows.Count > 0)
+                {
+                    tarefas = new List<Model.Tarefa>();
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        tarefas.Add(map(row));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
+            return tarefas;
+        }
+
+        
 
         
 
@@ -204,5 +261,6 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
 
             return tarefa;
         }
+
     }
 }

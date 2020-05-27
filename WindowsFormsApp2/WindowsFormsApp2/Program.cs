@@ -17,17 +17,11 @@ namespace WindowsFormsApp2.View
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //Application.Run(new Login());
-            Application.Run(new LancarMateriaisServicos());
+            Application.Run(new Login());
+            //Application.Run(new LancarMateriaisServicos());
 
             /*
-                ****************************************************************************************
-                //OPCIONAL
-                insert into parametro(cnpj, razao, fantasia, inscricao_estadual, 
-                                          cod_contato, cod_endereco, logo_menor, logo_maior, email, site)
-                    values('123123123', 'asdasdasd', 'asdasdasd', 123123123, 1,1,'123123123','123123123','123123123','123123123');
-
-
+              
              INSERTS ---------------------------------------------------------------------------------------------------------
 
                 -- excluir todas TABELAS;
@@ -36,7 +30,7 @@ namespace WindowsFormsApp2.View
 
                 create schema public;
 
-                 * *****
+                ******
 
               ***********************************************  SQL NECESSÁRIOS!! ***************************
 
@@ -46,12 +40,7 @@ namespace WindowsFormsApp2.View
                 insert into status(descricao) values('Em execução');
                 insert into status(descricao) values('Finalizado');
 
-                insert into contato(ddd_padrao, numero_padrao, ddd_alt, numero_alt) values('123','123123', '123', '123123');
-
-                insert into endereco(cep, rua, numero,bairro, cod_cidade) values('123123','123123',123,'3123',1);
-
-                
-
+            
 
                 insert into cargo(descricao )values ('Engenheiro(a)');
                 insert into cargo(descricao )values ('Mestre de Obra');
@@ -186,6 +175,89 @@ namespace WindowsFormsApp2.View
                 insert into tarefa(cod_etapa, descricao) values(10, 'Azulejo');
                 insert into tarefa(cod_etapa, descricao) values(10, 'Soleira');
                 insert into tarefa(cod_etapa, descricao) values(10, 'Rodapé');
+
+
+
+                ------------------SERVIÇOS
+
+            INSERT INTO public.servico
+            (nome, quant_homem, observacao) VALUES ('Concretar Viga', 2, 'concretar uma viga depende tem que ter certeza que a forma está correta');
+
+
+            INSERT INTO public.servico
+            (nome, quant_homem, observacao) VALUES ('Concretar Laje', 3, 'concretar uma laje depende tem que ter certeza que a forma está correta');
+
+
+            INSERT INTO public.servico
+            (nome, quant_homem, observacao) VALUES ('Concretar escada', 3, 'concretar uma escada depende tem que ter certeza que a forma está correta');
+
+
+            INSERT INTO public.servico
+            (nome, quant_homem, observacao) VALUES ('Pintar parede', 1, 'Observar a quantidade de maos necessárias');
+
+
+            INSERT INTO public.servico
+            (nome, quant_homem, observacao) VALUES ('Construir Telhado', 1, 'Observar a inclinação correta');
+
+
+
+            --- MATERIAIS e CATEGORIAS
+
+            INSERT INTO public.categoria_mat(descricao) VALUES ('Areia');
+	
+            INSERT INTO public.material
+            (cod_categoria_mat, unidade, descricao, estoque, nome, valor) VALUES (1, 'KG', 'Areia fina para concreto', 100, 'Areia fina', 10);	
+
+            INSERT INTO public.categoria_mat(descricao) VALUES ('Pedra');
+	
+            INSERT INTO public.material
+            (cod_categoria_mat, unidade, descricao, estoque, nome, valor) VALUES (2, 'KG', 'Pedra britada para concreto', 100, 'Pedra britada', 10);	
+	
+            INSERT INTO public.material
+            (cod_categoria_mat, unidade, descricao, estoque, nome, valor) VALUES (2, 'KG', 'seixo natural para concreto', 100, 'seixo natural', 10);	
+
+
+
+            INSERT INTO public.categoria_mat(descricao) VALUES ('Tubulações e conexões');
+	
+            INSERT INTO public.material
+            (cod_categoria_mat, unidade, descricao, estoque, nome, valor) 
+            VALUES (3, 'MM', 'Tubulação PVC Anti-Chamas para incêndio', 30, 'Tubulação PVC Anti-Chamas 25mm', 20);	
+
+	
+            INSERT INTO public.material
+            (cod_categoria_mat, unidade, descricao, estoque, nome, valor) 
+            VALUES (3, 'MM', 'Tubulação PVC residêncial', 30, 'Tubulação PVC residêncial 25mm', 20);	
+
+
+            INSERT INTO public.material
+            (cod_categoria_mat, unidade, descricao, estoque, nome, valor) 
+            VALUES (3, 'MM', 'Tubulação Ferro galvanizado residêncial', 30, 'Tubulação Ferro galvanizado industrial 65mm', 35);	
+
+
+
+
+
+
+              ****************************************************************************************
+              ****************************************************************************************
+              ****************************************************************************************
+                //OPCIONAL
+                
+                insert into contato(ddd_padrao, numero_padrao, ddd_alt, numero_alt) values('123','123123', '123', '123123');
+
+                insert into endereco(cep, rua, numero,bairro, cod_cidade) values('123123','123123',123,'3123',1);
+
+
+                insert into parametro(cnpj, razao, fantasia, inscricao_estadual, 
+                                          cod_contato, cod_endereco, logo_menor, logo_maior, email, site)
+                    values('123123123', 'asdasdasd', 'asdasdasd', 123123123, 1,1,'123123123','123123123','123123123','123123123');
+
+                
+
+              ****************************************************************************************
+              ****************************************************************************************
+              ****************************************************************************************
               */
         }
     }

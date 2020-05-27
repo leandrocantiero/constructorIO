@@ -82,12 +82,18 @@
   <ItemGroup>
     <Compile Include="Controller\CidadeController.cs" />
     <Compile Include="Controller\ClienteController.cs" />
+    <Compile Include="Controller\ControllerConsumoMaterialServico.cs" />
     <Compile Include="Controller\EstadoController.cs" />
     <Compile Include="Controller\FuncionarioController.cs" />
     <Compile Include="Controller\LogarController.cs" />
+    <Compile Include="Controller\MaterialController.cs" />
     <Compile Include="Controller\ObrasController.cs" />
     <Compile Include="Controller\ParamController.cs" />
+    <Compile Include="Controller\ServicoController.cs" />
     <Compile Include="DatabaseAbstractionLayer\ClienteDAL.cs" />
+    <Compile Include="DatabaseAbstractionLayer\ConsumoMaterialDAL.cs" />
+    <Compile Include="DatabaseAbstractionLayer\ConsumoMaterialServicoDAL.cs" />
+    <Compile Include="DatabaseAbstractionLayer\ConsumoServicoDAL.cs" />
     <Compile Include="DatabaseAbstractionLayer\ControleAcessoDAL.cs" />
     <Compile Include="DatabaseAbstractionLayer\CargoDAL.cs" />
     <Compile Include="DatabaseAbstractionLayer\CidadeDAL.cs" />
@@ -100,11 +106,15 @@
     <Compile Include="DatabaseAbstractionLayer\ObraDAL.cs" />
     <Compile Include="DatabaseAbstractionLayer\ParamDAL.cs" />
     <Compile Include="DatabaseAbstractionLayer\PostgreSQLPersistence.cs" />
+    <Compile Include="DatabaseAbstractionLayer\ServicoDAL.cs" />
     <Compile Include="DatabaseAbstractionLayer\StatusDAL.cs" />
     <Compile Include="DatabaseAbstractionLayer\TarefaDAL.cs" />
     <Compile Include="Model\Cargo.cs" />
     <Compile Include="Model\Categoria.cs" />
     <Compile Include="Model\Cidade.cs" />
+    <Compile Include="Model\ConsumoMaterial.cs" />
+    <Compile Include="Model\ConsumoMaterialServico.cs" />
+    <Compile Include="Model\ConsumoServico.cs" />
     <Compile Include="Model\Cliente.cs" />
     <Compile Include="Model\Contato.cs" />
     <Compile Include="Model\ControleAcesso.cs" />
@@ -138,6 +148,12 @@
     </Compile>
     <Compile Include="View\BuscarFuncionario.Designer.cs">
       <DependentUpon>BuscarFuncionario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\BuscarObra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\BuscarObra.Designer.cs">
+      <DependentUpon>BuscarObra.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Clientes.cs">
       <SubType>Form</SubType>
@@ -191,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\BuscarFuncionario.resx">
       <DependentUpon>BuscarFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\BuscarObra.resx">
+      <DependentUpon>BuscarObra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Clientes.resx">
       <DependentUpon>Clientes.cs</DependentUpon>

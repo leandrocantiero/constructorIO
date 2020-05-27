@@ -13,6 +13,11 @@ namespace WindowsFormsApp2.Model
         private int _quantidadeHomem;
         private string _observacao;
 
+        public int Cod { get => _cod; set => _cod = value; }
+        public string Nome { get => _nome; set => _nome = value; }
+        public int QuantidadeHomem { get => _quantidadeHomem; set => _quantidadeHomem = value; }
+        public string Observacao { get => _observacao; set => _observacao = value; }
+
         public void setCod(int cod)
         {
             this._cod = cod;

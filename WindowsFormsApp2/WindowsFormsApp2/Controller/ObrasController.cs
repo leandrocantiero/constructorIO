@@ -159,11 +159,22 @@ namespace WindowsFormsApp2.Controller
             return new List<object>();
         }
 
-        public List<object> obterTodasTarefasPorObra(int codObra)
+        public List<object> obterTarefasPorDescricao(string descricao = null)
         {
             DatabaseAbstractionLayer.TarefaDAL tarefaDAL = new DatabaseAbstractionLayer.TarefaDAL();
 
-            var tarefas = tarefaDAL.obterTodasPorObra(codObra);
+            var tarefas = tarefaDAL.obterTodasPorDescricao(descricao);
+
+            if (tarefas != null)
+                return new List<object>(tarefas);
+            return new List<object>();
+        }
+
+        public List<object> obterTodasTarefasPorObra(int codObra, string descricao = null)
+        {
+            DatabaseAbstractionLayer.TarefaDAL tarefaDAL = new DatabaseAbstractionLayer.TarefaDAL();
+
+            var tarefas = tarefaDAL.obterTodasPorObra(codObra, descricao);
 
             if(tarefas != null)
             {

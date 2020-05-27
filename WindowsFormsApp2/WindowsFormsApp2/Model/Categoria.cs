@@ -39,5 +39,10 @@ namespace WindowsFormsApp2.Model
         {
             return this._descricao;
         }
+
+        public override string ToString()
+        {
+            return this._descricao;
+        }
     }
 }

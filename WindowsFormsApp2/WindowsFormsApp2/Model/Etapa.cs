@@ -36,7 +36,7 @@ namespace WindowsFormsApp2.Model
             return this._cod;
         }
 
-        public string setDescricao()
+        public string getDescricao()
         {
             return this._descricao;
         }
