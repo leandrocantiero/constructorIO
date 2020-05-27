@@ -10,14 +10,28 @@ namespace WindowsFormsApp2.Model
     {
         private Model.Servico _servico;
         private int _quantidadeHomem;
-        private int _metrosQuadrados;
+        private decimal _metrosQuadrados;
+        private DateTime _data;
         private Model.ConsumoMaterialServico _consumoMaterialServico;
 
 
         public int QuantidadeHomem { get => _quantidadeHomem; set => _quantidadeHomem = value; }
-        public int MetrosQuadrados { get => _metrosQuadrados; set => _metrosQuadrados = value; }
+        public decimal MetrosQuadrados { get => _metrosQuadrados; set => _metrosQuadrados = value; }
         public Servico Servico { get => _servico; set => _servico = value; }
         public ConsumoMaterialServico ConsumoMaterialServico { get => _consumoMaterialServico; set => _consumoMaterialServico = value; }
+        public DateTime Data { get => _data; set => _data = value; }
+
+
+        public void setData(DateTime data)
+        {
+            this._data = data;
+        }
+
+        public DateTime getData()
+        {
+            return this._data;
+        }
+
 
         public void setConsumoMaterialServico(Model.ConsumoMaterialServico consumoMaterialServico)
         {
@@ -50,12 +64,12 @@ namespace WindowsFormsApp2.Model
             return this._quantidadeHomem;
         }
 
-        public void setMetrosQuadrados(int metrosQuadrados)
+        public void setMetrosQuadrados(decimal metrosQuadrados)
         {
             this._metrosQuadrados = metrosQuadrados;
         }
 
-        public int getMetrosQuadrados()
+        public decimal getMetrosQuadrados()
         {
             return this._metrosQuadrados;
         }

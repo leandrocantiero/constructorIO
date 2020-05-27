@@ -1,6 +1,6 @@
 -- Database generated with pgModeler (PostgreSQL Database Modeler).
 -- pgModeler  version: 0.9.2
--- PostgreSQL version: 12.0
+-- PostgreSQL version: 10.0
 -- Project Site: pgmodeler.io
 -- Model Author: ---
 
@@ -162,8 +162,6 @@ CREATE TABLE public.funcionario (
 -- 	nome varchar(30) NOT NULL,
 -- 	registro varchar(30) NOT NULL,
 -- 	dtnasc date NOT NULL,
--- 	cod_endereco integer NOT NULL,
--- 	cod_contato integer NOT NULL,
 	CONSTRAINT funcionario_pk PRIMARY KEY (pes_cod)
 
 )
@@ -182,8 +180,6 @@ CREATE TABLE public.cliente (
 -- 	nome varchar(30) NOT NULL,
 -- 	registro varchar(30) NOT NULL,
 -- 	dtnasc date NOT NULL,
--- 	cod_endereco integer NOT NULL,
--- 	cod_contato integer NOT NULL,
 	CONSTRAINT cliente_pk PRIMARY KEY (pes_cod)
 
 )
@@ -274,43 +270,45 @@ REFERENCES public.cliente (pes_cod) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
 
--- object: public.tarefa_material | type: TABLE --
--- DROP TABLE IF EXISTS public.tarefa_material CASCADE;
-CREATE TABLE public.tarefa_material (
+-- object: public.consumo_material | type: TABLE --
+-- DROP TABLE IF EXISTS public.consumo_material CASCADE;
+CREATE TABLE public.consumo_material (
 	quant integer NOT NULL,
 	cod_material integer NOT NULL,
 	cod_consumo_mat_serv integer NOT NULL,
-	CONSTRAINT tarefa_material_pk PRIMARY KEY (cod_material,cod_consumo_mat_serv)
+	data_consumo_mat_serv date NOT NULL,
+	CONSTRAINT consumo_material_pk PRIMARY KEY (cod_material,cod_consumo_mat_serv,data_consumo_mat_serv)
 
 );
 -- ddl-end --
--- ALTER TABLE public.tarefa_material OWNER TO postgres;
+-- ALTER TABLE public.consumo_material OWNER TO postgres;
 -- ddl-end --
 
--- object: public.tarefa_servico | type: TABLE --
--- DROP TABLE IF EXISTS public.tarefa_servico CASCADE;
-CREATE TABLE public.tarefa_servico (
+-- object: public.consumo_servico | type: TABLE --
+-- DROP TABLE IF EXISTS public.consumo_servico CASCADE;
+CREATE TABLE public.consumo_servico (
 	quant_homem integer NOT NULL,
 	quant_m2 decimal(10,2),
 	cod_servico integer NOT NULL,
 	cod_consumo_mat_serv integer NOT NULL,
-	CONSTRAINT tarefa_servico_pk PRIMARY KEY (cod_servico,cod_consumo_mat_serv)
+	data_consumo_mat_serv date NOT NULL,
+	CONSTRAINT consumo_servico_pk PRIMARY KEY (cod_servico,cod_consumo_mat_serv,data_consumo_mat_serv)
 
 );
 -- ddl-end --
--- ALTER TABLE public.tarefa_servico OWNER TO postgres;
+-- ALTER TABLE public.consumo_servico OWNER TO postgres;
 -- ddl-end --
 
 -- object: servico_fk | type: CONSTRAINT --
--- ALTER TABLE public.tarefa_servico DROP CONSTRAINT IF EXISTS servico_fk CASCADE;
-ALTER TABLE public.tarefa_servico ADD CONSTRAINT servico_fk FOREIGN KEY (cod_servico)
+-- ALTER TABLE public.consumo_servico DROP CONSTRAINT IF EXISTS servico_fk CASCADE;
+ALTER TABLE public.consumo_servico ADD CONSTRAINT servico_fk FOREIGN KEY (cod_servico)
 REFERENCES public.servico (cod) MATCH FULL
 ON DELETE CASCADE ON UPDATE CASCADE;
 -- ddl-end --
 
 -- object: material_fk | type: CONSTRAINT --
--- ALTER TABLE public.tarefa_material DROP CONSTRAINT IF EXISTS material_fk CASCADE;
-ALTER TABLE public.tarefa_material ADD CONSTRAINT material_fk FOREIGN KEY (cod_material)
+-- ALTER TABLE public.consumo_material DROP CONSTRAINT IF EXISTS material_fk CASCADE;
+ALTER TABLE public.consumo_material ADD CONSTRAINT material_fk FOREIGN KEY (cod_material)
 REFERENCES public.material (cod) MATCH FULL
 ON DELETE CASCADE ON UPDATE CASCADE;
 -- ddl-end --
@@ -641,7 +639,7 @@ CREATE TABLE public.consumo_mat_serv (
 	data date NOT NULL,
 	cod_obra_tarefa_obra integer NOT NULL,
 	cod_tarefa_tarefa_obra integer NOT NULL,
-	CONSTRAINT consumo_mat_serv_pk PRIMARY KEY (cod)
+	CONSTRAINT consumo_mat_serv_pk PRIMARY KEY (cod,data)
 
 );
 -- ddl-end --
@@ -649,16 +647,16 @@ CREATE TABLE public.consumo_mat_serv (
 -- ddl-end --
 
 -- object: consumo_mat_serv_fk | type: CONSTRAINT --
--- ALTER TABLE public.tarefa_material DROP CONSTRAINT IF EXISTS consumo_mat_serv_fk CASCADE;
-ALTER TABLE public.tarefa_material ADD CONSTRAINT consumo_mat_serv_fk FOREIGN KEY (cod_consumo_mat_serv)
-REFERENCES public.consumo_mat_serv (cod) MATCH FULL
+-- ALTER TABLE public.consumo_material DROP CONSTRAINT IF EXISTS consumo_mat_serv_fk CASCADE;
+ALTER TABLE public.consumo_material ADD CONSTRAINT consumo_mat_serv_fk FOREIGN KEY (cod_consumo_mat_serv,data_consumo_mat_serv)
+REFERENCES public.consumo_mat_serv (cod,data) MATCH FULL
 ON DELETE CASCADE ON UPDATE CASCADE;
 -- ddl-end --
 
 -- object: consumo_mat_serv_fk | type: CONSTRAINT --
--- ALTER TABLE public.tarefa_servico DROP CONSTRAINT IF EXISTS consumo_mat_serv_fk CASCADE;
-ALTER TABLE public.tarefa_servico ADD CONSTRAINT consumo_mat_serv_fk FOREIGN KEY (cod_consumo_mat_serv)
-REFERENCES public.consumo_mat_serv (cod) MATCH FULL
+-- ALTER TABLE public.consumo_servico DROP CONSTRAINT IF EXISTS consumo_mat_serv_fk CASCADE;
+ALTER TABLE public.consumo_servico ADD CONSTRAINT consumo_mat_serv_fk FOREIGN KEY (cod_consumo_mat_serv,data_consumo_mat_serv)
+REFERENCES public.consumo_mat_serv (cod,data) MATCH FULL
 ON DELETE CASCADE ON UPDATE CASCADE;
 -- ddl-end --
 

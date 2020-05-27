@@ -89,7 +89,7 @@ namespace WindowsFormsApp2.Model
             this._valor = valor;
         }
 
-        public decimal setValor()
+        public decimal getValor()
         {
             return this._valor;
         }

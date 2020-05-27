@@ -8,16 +8,16 @@ namespace WindowsFormsApp2.Controller
 {
     public class ServicoController
     {
-        public List<object> obterTodos(string nome = null)
+        public List<Model.Servico> obterTodos(string nome = null)
         {
             DatabaseAbstractionLayer.ServicoDAL servicoDAL = new DatabaseAbstractionLayer.ServicoDAL();
             List<Model.Servico> servicos = servicoDAL.obterTodas(nome);
 
             if (servicos == null)
             {
-                return new List<object>();
+                return new List<Model.Servico>();
             }
-            return new List<object>(servicos);
+            return new List<Model.Servico>(servicos);
         }
     }
 }

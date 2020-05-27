@@ -15,40 +15,118 @@ namespace WindowsFormsApp2.View
         private Model.Obra obraTela;
         private Model.Material materialTela;
         private Model.Servico servicoTela;
+        private Model.Tarefa tarefaTela;
+        private Model.ConsumoServico consumoServicoTela;
 
         private Controller.ObrasController obrasController;
         private Controller.MaterialController materialController;
         private Controller.ServicoController servicoController;
+        private Controller.ControllerConsumoMaterialServico controllerConsumoMaterialServico;
 
         private new BindingList<object> tarefasDisponiveis;
 
-        private new BindingList<object> materiaisDisponiveis;
-        private new BindingList<object> materiaisSelecionados;
-        private new BindingList<object> servicosDisponiveis;
-        private new BindingList<object> servicosSelecionados;
+        private new BindingList<Model.Material> materiaisDisponiveis;
+        private new BindingList<Model.Material> materiaisSelecionados;
+        private new BindingList<Model.Servico> servicosDisponiveis;
+        private new BindingList<Model.ConsumoServico> consumoServicosSelecionados;
 
+
+        
 
         public LancarMateriaisServicos()
         {
             InitializeComponent();
-            configurarFormsIniciais();
 
             this.Load += new EventHandler(afterLoadView);
 
             obrasController = new Controller.ObrasController();
             materialController = new Controller.MaterialController();
             servicoController = new Controller.ServicoController();
-
-            obraTela = null;
-            materialTela = null;
-            servicoTela = null;
+            controllerConsumoMaterialServico = new Controller.ControllerConsumoMaterialServico();
 
         }
 
         private void afterLoadView(System.Object sender, System.EventArgs e)
         {
+            initTela();
+        }
+
+        private void initTela()
+        {
+            obraTela = null;
+            materialTela = null;
+            servicoTela = null;
+            tarefaTela = null;
+
+            identificadorSelecionarMateriais.ForeColor = Color.Black;
+            identificadorSelecionarMateriais.Font = new Font("Roboto", 10, FontStyle.Bold);
+
+            identificadorSelecionarObra.ForeColor = Color.Black;
+            identificadorSelecionarObra.Font = new Font("Roboto", 10, FontStyle.Bold);
+
+            identificadorSelecionarServicos.ForeColor = Color.Black;
+            identificadorSelecionarServicos.Font = new Font("Roboto", 10, FontStyle.Bold);
+
+            identificadorSelecionarTarefa.ForeColor = Color.Black;
+            identificadorSelecionarTarefa.Font = new Font("Roboto", 10, FontStyle.Bold);
+
+            identificadorBuscarTarefa.ForeColor = Color.Black;
+            identificadorBuscarTarefa.Font = new Font("Roboto", 10, FontStyle.Bold);
+            identificadorBuscarTarefa.Font = new Font("Roboto", 10, FontStyle.Bold);
+
+            this.dgvTarefas.DataSource = null;
+            this.dgvMateriaisDisponiveis.DataSource = null;
+            this.dgvMateriaisSelecionados.DataSource = null;
+            this.dgvServicosDisponiveis.DataSource = null;
+            this.dgvServicosSelecionados.DataSource = null;
+
+            tarefasDisponiveis = null;
+
+            materiaisDisponiveis = null;
+            materiaisSelecionados = null;
+            servicosDisponiveis = null;
+            consumoServicosSelecionados = null;
+
+            obraTela = null;
+            materialTela = null;
+            servicoTela = null;
+            tarefaTela = null;
+            consumoServicoTela = null;
+
+
+            limparMaterialTela();
+            limparServicoTela();
+            limparTarefaSelecionada();
+            limparObraSelecionada();
+
+            //b.BackColor = System.Drawing.ColorTranslator.FromHtml(color);
+            //b.Font = new Font("Roboto", 9, FontStyle.Bold);
+            //b.Size = new Size(width, heigh);
+            //b.ForeColor = Color.White;
+            //b.AutoSize = true;
+            //b.TabStop = false;
+            //b.FlatStyle = FlatStyle.Flat;
+            //b.FlatAppearance.BorderSize = 0;
+            //b.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+
+
+
+
             configurarFormsIniciais();
             carregarDados();
+        }
+
+        private void limparTarefaSelecionada()
+        {
+            tarefaTela = null;
+            objTarefa.Text = "";
+            objEtapa.Text = "";
+        }
+
+        private void limparObraSelecionada()
+        {
+            objObraSelecionada.Text = "";
+            obraTela = null;
         }
 
         private void configurarFormsIniciais()
@@ -56,7 +134,9 @@ namespace WindowsFormsApp2.View
             modoInserir();
             modoInserirMaterial();
             modoInserirServico();
-          
+
+            btnAlterarMaterial.Visible = false;
+            btnAlterarServico.Visible = false;
         }
 
         private void modoInserir()
@@ -102,11 +182,11 @@ namespace WindowsFormsApp2.View
 
         private void carregarMateriais(string nome = null)
         {
-            List<object> produtos = materialController.obterTodos(nome);
+            List<Model.Material> produtos = materialController.obterTodos(nome);
             configurarGridMateriaisDisponiveis(produtos);
         }
 
-        private void configurarGridMateriaisDisponiveis(List<object> produtos = null)
+        private void configurarGridMateriaisDisponiveis(List<Model.Material> produtos = null)
         {
             if(produtos == null)
             {
@@ -114,7 +194,7 @@ namespace WindowsFormsApp2.View
             }
             else
             {
-                this.materiaisDisponiveis = new BindingList<object>(produtos);
+                this.materiaisDisponiveis = new BindingList<Model.Material>(produtos);
                 this.dgvMateriaisDisponiveis.DataSource = null;
                 this.dgvMateriaisDisponiveis.DataSource = this.materiaisDisponiveis;
 
@@ -130,19 +210,18 @@ namespace WindowsFormsApp2.View
                     dgvMateriaisDisponiveis.Columns["Nome"].ReadOnly = true;
 
 
-                    dgvMateriaisDisponiveis.Columns["Categoria"].HeaderText = "Categoria";
-                    dgvMateriaisDisponiveis.Columns["Categoria"].DisplayIndex = 2;
-                    dgvMateriaisDisponiveis.Columns["Categoria"].ReadOnly = true;
-
+                    dgvMateriaisDisponiveis.Columns["Estoque"].HeaderText = "Estoque atual";
+                    dgvMateriaisDisponiveis.Columns["Estoque"].DisplayIndex = 2;
+                    dgvMateriaisDisponiveis.Columns["Estoque"].ReadOnly = true;
 
                     dgvMateriaisDisponiveis.Columns["Unidade"].HeaderText = "Unidade";
                     dgvMateriaisDisponiveis.Columns["Unidade"].DisplayIndex = 3;
                     dgvMateriaisDisponiveis.Columns["Unidade"].ReadOnly = true;
 
 
-                    dgvMateriaisDisponiveis.Columns["Estoque"].HeaderText = "Estoque atual";
-                    dgvMateriaisDisponiveis.Columns["Estoque"].DisplayIndex = 4;
-                    dgvMateriaisDisponiveis.Columns["Estoque"].ReadOnly = true;
+                    dgvMateriaisDisponiveis.Columns["Categoria"].HeaderText = "Categoria";
+                    dgvMateriaisDisponiveis.Columns["Categoria"].DisplayIndex = 4;
+                    dgvMateriaisDisponiveis.Columns["Categoria"].ReadOnly = true;
 
 
                     //dgvMateriaisDisponiveis.Columns["Valor"].HeaderText = "Valor";
@@ -158,11 +237,11 @@ namespace WindowsFormsApp2.View
 
         private void carregarServicos(string nome = null)
         {
-            List<object> servicos = servicoController.obterTodos(nome);
+            List<Model.Servico> servicos = servicoController.obterTodos(nome);
             configurarGridServicosDisponiveis(servicos);
         }
 
-        private void configurarGridServicosDisponiveis(List<object> servicos = null)
+        private void configurarGridServicosDisponiveis(List<Model.Servico> servicos = null)
         {
             if (servicos == null)
             {
@@ -170,7 +249,7 @@ namespace WindowsFormsApp2.View
             }
             else
             {
-                this.servicosDisponiveis = new BindingList<object>(servicos);
+                this.servicosDisponiveis = new BindingList<Model.Servico>(servicos);
                 this.dgvServicosDisponiveis.DataSource = null;
                 this.dgvServicosDisponiveis.DataSource = this.servicosDisponiveis;
 
@@ -180,11 +259,11 @@ namespace WindowsFormsApp2.View
 
                     dgvServicosDisponiveis.Columns["Cod"].Visible = false;
 
-                    dgvServicosDisponiveis.Columns["Nome"].HeaderText = "Nome";
+                    dgvServicosDisponiveis.Columns["Nome"].HeaderText = "Nome do serviço";
                     dgvServicosDisponiveis.Columns["Nome"].DisplayIndex = 1;
                     dgvServicosDisponiveis.Columns["Nome"].ReadOnly = true;
 
-                    dgvServicosDisponiveis.Columns["QuantidadeHomem"].HeaderText = "Quantidade de homem";
+                    dgvServicosDisponiveis.Columns["QuantidadeHomem"].HeaderText = "Quantidade de trabalhadores disponíveis";
                     dgvServicosDisponiveis.Columns["QuantidadeHomem"].DisplayIndex = 2;
                     dgvServicosDisponiveis.Columns["QuantidadeHomem"].ReadOnly = true;
 
@@ -280,6 +359,7 @@ namespace WindowsFormsApp2.View
             
             if (tarefa != null)
             {
+                this.tarefaTela = tarefa;
                 objTarefa.Text = tarefa.getDescricao();
                 objEtapa.Text = tarefa.getEtapa().getDescricao();
             }
@@ -314,43 +394,50 @@ namespace WindowsFormsApp2.View
         {
             if(this.materialTela != null)
             {
-                if(txtQuantidadeProdutos.Text.Length == 0)
+                try
                 {
-                    MessageBox.Show("Informe uma quantidade para o material.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (Convert.ToInt32(txtQuantidadeProdutos.Text) <= 0)
+                    {
+                        MessageBox.Show("Informe uma quantidade maior que 0 para o material.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Informe uma quantidade númerica para o material.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+
+                if (this.materiaisSelecionados == null)
+                {
+                    this.materiaisSelecionados = new BindingList<Model.Material>();
+                }
+
+                bool contemMaterial = this.materiaisSelecionados.Contains((object)materialTela);
+
+                if(contemMaterial)
+                {
+                    MessageBox.Show("Material já inserido na lista.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if(this.materialTela.getEstoque() < Convert.ToInt32(txtQuantidadeProdutos.Text))
+                {
+                    MessageBox.Show("Quantidade não pode ser maior que a disponível.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    if (this.materiaisSelecionados == null)
-                    {
-                        this.materiaisSelecionados = new BindingList<object>();
-                    }
+                    this.materialTela.setEstoque(Convert.ToInt32(txtQuantidadeProdutos.Text));
+                    this.materiaisSelecionados.Add(this.materialTela);
 
-                    bool contemMaterial = this.materiaisSelecionados.Contains((object)materialTela);
-
-                    if(contemMaterial)
-                    {
-                        MessageBox.Show("Material já inserido na lista.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else if(this.materialTela.getEstoque() < Convert.ToInt32(txtQuantidadeProdutos.Text))
-                    {
-                        MessageBox.Show("Quantidade não pode ser maior que a disponível.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        this.materialTela.setEstoque(Convert.ToInt32(txtQuantidadeProdutos.Text));
-                        this.materiaisSelecionados.Add((object)this.materialTela);
-
-                        configurarGridMateriaisSelecionados(new List<object>(this.materiaisSelecionados));
-                        limparMaterialTela();
-                    }
+                    configurarGridMateriaisSelecionados(new List<Model.Material>(this.materiaisSelecionados));
+                    limparMaterialTela();
                 }
-
             }
         }
 
-        private void configurarGridMateriaisSelecionados(List<object> materiais)
+        private void configurarGridMateriaisSelecionados(List<Model.Material> materiais)
         {
-            this.materiaisSelecionados = new BindingList<object>(materiais);
+            this.materiaisSelecionados = new BindingList<Model.Material>(materiais);
 
             //configurar colunas depois
 
@@ -370,19 +457,18 @@ namespace WindowsFormsApp2.View
                 dgvMateriaisSelecionados.Columns["Nome"].ReadOnly = true;
 
 
+                dgvMateriaisSelecionados.Columns["Estoque"].HeaderText = "Estoque atual";
+                dgvMateriaisSelecionados.Columns["Estoque"].DisplayIndex = 2;
+                dgvMateriaisSelecionados.Columns["Estoque"].ReadOnly = true;
+
                 dgvMateriaisSelecionados.Columns["Categoria"].HeaderText = "Categoria";
-                dgvMateriaisSelecionados.Columns["Categoria"].DisplayIndex = 2;
+                dgvMateriaisSelecionados.Columns["Categoria"].DisplayIndex = 4;
                 dgvMateriaisSelecionados.Columns["Categoria"].ReadOnly = true;
 
 
                 dgvMateriaisSelecionados.Columns["Unidade"].HeaderText = "Unidade";
                 dgvMateriaisSelecionados.Columns["Unidade"].DisplayIndex = 3;
                 dgvMateriaisSelecionados.Columns["Unidade"].ReadOnly = true;
-
-
-                dgvMateriaisSelecionados.Columns["Estoque"].HeaderText = "Estoque atual";
-                dgvMateriaisSelecionados.Columns["Estoque"].DisplayIndex = 4;
-                dgvMateriaisSelecionados.Columns["Estoque"].ReadOnly = true;
 
 
                 //dgvMateriaisSelecionados.Columns["Valor"].HeaderText = "Valor";
@@ -416,7 +502,7 @@ namespace WindowsFormsApp2.View
         {
             if (this.materialTela != null)
             {
-                this.materiaisSelecionados.Remove((object)this.materialTela);
+                this.materiaisSelecionados.Remove(this.materialTela);
                 limparMaterialTela();
             }
         }
@@ -425,16 +511,58 @@ namespace WindowsFormsApp2.View
         {
             if (this.servicoTela != null)
             {
-                if (txtQuantidadeHomens.Text.Length == 0)
+
+                try
                 {
-                    MessageBox.Show("Informe a quantidade de trabalhores para o serviço.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (Convert.ToInt32(txtQuantidadeHomens.Text) <= 0)
+                    {
+                        MessageBox.Show("A quantidade de trabalhores para o serviço tem que ser maior que 0.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("A quantidade de trabalhores tem que ser númerico.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                try
+                {
+                    if (txtMetrosQuadrados.Text.Length == 0)
+                        txtMetrosQuadrados.Text = "0";
+
+                    if (Convert.ToInt32(txtMetrosQuadrados.Text) < 0)
+                    {
+                        MessageBox.Show("A quantidade de metros quadrados para o serviço tem que ser maior igual ou maior que 0.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("A quantidade de metros quadrados tem que ser númerico.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                
+                if(Convert.ToInt32(txtQuantidadeHomens.Text) < this.servicoTela.getQuantidadeHomem() )
+                {
+                    MessageBox.Show("A quantidade de trabalhores para o serviço tem que ser maior ou igual a " + this.servicoTela.getQuantidadeHomem() + ".",
+                        "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    if (this.materiaisSelecionados == null)
-                        this.materiaisSelecionados = new BindingList<object>();
+                    if (this.consumoServicosSelecionados == null)
+                        this.consumoServicosSelecionados = new BindingList<Model.ConsumoServico>();
 
-                    bool contemMaterial = this.servicosSelecionados.Contains((object)servicoTela);
+                    bool contemMaterial = false;
+
+                    foreach(var css in this.consumoServicosSelecionados)
+                    {
+                        if( ((Model.ConsumoServico) css).getServico().getCod() == this.servicoTela.getCod())
+                        {
+                            contemMaterial = true;
+                            break;
+                        }
+                    }
 
                     if (contemMaterial)
                     {
@@ -442,10 +570,35 @@ namespace WindowsFormsApp2.View
                     }
                     else
                     {
-                        this.servicoTela.setQuantidadeHomem(Convert.ToInt32(txtQuantidadeHomens.Text));
-                        this.materiaisSelecionados.Add((object)this.materialTela);
+                        var consumoServico = controllerConsumoMaterialServico.getConsumoServico();
+                        consumoServico.setConsumoMaterialServico(null);
+                        consumoServico.setServico(this.servicoTela);
 
-                        configurarGridServicosSelecionados(new List<object>(this.materiaisSelecionados));
+                        try
+                        {
+                            consumoServico.setQuantidadeHomem(Convert.ToInt32(txtQuantidadeHomens.Text));
+
+                        }
+                        catch(Exception ex)
+                        {
+                            MessageBox.Show("Informe um valor para quantidade de Trabalhadores.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        try
+                        {
+                            decimal qntdM2 = Convert.ToDecimal(txtMetrosQuadrados.Text);
+                            consumoServico.setMetrosQuadrados(qntdM2);
+
+                        }
+                        catch(Exception ex)
+                        {
+                            consumoServico.setMetrosQuadrados(0);
+                        }
+
+
+                        this.consumoServicosSelecionados.Add(consumoServico);
+
+                        configurarGridServicosSelecionados(new List<Model.ConsumoServico>(this.consumoServicosSelecionados));
 
                         limparServicoTela();
                     }
@@ -454,63 +607,75 @@ namespace WindowsFormsApp2.View
             }
         }
 
-        private void configurarGridServicosSelecionados(List<object> servicos)
+        private void configurarGridServicosSelecionados(List<Model.ConsumoServico> servicos)
         {
-            this.servicosSelecionados = new BindingList<object>(servicos);
-
+            this.consumoServicosSelecionados = new BindingList<Model.ConsumoServico>(servicos);
+            
             this.dgvServicosSelecionados.DataSource = null;
-            this.dgvServicosSelecionados.DataSource = this.servicosSelecionados;
+            this.dgvServicosSelecionados.DataSource = this.consumoServicosSelecionados;
 
-            if (this.servicosSelecionados.Count > 0)
+
+            /*   public int QuantidadeHomem { get => _quantidadeHomem; set => _quantidadeHomem = value; }
+        public decimal MetrosQuadrados { get => _metrosQuadrados; set => _metrosQuadrados = value; }
+        public Servico Servico { get => _servico; set => _servico = value; }
+        public ConsumoMaterialServico ConsumoMaterialServico { get => _consumoMaterialServico; set => _consumoMaterialServico = value; }
+        public DateTime Data { get => _data; set => _data = value; }
+*/
+            if (this.consumoServicosSelecionados.Count > 0)
             {
                 dgvServicosSelecionados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
-                dgvServicosSelecionados.Columns["Cod"].Visible = false;
+                dgvServicosSelecionados.Columns["ConsumoMaterialServico"].Visible = false;
+                dgvServicosSelecionados.Columns["Data"].Visible = false;
 
-                dgvServicosSelecionados.Columns["Nome"].HeaderText = "Nome";
-                dgvServicosSelecionados.Columns["Nome"].DisplayIndex = 1;
-                dgvServicosSelecionados.Columns["Nome"].ReadOnly = true;
+                dgvServicosSelecionados.Columns["Servico"].HeaderText = "Nome do Serviço";
+                dgvServicosSelecionados.Columns["Servico"].DisplayIndex = 1;
+                dgvServicosSelecionados.Columns["Servico"].ReadOnly = true;
 
-                dgvServicosSelecionados.Columns["QuantidadeHomem"].HeaderText = "Quantidade de trabalhares";
+                dgvServicosSelecionados.Columns["QuantidadeHomem"].HeaderText = "Quantidade de trabalhadores utilizados.";
                 dgvServicosSelecionados.Columns["QuantidadeHomem"].DisplayIndex = 2;
                 dgvServicosSelecionados.Columns["QuantidadeHomem"].ReadOnly = true;
 
 
-                dgvServicosSelecionados.Columns["Observacao"].HeaderText = "Observação";
-                dgvServicosSelecionados.Columns["Observacao"].DisplayIndex = 3;
-                dgvServicosSelecionados.Columns["Observacao"].ReadOnly = true;
+                dgvServicosSelecionados.Columns["MetrosQuadrados"].HeaderText = "Metros Quadrados";
+                dgvServicosSelecionados.Columns["MetrosQuadrados"].DisplayIndex = 3;
+                dgvServicosSelecionados.Columns["MetrosQuadrados"].ReadOnly = true;
+
             }
         }
 
         private void btnRemoverServico_Click(object sender, EventArgs e)
         {
-            if (this.servicoTela != null)
+            if (this.consumoServicoTela != null)
             {
-                this.servicosSelecionados.Remove((object)this.materialTela);
-                limparServicoTela();   
-            }
-        }
-
-        private void dgvServicosDisponiveis_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var servico = (Model.Servico)dgvServicosDisponiveis.CurrentRow?.DataBoundItem;
-
-            if (servico != null)
-            {
-                setarServicoTela(servico);
+                this.consumoServicosSelecionados.Remove(this.consumoServicoTela);
                 limparServicoTela();
             }
         }
 
-        private void setarServicoTela(Model.Servico servico)
+        private void setarServicoTela(Model.ConsumoServico consumoServicoTela, Model.Servico servico)
         {
-            objServicoSelecionado.Text = servico.getNome();
+            if(servico!= null)
+            {
+                this.servicoTela = servico;
+                objServicoSelecionado.Text = servico.getNome();
+            }
+            else if(consumoServicoTela != null)
+            {
+                this.consumoServicoTela = consumoServicoTela;
+                objServicoSelecionado.Text = consumoServicoTela.getServico().getNome();
+                txtQuantidadeHomens.Text = consumoServicoTela.getQuantidadeHomem().ToString();
+                txtMetrosQuadrados.Text = consumoServicoTela.getMetrosQuadrados().ToString();
+            }
         }
 
         private void limparServicoTela()
         {
+            this.servicoTela = null;
+            this.consumoServicoTela = null;
             objServicoSelecionado.Text = "";
             txtMetrosQuadrados.Text = "";
+            txtQuantidadeHomens.Text = "";
         }
 
         private void dgvMaterialSelecionadoOnClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -533,13 +698,13 @@ namespace WindowsFormsApp2.View
                 if(materialEstoque != null && materialEstoque.getEstoque() < this.materialTela.getEstoque())
                 {
                     //remove
-                    this.materiaisSelecionados.Remove((object)this.materialTela);
+                    this.materiaisSelecionados.Remove(this.materialTela);
 
                     //insere de volta
 
-                    this.materiaisSelecionados.Add((object)this.materialTela);
+                    this.materiaisSelecionados.Add(this.materialTela);
 
-                    configurarGridMateriaisSelecionados(new List<object>(this.materiaisSelecionados));
+                    configurarGridMateriaisSelecionados(new List<Model.Material>(this.materiaisSelecionados));
                     limparMaterialTela();
                     modoInserirMaterial();
                 }
@@ -565,6 +730,63 @@ namespace WindowsFormsApp2.View
             //    limparMaterialTela();
             //    modoInserirMaterial();
             //}
+        }
+
+        private void dgvServicoDisponiveis_OnClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var servico = (Model.Servico)dgvServicosDisponiveis.CurrentRow?.DataBoundItem;
+
+            if (servico != null)
+            {
+                
+                setarServicoTela(null, servico);
+            }
+        }
+
+        private void btnLançarMatServ_Click(object sender, EventArgs e)
+        {
+            if(this.obraTela == null)
+            {
+                MessageBox.Show("Selecione uma obra.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            else if(this.tarefasDisponiveis == null || this.tarefasDisponiveis.Count == 0 || 
+                    this.tarefaTela == null)
+            {
+                MessageBox.Show("Selecione uma tarefa.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if((this.materiaisSelecionados != null && this.materiaisSelecionados.Count == 0) || 
+                (this.consumoServicosSelecionados != null && this.consumoServicosSelecionados.Count == 0))
+            {
+                MessageBox.Show("Selecione um material ou serviço.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            else
+            {
+                controllerConsumoMaterialServico.cadastrar(
+                    this.obraTela,
+                    this.tarefaTela,
+                    this.materiaisSelecionados == null ? null : new List<Model.Material>(this.materiaisSelecionados),
+                    this.consumoServicosSelecionados == null ? null : new List<Model.ConsumoServico>(this.consumoServicosSelecionados), 
+                    Convert.ToDateTime(dtpDataLanc.Value)
+                );
+
+                initTela();
+
+                MessageBox.Show("Lançado com sucesso.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+            }
+        }
+
+        private void dgvConsumoServicoOnClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var consumoServicoSelecionado = (Model.ConsumoServico)dgvServicosSelecionados.CurrentRow?.DataBoundItem;
+
+            if(consumoServicoSelecionado != null)
+            {
+                setarServicoTela(consumoServicoSelecionado, null);
+            }
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsFormsApp2.Model;
 
 namespace WindowsFormsApp2.DatabaseAbstractionLayer
 {
@@ -63,6 +64,45 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
 
 
             return materiais;
+        }
+
+        public bool atualizar(Material material)
+        {
+            bool operacao;
+            string sql = @"UPDATE public.material
+	                        SET 
+                                cod_categoria_mat=@cod_categoria_mat, 
+                                unidade=@unidade, 
+                                descricao=@descricao, 
+                                estoque=@estoque, 
+                                nome=@nome, 
+                                valor=@valor
+	                        WHERE cod=@cod RETURNING cod";
+
+            var param = bd.getParams();
+
+            param.Add("@cod_categoria_mat", material.getCategoria().getCod());
+            param.Add("@cod", material.getCod());
+            param.Add("@unidade", material.getUnidade());
+            param.Add("@descricao", material.getDescricao());
+            param.Add("@estoque", material.getEstoque());
+            param.Add("@nome", material.getNome());
+            param.Add("@valor", material.getValor());
+
+            try
+            {
+                operacao = bd.executeNonQuery(sql, param);
+                material.setCod(bd.getUltimoCod());
+                operacao = true;
+
+            }
+            catch(Exception ex)
+            {
+                operacao = false;
+            }
+
+            return operacao;
+
         }
 
         public Model.Material obterUm(int codMaterial)

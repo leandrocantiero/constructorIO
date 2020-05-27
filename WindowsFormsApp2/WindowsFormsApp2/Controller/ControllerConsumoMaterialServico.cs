@@ -9,43 +9,55 @@ namespace WindowsFormsApp2.Controller
 {
     public class ControllerConsumoMaterialServico
     {
-        public void cadastrar(Model.ConsumoMaterialServico consumoMaterialServico, 
-            List<Model.Material> materiais, List<Model.ConsumoServico> servicos)
+        public void cadastrar(Model.Obra obraTela, Model.Tarefa tarefa, 
+            List<Model.Material> materiais, List<Model.ConsumoServico> consumoServicos, DateTime data)
         {
             DatabaseAbstractionLayer.MaterialDAL materialDAL = new DatabaseAbstractionLayer.MaterialDAL();
             DatabaseAbstractionLayer.ConsumoMaterialDAL consumoMaterialDAL = new DatabaseAbstractionLayer.ConsumoMaterialDAL();
             DatabaseAbstractionLayer.ConsumoServicoDAL consumoServicoDAL = new DatabaseAbstractionLayer.ConsumoServicoDAL();
             DatabaseAbstractionLayer.ConsumoMaterialServicoDAL materialServicoDAL = new DatabaseAbstractionLayer.ConsumoMaterialServicoDAL();
             Model.Material materialBuscado = null;
+            Model.ConsumoMaterialServico consumoMaterialServico = new Model.ConsumoMaterialServico();
 
-            if (materiais.Count == 0 || servicos.Count == 0)
+
+            consumoMaterialServico.setObra(obraTela);
+            consumoMaterialServico.setTarefa(tarefa);
+            consumoMaterialServico.setData(data);
+            if(materialServicoDAL.inserir(consumoMaterialServico))
             {
-                MessageBox.Show("Escolha pelo menos um serviço ou material.");
-                return;
+                if(materiais != null) {
+                    foreach (var material in materiais)
+                    {
+                        materialBuscado = materialDAL.obterUm(material.getCod());
+                        materialBuscado.setEstoque(materialBuscado.getEstoque() - material.getEstoque());
+
+                        materialDAL.atualizar(materialBuscado);
+
+                        Model.ConsumoMaterial consumoMaterial = new Model.ConsumoMaterial();
+                        consumoMaterial.setConsumoMaterialServico(consumoMaterialServico);
+                        consumoMaterial.setMaterial(material);
+                        consumoMaterial.setQuantidadeMaterial(material.getEstoque());
+                        consumoMaterial.setData(DateTime.Now);
+
+                        consumoMaterialDAL.inserir(consumoMaterial);
+                    }
+                }
+
+                if(consumoServicos != null)
+                {
+                    foreach (var servico in consumoServicos)
+                    {
+                        servico.setData(DateTime.Now);
+                        servico.setConsumoMaterialServico(consumoMaterialServico);
+                        consumoServicoDAL.inserir(servico);
+                    }
+                }
             }
+        }
 
-            materialServicoDAL.inserir(consumoMaterialServico);
-
-            foreach(var material in materiais)
-            {
-                materialBuscado = materialDAL.obterUm(material.getCod());
-                materialBuscado.setEstoque(materialBuscado.getEstoque() - material.getEstoque());
-
-                materialDAL.atualizar(materialBuscado);
-
-                Model.ConsumoMaterial consumoMaterial = new Model.ConsumoMaterial();
-                consumoMaterial.setConsumoMaterialServico(consumoMaterialServico);
-                consumoMaterial.setMaterial(material);
-                consumoMaterial.setQuantidadeMaterial(material.getEstoque());
-                consumoMaterial.setData(DateTime.Now);
-                consumoMaterialDAL.inserir(consumoMaterial);
-            }
-
-            foreach(var servico in servicos)
-            {
-                servico.setData(DateTime.Now);
-                consumoServicoDAL.inserir(servico);
-            }
+        public Model.ConsumoServico getConsumoServico()
+        {
+            return new Model.ConsumoServico();
         }
     }
 }

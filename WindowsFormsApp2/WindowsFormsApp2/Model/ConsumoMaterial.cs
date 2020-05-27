@@ -7,6 +7,23 @@ namespace WindowsFormsApp2.Model
         private int _quantidadeMaterial;
         private Model.Material _material;
         private Model.ConsumoMaterialServico _consumoMaterialServico;
+        private DateTime _data;
+
+
+        public DateTime Data { get => _data; set => _data = value; }
+        public int QuantidadeMaterial { get => _quantidadeMaterial; set => _quantidadeMaterial = value; }
+        public Material Material { get => _material; set => _material = value; }
+        public ConsumoMaterialServico ConsumoMaterialServico { get => _consumoMaterialServico; set => _consumoMaterialServico = value; }
+
+        public void setData(DateTime data)
+        {
+            this._data = data;
+        }
+
+        public DateTime getData()
+        {
+            return this._data;
+        }
 
         public void setQuantidadeMaterial(int quantidadeMaterial)
         {

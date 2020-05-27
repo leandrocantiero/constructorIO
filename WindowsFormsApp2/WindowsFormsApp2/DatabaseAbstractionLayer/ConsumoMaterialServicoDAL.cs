@@ -27,10 +27,10 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                             cod_obra_tarefa_obra, 
                             cod_tarefa_tarefa_obra
                         ) VALUES (
-                            data, 
-                            cod_obra_tarefa_obra, 
-                            cod_tarefa_tarefa_obra
-                            ) RETURNING 0;";
+                            @data, 
+                            @cod_obra_tarefa_obra, 
+                            @cod_tarefa_tarefa_obra
+                            ) RETURNING cod;";
 
             param.Add("@data", consumoMaterialServico.getData());
             param.Add("@cod_obra_tarefa_obra", consumoMaterialServico.getObra().getCod());
@@ -39,6 +39,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             try
             {
                 sucesso = bd.executeNonQuery(sql, param);
+                consumoMaterialServico.setCod(bd.getUltimoCod());
             }
             catch (Exception)
             {

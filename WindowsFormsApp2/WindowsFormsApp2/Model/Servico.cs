@@ -58,5 +58,10 @@ namespace WindowsFormsApp2.Model
             return this._observacao;
         }
 
+        public override string ToString()
+        {
+            return this._nome;
+        }
+
     }
 }

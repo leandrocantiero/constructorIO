@@ -38,6 +38,11 @@ namespace WindowsFormsApp2.Model
             return this._data;
         }
 
+        public void setData(DateTime data)
+        {
+            this._data = data;
+        }
+
         public void setObra(Model.Obra obra)
         {
             this._obra = obra;

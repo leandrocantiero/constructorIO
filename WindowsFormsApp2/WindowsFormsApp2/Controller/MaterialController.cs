@@ -8,16 +8,16 @@ namespace WindowsFormsApp2.Controller
 {
     public class MaterialController
     {
-        public List<object> obterTodos(string nome = null)
+        public List<Model.Material> obterTodos(string nome = null)
         {
             DatabaseAbstractionLayer.MaterialDAL materialDAL = new DatabaseAbstractionLayer.MaterialDAL();
             List<Model.Material> materiais = materialDAL.obterTodas(nome);
 
             if(materiais == null)
             {
-                return new List<object>();
+                return new List<Model.Material>();
             }
-            return new List<object>(materiais);
+            return new List<Model.Material>(materiais);
         }
 
         public Model.Material obterUm(int codMaterial)
