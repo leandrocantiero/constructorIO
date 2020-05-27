@@ -46,7 +46,7 @@
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(256, 780);
+            this.panelMenu.Size = new System.Drawing.Size(256, 764);
             this.panelMenu.TabIndex = 0;
             // 
             // flpAsideLeft
@@ -130,7 +130,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1280, 780);
+            this.ClientSize = new System.Drawing.Size(1280, 764);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.txtNomeUsuarioLogado);
             this.Controls.Add(this.button2);
