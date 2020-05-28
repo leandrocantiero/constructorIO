@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.2" last-position="0,0" last-zoom="0.75" max-obj-count="58"
+<dbmodel pgmodeler-ver="0.9.2" last-position="0,0" last-zoom="0.75" max-obj-count="61"
 	 default-schema="public" default-owner="postgres">
 <database name="constructorio" is-template="false" allow-conns="true">
 </database>
@@ -55,7 +55,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="etapa" layer="0" collapse-mode="2" max-obj-count="2">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="29.4118" y="18.8235"/>
+	<position x="172.078" y="10.8235"/>
 	<column name="cod" not-null="true">
 		<type name="serial" length="0"/>
 	</column>
@@ -105,7 +105,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="servico" layer="0" collapse-mode="2" max-obj-count="4">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="409.412" y="482.353"/>
+	<position x="456.079" y="526.353"/>
 	<column name="cod" not-null="true">
 		<type name="serial" length="0"/>
 	</column>
@@ -161,7 +161,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="tarefa" layer="0" collapse-mode="2" max-obj-count="3">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="25.8824" y="203.653"/>
+	<position x="16.5491" y="159.653"/>
 	<column name="cod" not-null="true">
 		<type name="serial" length="0"/>
 	</column>
@@ -184,7 +184,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="tarefa_obra" layer="0" collapse-mode="2" max-obj-count="3">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="324.706" y="23.5294"/>
+	<position x="482.039" y="10.1961"/>
 
 	<customidxs object-type="column">
 		<object name="cod_obra" index="0"/>
@@ -235,7 +235,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 </table>
 
-<table name="funcionario" layer="0" collapse-mode="2" max-obj-count="12">
+<table name="funcionario" layer="0" collapse-mode="2" max-obj-count="14">
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="1437.12" y="478.413"/>
@@ -271,7 +271,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<special-pk-cols indexes="0"/>
 </relationship>
 
-<table name="cliente" layer="0" collapse-mode="2" max-obj-count="7">
+<table name="cliente" layer="0" collapse-mode="2" max-obj-count="9">
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="1925.04" y="47.8413"/>
@@ -433,10 +433,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 dst-table="public.obra"
 	 src-required="true" dst-required="false"/>
 
-<table name="consumo_material" layer="0" collapse-mode="2" max-obj-count="4">
+<table name="consumo_material" layer="0" collapse-mode="2" max-obj-count="6">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="140.131" y="820.261"/>
+	<position x="5.46433" y="820.261"/>
 	<column name="quant" not-null="true">
 		<type name="integer" length="0"/>
 	</column>
@@ -454,10 +454,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</customidxs>
 </table>
 
-<table name="consumo_servico" layer="0" collapse-mode="2" max-obj-count="6">
+<table name="consumo_servico" layer="0" collapse-mode="2" max-obj-count="7">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="16.4706" y="436.471"/>
+	<position x="348.471" y="135.138"/>
 	<column name="quant_homem" not-null="true">
 		<type name="integer" length="0"/>
 	</column>
@@ -555,7 +555,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="medicao" layer="0" collapse-mode="2" max-obj-count="12">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="704.444" y="550.881"/>
+	<position x="727.111" y="546.881"/>
 	<column name="cod" not-null="true">
 		<type name="serial" length="0"/>
 	</column>
@@ -614,7 +614,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="medicao_serv" layer="0" collapse-mode="2" max-obj-count="4">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="398.571" y="685.714"/>
+	<position x="333.238" y="715.047"/>
 	<column name="qtde" not-null="true">
 		<type name="integer" length="0"/>
 	</column>
@@ -700,7 +700,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="parcelas_medicao" layer="0" collapse-mode="2" max-obj-count="7">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="572.026" y="257.176"/>
+	<position x="600.026" y="303.843"/>
 	<column name="cod" not-null="true">
 		<type name="serial" length="0"/>
 	</column>
@@ -1020,10 +1020,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 dst-table="public.parcela_despesa"
 	 src-required="true" dst-required="false"/>
 
-<table name="consumo_mat_serv" layer="0" collapse-mode="2" max-obj-count="4">
+<table name="consumo_mat_serv" layer="0" collapse-mode="2" max-obj-count="3">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="280.124" y="238.962"/>
+	<position x="184.124" y="421.629"/>
 	<column name="cod" not-null="true">
 		<type name="serial" length="0"/>
 	</column>
@@ -1033,15 +1033,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<constraint name="consumo_mat_serv_pk" type="pk-constr" table="public.consumo_mat_serv">
 		<columns names="cod,data" ref-type="src-columns"/>
 	</constraint>
-
-	<customidxs object-type="column">
-		<object name="cod_obra_tarefa_obra" index="2"/>
-		<object name="cod_tarefa_tarefa_obra" index="3"/>
-	</customidxs>
-
-	<customidxs object-type="constraint">
-		<object name="tarefa_obra_fk" index="1"/>
-	</customidxs>
 </table>
 
 <relationship name="consumo_mat_serv_tem_muitos_tarefa_material" type="rel1n" layer="0"
@@ -1379,14 +1370,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 identifier="true"
 />
 
-<relationship name="tarefa_obra_tem_muitos_consumo_mat_serv" type="rel1n" layer="0"
-	 src-col-pattern="{sc}_{st}"
-	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
-	 src-fk-pattern="{st}_fk"
-	 src-table="public.tarefa_obra"
-	 dst-table="public.consumo_mat_serv"
-	 src-required="true" dst-required="false"/>
-
 <relationship name="endereco_tem_muitos_obra" type="rel1n" layer="0"
 	 src-col-pattern="{sc}_{st}"
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
@@ -1394,5 +1377,33 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 src-table="public.endereco"
 	 dst-table="public.obra"
 	 src-required="true" dst-required="false"/>
+
+<relationship name="tarefa_tem_muitos_consumo_servico" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.tarefa"
+	 dst-table="public.consumo_servico"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+/>
+
+<relationship name="tarefa_tem_muitos_consumo_material" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.tarefa"
+	 dst-table="public.consumo_material"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+/>
+
+<relationship name="obra_tem_muitos_consumo_mat_serv" type="rel1n" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 src-table="public.obra"
+	 dst-table="public.consumo_mat_serv"
+	 src-required="false" dst-required="false"/>
 
 </dbmodel>

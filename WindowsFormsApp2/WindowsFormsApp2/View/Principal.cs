@@ -235,7 +235,8 @@ namespace WindowsFormsApp2.View
 
         private void onClickBtnLancarMateriaisServiços(object sender, EventArgs e)
         {
-            //throw new NotImplementedException();
+            var lancMatServ = new View.LancarMateriaisServicos();
+            lancMatServ.Show();
         }
 
         private void onClickBtnReceberMedicoes(object sender, EventArgs e)

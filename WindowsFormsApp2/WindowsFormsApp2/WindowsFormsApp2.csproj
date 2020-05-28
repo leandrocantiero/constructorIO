@@ -143,6 +143,12 @@
     <Compile Include="View\BuscarCliente.Designer.cs">
       <DependentUpon>BuscarCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\BuscarConsumoMatServ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\BuscarConsumoMatServ.Designer.cs">
+      <DependentUpon>BuscarConsumoMatServ.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\BuscarFuncionario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\BuscarCliente.resx">
       <DependentUpon>BuscarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\BuscarConsumoMatServ.resx">
+      <DependentUpon>BuscarConsumoMatServ.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\BuscarFuncionario.resx">
       <DependentUpon>BuscarFuncionario.cs</DependentUpon>

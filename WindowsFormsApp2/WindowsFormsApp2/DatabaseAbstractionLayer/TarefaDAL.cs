@@ -59,6 +59,43 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             return tarefas;
         }
 
+        public Model.Tarefa obterUma(int codTarefa)
+        {
+            Model.Tarefa tarefa = null;
+            string sql = @"select 
+                                tarefa.cod as cod_tarefa, 
+                                cod_etapa, 
+                                tarefa.descricao as tarefa_descricao, 
+                                etapa.descricao as etapa_descricao
+                           from tarefa, etapa
+                                where cod_etapa = etapa.cod ";
+
+            var param = bd.getParams();
+
+            sql += " and tarefa.cod = @codTarefa;";
+            param.Add("@codTarefa", codTarefa);
+
+            try
+            {
+                DataTable dt = bd.executeSelect(sql, param);
+
+                if (dt.Rows.Count == 1)
+                {
+                    tarefa = new Model.Tarefa();
+
+                    tarefa = map(dt.Rows[0]);
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
+            return tarefa;
+        }
+
 
         public List<Model.Tarefa> obterTodasPorDescricao(string descricao = null)
         {

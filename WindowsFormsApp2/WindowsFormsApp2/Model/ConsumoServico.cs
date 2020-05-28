@@ -13,6 +13,7 @@ namespace WindowsFormsApp2.Model
         private decimal _metrosQuadrados;
         private DateTime _data;
         private Model.ConsumoMaterialServico _consumoMaterialServico;
+        private Model.Tarefa _tarefa;
 
 
         public int QuantidadeHomem { get => _quantidadeHomem; set => _quantidadeHomem = value; }
@@ -21,6 +22,17 @@ namespace WindowsFormsApp2.Model
         public ConsumoMaterialServico ConsumoMaterialServico { get => _consumoMaterialServico; set => _consumoMaterialServico = value; }
         public DateTime Data { get => _data; set => _data = value; }
 
+        public Tarefa Tarefa { get => _tarefa; set => _tarefa = value; }
+
+        public void setTarefa(Model.Tarefa tarefa)
+        {
+            this._tarefa = tarefa;
+        }
+
+        public Model.Tarefa getTarefa()
+        {
+            return this._tarefa;
+        }
 
         public void setData(DateTime data)
         {
@@ -73,5 +85,13 @@ namespace WindowsFormsApp2.Model
         {
             return this._metrosQuadrados;
         }
+
+        /// <summary>
+        /// USADO PARA MOSTRAR NA GRID. NAO DELETE ISSO
+        /// </summary>
+        /// 
+
+        private string _MostraTelaEtapa;
+        public string MostraTelaEtapa { get => _MostraTelaEtapa; set => _MostraTelaEtapa = value; }
     }
 }

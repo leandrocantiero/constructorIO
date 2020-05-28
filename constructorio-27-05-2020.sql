@@ -162,6 +162,8 @@ CREATE TABLE public.funcionario (
 -- 	nome varchar(30) NOT NULL,
 -- 	registro varchar(30) NOT NULL,
 -- 	dtnasc date NOT NULL,
+-- 	cod_endereco integer NOT NULL,
+-- 	cod_contato integer NOT NULL,
 	CONSTRAINT funcionario_pk PRIMARY KEY (pes_cod)
 
 )
@@ -180,6 +182,8 @@ CREATE TABLE public.cliente (
 -- 	nome varchar(30) NOT NULL,
 -- 	registro varchar(30) NOT NULL,
 -- 	dtnasc date NOT NULL,
+-- 	cod_endereco integer NOT NULL,
+-- 	cod_contato integer NOT NULL,
 	CONSTRAINT cliente_pk PRIMARY KEY (pes_cod)
 
 )
@@ -277,7 +281,8 @@ CREATE TABLE public.consumo_material (
 	cod_material integer NOT NULL,
 	cod_consumo_mat_serv integer NOT NULL,
 	data_consumo_mat_serv date NOT NULL,
-	CONSTRAINT consumo_material_pk PRIMARY KEY (cod_material,cod_consumo_mat_serv,data_consumo_mat_serv)
+	cod_tarefa integer NOT NULL,
+	CONSTRAINT consumo_material_pk PRIMARY KEY (cod_material,cod_consumo_mat_serv,data_consumo_mat_serv,cod_tarefa)
 
 );
 -- ddl-end --
@@ -292,7 +297,8 @@ CREATE TABLE public.consumo_servico (
 	cod_servico integer NOT NULL,
 	cod_consumo_mat_serv integer NOT NULL,
 	data_consumo_mat_serv date NOT NULL,
-	CONSTRAINT consumo_servico_pk PRIMARY KEY (cod_servico,cod_consumo_mat_serv,data_consumo_mat_serv)
+	cod_tarefa integer NOT NULL,
+	CONSTRAINT consumo_servico_pk PRIMARY KEY (cod_servico,cod_consumo_mat_serv,data_consumo_mat_serv,cod_tarefa)
 
 );
 -- ddl-end --
@@ -637,8 +643,7 @@ ON DELETE RESTRICT ON UPDATE CASCADE;
 CREATE TABLE public.consumo_mat_serv (
 	cod serial NOT NULL,
 	data date NOT NULL,
-	cod_obra_tarefa_obra integer NOT NULL,
-	cod_tarefa_tarefa_obra integer NOT NULL,
+	cod_obra integer,
 	CONSTRAINT consumo_mat_serv_pk PRIMARY KEY (cod,data)
 
 );
@@ -884,18 +889,32 @@ REFERENCES public.tarefa (cod) MATCH FULL
 ON DELETE CASCADE ON UPDATE CASCADE;
 -- ddl-end --
 
--- object: tarefa_obra_fk | type: CONSTRAINT --
--- ALTER TABLE public.consumo_mat_serv DROP CONSTRAINT IF EXISTS tarefa_obra_fk CASCADE;
-ALTER TABLE public.consumo_mat_serv ADD CONSTRAINT tarefa_obra_fk FOREIGN KEY (cod_obra_tarefa_obra,cod_tarefa_tarefa_obra)
-REFERENCES public.tarefa_obra (cod_obra,cod_tarefa) MATCH FULL
-ON DELETE RESTRICT ON UPDATE CASCADE;
--- ddl-end --
-
 -- object: endereco_fk | type: CONSTRAINT --
 -- ALTER TABLE public.obra DROP CONSTRAINT IF EXISTS endereco_fk CASCADE;
 ALTER TABLE public.obra ADD CONSTRAINT endereco_fk FOREIGN KEY (cod_endereco)
 REFERENCES public.endereco (cod) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: tarefa_fk | type: CONSTRAINT --
+-- ALTER TABLE public.consumo_servico DROP CONSTRAINT IF EXISTS tarefa_fk CASCADE;
+ALTER TABLE public.consumo_servico ADD CONSTRAINT tarefa_fk FOREIGN KEY (cod_tarefa)
+REFERENCES public.tarefa (cod) MATCH FULL
+ON DELETE CASCADE ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: tarefa_fk | type: CONSTRAINT --
+-- ALTER TABLE public.consumo_material DROP CONSTRAINT IF EXISTS tarefa_fk CASCADE;
+ALTER TABLE public.consumo_material ADD CONSTRAINT tarefa_fk FOREIGN KEY (cod_tarefa)
+REFERENCES public.tarefa (cod) MATCH FULL
+ON DELETE CASCADE ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: obra_fk | type: CONSTRAINT --
+-- ALTER TABLE public.consumo_mat_serv DROP CONSTRAINT IF EXISTS obra_fk CASCADE;
+ALTER TABLE public.consumo_mat_serv ADD CONSTRAINT obra_fk FOREIGN KEY (cod_obra)
+REFERENCES public.obra (cod) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
 

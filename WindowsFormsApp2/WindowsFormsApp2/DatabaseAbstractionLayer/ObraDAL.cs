@@ -97,7 +97,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             return operacao;
         }
 
-        internal List<Obra> obterTodas(string rua, string nomeCliente)
+        internal List<Obra> obterTodas(string rua = null, string nomeCliente = null)
         {
             string sql = @"	select  obra.cod as obra_cod,
  						valor_total, 

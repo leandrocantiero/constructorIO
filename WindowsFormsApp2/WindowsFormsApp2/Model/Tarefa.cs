@@ -70,5 +70,10 @@ namespace WindowsFormsApp2.Model
 
             return ((Model.Tarefa)obj).getCod() == this.getCod();
         }
+
+        public override string ToString()
+        {
+            return this._descricao;
+        }
     }
 }

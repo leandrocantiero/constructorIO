@@ -103,5 +103,10 @@ namespace WindowsFormsApp2.Model
         {
             return this._categoria;
         }
+
+        public override string ToString()
+        {
+            return this._nome;
+        }
     }
 }

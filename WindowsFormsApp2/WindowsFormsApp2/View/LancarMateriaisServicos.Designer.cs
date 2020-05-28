@@ -29,19 +29,20 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnLançarMatServ = new MaterialSkin.Controls.MaterialFlatButton();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.dtpDataLanc = new System.Windows.Forms.DateTimePicker();
+            this.identificadorSelecionarObra = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel15 = new MaterialSkin.Controls.MaterialLabel();
             this.objObraSelecionada = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.btnBuscarObra = new MaterialSkin.Controls.MaterialFlatButton();
+            this.btnLançarMatServ = new MaterialSkin.Controls.MaterialFlatButton();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.dtpDataLanc = new System.Windows.Forms.DateTimePicker();
             this.dgvTarefas = new System.Windows.Forms.DataGridView();
             this.btnBuscarTarefa = new MaterialSkin.Controls.MaterialFlatButton();
             this.txtBuscarTarefa = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.identificadorBuscarTarefa = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnAlterarMaterial = new MaterialSkin.Controls.MaterialFlatButton();
             this.identificadorSelecionarMateriais = new MaterialSkin.Controls.MaterialLabel();
             this.btnInserirMaterial = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnRemoverMaterial = new MaterialSkin.Controls.MaterialFlatButton();
@@ -60,7 +61,6 @@
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.objEtapa = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.btnAlterarServico = new MaterialSkin.Controls.MaterialFlatButton();
             this.identificadorSelecionarServicos = new MaterialSkin.Controls.MaterialLabel();
             this.btnInserirServico = new MaterialSkin.Controls.MaterialFlatButton();
             this.label3 = new System.Windows.Forms.Label();
@@ -78,8 +78,9 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.identificadorSelecionarTarefa = new MaterialSkin.Controls.MaterialLabel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.identificadorSelecionarObra = new MaterialSkin.Controls.MaterialLabel();
-            this.identificadorBuscarTarefa = new MaterialSkin.Controls.MaterialLabel();
+            this.btnBuscarLancamentos = new MaterialSkin.Controls.MaterialFlatButton();
+            this.btnExcluir = new MaterialSkin.Controls.MaterialFlatButton();
+            this.btnCancelarExclusao = new MaterialSkin.Controls.MaterialFlatButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTarefas)).BeginInit();
             this.panel2.SuspendLayout();
@@ -106,42 +107,18 @@
             this.panel1.Size = new System.Drawing.Size(441, 74);
             this.panel1.TabIndex = 126;
             // 
-            // btnLançarMatServ
+            // identificadorSelecionarObra
             // 
-            this.btnLançarMatServ.AutoSize = true;
-            this.btnLançarMatServ.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnLançarMatServ.Depth = 0;
-            this.btnLançarMatServ.Location = new System.Drawing.Point(345, 18);
-            this.btnLançarMatServ.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnLançarMatServ.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnLançarMatServ.Name = "btnLançarMatServ";
-            this.btnLançarMatServ.Primary = false;
-            this.btnLançarMatServ.Size = new System.Drawing.Size(65, 36);
-            this.btnLançarMatServ.TabIndex = 131;
-            this.btnLançarMatServ.Text = "Lançar";
-            this.btnLançarMatServ.UseVisualStyleBackColor = true;
-            this.btnLançarMatServ.Click += new System.EventHandler(this.btnLançarMatServ_Click);
-            // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(11, 12);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(143, 19);
-            this.materialLabel1.TabIndex = 128;
-            this.materialLabel1.Text = "Data de lançamento";
-            // 
-            // dtpDataLanc
-            // 
-            this.dtpDataLanc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataLanc.Location = new System.Drawing.Point(15, 34);
-            this.dtpDataLanc.Name = "dtpDataLanc";
-            this.dtpDataLanc.Size = new System.Drawing.Size(103, 20);
-            this.dtpDataLanc.TabIndex = 127;
+            this.identificadorSelecionarObra.AutoSize = true;
+            this.identificadorSelecionarObra.Depth = 0;
+            this.identificadorSelecionarObra.Font = new System.Drawing.Font("Roboto", 11F);
+            this.identificadorSelecionarObra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.identificadorSelecionarObra.Location = new System.Drawing.Point(3, 0);
+            this.identificadorSelecionarObra.MouseState = MaterialSkin.MouseState.HOVER;
+            this.identificadorSelecionarObra.Name = "identificadorSelecionarObra";
+            this.identificadorSelecionarObra.Size = new System.Drawing.Size(115, 19);
+            this.identificadorSelecionarObra.TabIndex = 135;
+            this.identificadorSelecionarObra.Text = "Selecionar Obra";
             // 
             // materialLabel15
             // 
@@ -187,6 +164,43 @@
             this.btnBuscarObra.Text = "Buscar";
             this.btnBuscarObra.UseVisualStyleBackColor = true;
             this.btnBuscarObra.Click += new System.EventHandler(this.btnBuscarObra_Click);
+            // 
+            // btnLançarMatServ
+            // 
+            this.btnLançarMatServ.AutoSize = true;
+            this.btnLançarMatServ.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnLançarMatServ.Depth = 0;
+            this.btnLançarMatServ.Location = new System.Drawing.Point(296, 18);
+            this.btnLançarMatServ.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnLançarMatServ.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnLançarMatServ.Name = "btnLançarMatServ";
+            this.btnLançarMatServ.Primary = false;
+            this.btnLançarMatServ.Size = new System.Drawing.Size(65, 36);
+            this.btnLançarMatServ.TabIndex = 131;
+            this.btnLançarMatServ.Text = "Lançar";
+            this.btnLançarMatServ.UseVisualStyleBackColor = true;
+            this.btnLançarMatServ.Click += new System.EventHandler(this.btnLançarMatServ_Click);
+            // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(3, 12);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(143, 19);
+            this.materialLabel1.TabIndex = 128;
+            this.materialLabel1.Text = "Data de lançamento";
+            // 
+            // dtpDataLanc
+            // 
+            this.dtpDataLanc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataLanc.Location = new System.Drawing.Point(7, 34);
+            this.dtpDataLanc.Name = "dtpDataLanc";
+            this.dtpDataLanc.Size = new System.Drawing.Size(103, 20);
+            this.dtpDataLanc.TabIndex = 127;
             // 
             // dgvTarefas
             // 
@@ -242,6 +256,19 @@
             this.panel2.Size = new System.Drawing.Size(441, 332);
             this.panel2.TabIndex = 127;
             // 
+            // identificadorBuscarTarefa
+            // 
+            this.identificadorBuscarTarefa.AutoSize = true;
+            this.identificadorBuscarTarefa.Depth = 0;
+            this.identificadorBuscarTarefa.Font = new System.Drawing.Font("Roboto", 11F);
+            this.identificadorBuscarTarefa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.identificadorBuscarTarefa.Location = new System.Drawing.Point(3, 0);
+            this.identificadorBuscarTarefa.MouseState = MaterialSkin.MouseState.HOVER;
+            this.identificadorBuscarTarefa.Name = "identificadorBuscarTarefa";
+            this.identificadorBuscarTarefa.Size = new System.Drawing.Size(102, 19);
+            this.identificadorBuscarTarefa.TabIndex = 135;
+            this.identificadorBuscarTarefa.Text = "Buscar Tarefa";
+            // 
             // materialLabel5
             // 
             this.materialLabel5.AutoSize = true;
@@ -259,7 +286,6 @@
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.btnAlterarMaterial);
             this.panel3.Controls.Add(this.identificadorSelecionarMateriais);
             this.panel3.Controls.Add(this.btnInserirMaterial);
             this.panel3.Controls.Add(this.btnRemoverMaterial);
@@ -277,22 +303,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(817, 296);
             this.panel3.TabIndex = 128;
-            // 
-            // btnAlterarMaterial
-            // 
-            this.btnAlterarMaterial.AutoSize = true;
-            this.btnAlterarMaterial.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAlterarMaterial.Depth = 0;
-            this.btnAlterarMaterial.Location = new System.Drawing.Point(563, 78);
-            this.btnAlterarMaterial.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnAlterarMaterial.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnAlterarMaterial.Name = "btnAlterarMaterial";
-            this.btnAlterarMaterial.Primary = false;
-            this.btnAlterarMaterial.Size = new System.Drawing.Size(71, 36);
-            this.btnAlterarMaterial.TabIndex = 136;
-            this.btnAlterarMaterial.Text = "Alterar";
-            this.btnAlterarMaterial.UseVisualStyleBackColor = true;
-            this.btnAlterarMaterial.Click += new System.EventHandler(this.btnAlterarMaterial_Click);
             // 
             // identificadorSelecionarMateriais
             // 
@@ -312,7 +322,7 @@
             this.btnInserirMaterial.AutoSize = true;
             this.btnInserirMaterial.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnInserirMaterial.Depth = 0;
-            this.btnInserirMaterial.Location = new System.Drawing.Point(492, 78);
+            this.btnInserirMaterial.Location = new System.Drawing.Point(657, 77);
             this.btnInserirMaterial.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnInserirMaterial.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnInserirMaterial.Name = "btnInserirMaterial";
@@ -328,7 +338,7 @@
             this.btnRemoverMaterial.AutoSize = true;
             this.btnRemoverMaterial.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnRemoverMaterial.Depth = 0;
-            this.btnRemoverMaterial.Location = new System.Drawing.Point(409, 78);
+            this.btnRemoverMaterial.Location = new System.Drawing.Point(728, 77);
             this.btnRemoverMaterial.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnRemoverMaterial.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnRemoverMaterial.Name = "btnRemoverMaterial";
@@ -534,7 +544,6 @@
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.Control;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.btnAlterarServico);
             this.panel4.Controls.Add(this.identificadorSelecionarServicos);
             this.panel4.Controls.Add(this.btnInserirServico);
             this.panel4.Controls.Add(this.label3);
@@ -554,22 +563,6 @@
             this.panel4.Size = new System.Drawing.Size(817, 296);
             this.panel4.TabIndex = 129;
             // 
-            // btnAlterarServico
-            // 
-            this.btnAlterarServico.AutoSize = true;
-            this.btnAlterarServico.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAlterarServico.Depth = 0;
-            this.btnAlterarServico.Location = new System.Drawing.Point(553, 78);
-            this.btnAlterarServico.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnAlterarServico.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnAlterarServico.Name = "btnAlterarServico";
-            this.btnAlterarServico.Primary = false;
-            this.btnAlterarServico.Size = new System.Drawing.Size(71, 36);
-            this.btnAlterarServico.TabIndex = 137;
-            this.btnAlterarServico.Text = "Alterar";
-            this.btnAlterarServico.UseVisualStyleBackColor = true;
-            this.btnAlterarServico.Click += new System.EventHandler(this.btnAlterarServico_Click);
-            // 
             // identificadorSelecionarServicos
             // 
             this.identificadorSelecionarServicos.AutoSize = true;
@@ -588,7 +581,7 @@
             this.btnInserirServico.AutoSize = true;
             this.btnInserirServico.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnInserirServico.Depth = 0;
-            this.btnInserirServico.Location = new System.Drawing.Point(492, 78);
+            this.btnInserirServico.Location = new System.Drawing.Point(657, 78);
             this.btnInserirServico.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnInserirServico.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnInserirServico.Name = "btnInserirServico";
@@ -604,7 +597,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 8.15F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(654, 67);
+            this.label3.Location = new System.Drawing.Point(659, 59);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(147, 14);
             this.label3.TabIndex = 133;
@@ -615,7 +608,7 @@
             this.btnRemoverServico.AutoSize = true;
             this.btnRemoverServico.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnRemoverServico.Depth = 0;
-            this.btnRemoverServico.Location = new System.Drawing.Point(409, 78);
+            this.btnRemoverServico.Location = new System.Drawing.Point(728, 78);
             this.btnRemoverServico.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnRemoverServico.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnRemoverServico.Name = "btnRemoverServico";
@@ -641,7 +634,7 @@
             this.materialLabel7.Depth = 0;
             this.materialLabel7.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel7.Location = new System.Drawing.Point(653, 19);
+            this.materialLabel7.Location = new System.Drawing.Point(658, 11);
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
             this.materialLabel7.Size = new System.Drawing.Size(132, 19);
@@ -652,7 +645,7 @@
             // 
             this.txtMetrosQuadrados.Depth = 0;
             this.txtMetrosQuadrados.Hint = "";
-            this.txtMetrosQuadrados.Location = new System.Drawing.Point(657, 41);
+            this.txtMetrosQuadrados.Location = new System.Drawing.Point(662, 33);
             this.txtMetrosQuadrados.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtMetrosQuadrados.Name = "txtMetrosQuadrados";
             this.txtMetrosQuadrados.PasswordChar = '\0';
@@ -669,7 +662,7 @@
             this.materialLabel8.Depth = 0;
             this.materialLabel8.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel8.Location = new System.Drawing.Point(417, 19);
+            this.materialLabel8.Location = new System.Drawing.Point(422, 11);
             this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel8.Name = "materialLabel8";
             this.materialLabel8.Size = new System.Drawing.Size(226, 19);
@@ -680,7 +673,7 @@
             // 
             this.txtQuantidadeHomens.Depth = 0;
             this.txtQuantidadeHomens.Hint = "";
-            this.txtQuantidadeHomens.Location = new System.Drawing.Point(421, 41);
+            this.txtQuantidadeHomens.Location = new System.Drawing.Point(426, 33);
             this.txtQuantidadeHomens.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtQuantidadeHomens.Name = "txtQuantidadeHomens";
             this.txtQuantidadeHomens.PasswordChar = '\0';
@@ -697,7 +690,7 @@
             this.materialLabel9.Depth = 0;
             this.materialLabel9.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel9.Location = new System.Drawing.Point(112, 19);
+            this.materialLabel9.Location = new System.Drawing.Point(124, 11);
             this.materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel9.Name = "materialLabel9";
             this.materialLabel9.Size = new System.Drawing.Size(50, 19);
@@ -732,7 +725,7 @@
             // 
             this.objServicoSelecionado.Depth = 0;
             this.objServicoSelecionado.Hint = "Não selecionado";
-            this.objServicoSelecionado.Location = new System.Drawing.Point(116, 41);
+            this.objServicoSelecionado.Location = new System.Drawing.Point(128, 33);
             this.objServicoSelecionado.MouseState = MaterialSkin.MouseState.HOVER;
             this.objServicoSelecionado.Name = "objServicoSelecionado";
             this.objServicoSelecionado.PasswordChar = '\0';
@@ -790,6 +783,9 @@
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.Control;
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.btnCancelarExclusao);
+            this.panel6.Controls.Add(this.btnBuscarLancamentos);
+            this.panel6.Controls.Add(this.btnExcluir);
             this.panel6.Controls.Add(this.btnLançarMatServ);
             this.panel6.Controls.Add(this.materialLabel1);
             this.panel6.Controls.Add(this.dtpDataLanc);
@@ -798,31 +794,53 @@
             this.panel6.Size = new System.Drawing.Size(441, 68);
             this.panel6.TabIndex = 132;
             // 
-            // identificadorSelecionarObra
+            // btnBuscarLancamentos
             // 
-            this.identificadorSelecionarObra.AutoSize = true;
-            this.identificadorSelecionarObra.Depth = 0;
-            this.identificadorSelecionarObra.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.identificadorSelecionarObra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.identificadorSelecionarObra.Location = new System.Drawing.Point(3, 0);
-            this.identificadorSelecionarObra.MouseState = MaterialSkin.MouseState.HOVER;
-            this.identificadorSelecionarObra.Name = "identificadorSelecionarObra";
-            this.identificadorSelecionarObra.Size = new System.Drawing.Size(115, 18);
-            this.identificadorSelecionarObra.TabIndex = 135;
-            this.identificadorSelecionarObra.Text = "Selecionar Obra";
+            this.btnBuscarLancamentos.AutoSize = true;
+            this.btnBuscarLancamentos.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnBuscarLancamentos.Depth = 0;
+            this.btnBuscarLancamentos.Location = new System.Drawing.Point(223, 18);
+            this.btnBuscarLancamentos.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnBuscarLancamentos.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnBuscarLancamentos.Name = "btnBuscarLancamentos";
+            this.btnBuscarLancamentos.Primary = false;
+            this.btnBuscarLancamentos.Size = new System.Drawing.Size(65, 36);
+            this.btnBuscarLancamentos.TabIndex = 133;
+            this.btnBuscarLancamentos.Text = "Buscar ";
+            this.btnBuscarLancamentos.UseVisualStyleBackColor = true;
+            this.btnBuscarLancamentos.Click += new System.EventHandler(this.btnBuscarLancamentos_Click);
             // 
-            // identificadorBuscarTarefa
+            // btnExcluir
             // 
-            this.identificadorBuscarTarefa.AutoSize = true;
-            this.identificadorBuscarTarefa.Depth = 0;
-            this.identificadorBuscarTarefa.Font = new System.Drawing.Font("Roboto", 11F);
-            this.identificadorBuscarTarefa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.identificadorBuscarTarefa.Location = new System.Drawing.Point(3, 0);
-            this.identificadorBuscarTarefa.MouseState = MaterialSkin.MouseState.HOVER;
-            this.identificadorBuscarTarefa.Name = "identificadorBuscarTarefa";
-            this.identificadorBuscarTarefa.Size = new System.Drawing.Size(102, 19);
-            this.identificadorBuscarTarefa.TabIndex = 135;
-            this.identificadorBuscarTarefa.Text = "Buscar Tarefa";
+            this.btnExcluir.AutoSize = true;
+            this.btnExcluir.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnExcluir.Depth = 0;
+            this.btnExcluir.Location = new System.Drawing.Point(369, 18);
+            this.btnExcluir.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnExcluir.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Primary = false;
+            this.btnExcluir.Size = new System.Drawing.Size(66, 36);
+            this.btnExcluir.TabIndex = 132;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
+            // btnCancelarExclusao
+            // 
+            this.btnCancelarExclusao.AutoSize = true;
+            this.btnCancelarExclusao.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnCancelarExclusao.Depth = 0;
+            this.btnCancelarExclusao.Location = new System.Drawing.Point(144, 18);
+            this.btnCancelarExclusao.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnCancelarExclusao.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnCancelarExclusao.Name = "btnCancelarExclusao";
+            this.btnCancelarExclusao.Primary = false;
+            this.btnCancelarExclusao.Size = new System.Drawing.Size(82, 36);
+            this.btnCancelarExclusao.TabIndex = 134;
+            this.btnCancelarExclusao.Text = "Cancelar";
+            this.btnCancelarExclusao.UseVisualStyleBackColor = true;
+            this.btnCancelarExclusao.Click += new System.EventHandler(this.btnCancelarExclusao_Click);
             // 
             // LancarMateriaisServicos
             // 
@@ -836,7 +854,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "LancarMateriaisServicos";
-            this.Text = "Lancar Materiais e Servicos";
+            this.Text = "Lançar Materiais e Serviços";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTarefas)).EndInit();
@@ -905,12 +923,13 @@
         private MaterialSkin.Controls.MaterialLabel identificadorSelecionarServicos;
         private MaterialSkin.Controls.MaterialLabel materialLabel12;
         private MaterialSkin.Controls.MaterialSingleLineTextField objTarefa;
-        private MaterialSkin.Controls.MaterialFlatButton btnAlterarMaterial;
-        private MaterialSkin.Controls.MaterialFlatButton btnAlterarServico;
         private System.Windows.Forms.Panel panel5;
         private MaterialSkin.Controls.MaterialLabel identificadorSelecionarTarefa;
         private System.Windows.Forms.Panel panel6;
         private MaterialSkin.Controls.MaterialLabel identificadorSelecionarObra;
         private MaterialSkin.Controls.MaterialLabel identificadorBuscarTarefa;
+        private MaterialSkin.Controls.MaterialFlatButton btnBuscarLancamentos;
+        private MaterialSkin.Controls.MaterialFlatButton btnExcluir;
+        private MaterialSkin.Controls.MaterialFlatButton btnCancelarExclusao;
     }
 }

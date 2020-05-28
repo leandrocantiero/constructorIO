@@ -11,12 +11,20 @@ namespace WindowsFormsApp2.Model
         private int _cod;
         private DateTime _data;
         private Model.Obra _obra;
-        private Model.Tarefa _tarefa;
+
+
+        private List<Model.ConsumoServico> _consumoServicoLista;
+        private List<Model.ConsumoMaterial> _consumoMaterialLista;
+
+        public ConsumoMaterialServico()
+        {
+            this._consumoMaterialLista = null;
+            this._consumoServicoLista = null;
+        }
 
         public int Cod { get => _cod; set => _cod = value; }
         public DateTime Data { get => _data; set => _data = value; }
         public Obra Obra { get => _obra; set => _obra = value; }
-        public Tarefa Tarefa { get => _tarefa; set => _tarefa = value; }
 
         public void setCod(int cod)
         {
@@ -52,17 +60,25 @@ namespace WindowsFormsApp2.Model
         {
             return this._obra;
         }
-        
-        public void setTarefa(Model.Tarefa tarefa)
+
+        public List<Model.ConsumoMaterial> getMateriais()
         {
-            this._tarefa = tarefa;
+            return this._consumoMaterialLista;
         }
 
-        public Model.Tarefa getTarefa()
+        public List<Model.ConsumoServico> getServicos()
         {
-            return this._tarefa;
+            return this._consumoServicoLista;
         }
 
+        public void setMateriais(List<Model.ConsumoMaterial> consumoMaterialLista)
+        {
+            this._consumoMaterialLista = consumoMaterialLista;
+        }
 
+        public void setServicos(List<Model.ConsumoServico> consumoServicos)
+        {
+            this._consumoServicoLista = consumoServicos;
+        }
     }
 }
