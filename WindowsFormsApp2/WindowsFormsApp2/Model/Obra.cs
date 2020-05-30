@@ -144,5 +144,11 @@ namespace WindowsFormsApp2.Model
             this._descricao = descricao;
         }
 
+
+        public override string ToString()
+        {
+            return this.getEndereco().getRua() + ", Nº " + this.getEndereco().getNumero();
+        }
+
     }
 }

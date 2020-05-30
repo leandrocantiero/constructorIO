@@ -151,6 +151,40 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             return consumoServicos;
         }
 
+        public List<ConsumoServico> obterTodosByConsumoServByIdTarefa(int idTarefa)
+        {
+            List<Model.ConsumoServico> consumoServicos = new List<Model.ConsumoServico>();
+            string sql = @" SELECT 
+                                quant_homem, quant_m2, cod_servico, cod_consumo_mat_serv, data_consumo_mat_serv, cod_tarefa
+	                        FROM public.consumo_servico
+                            WHERE
+                                cod_tarefa = @cod_tarefa;";
+
+
+            var param = bd.getParams();
+
+            param.Add("@cod_tarefa", idTarefa);
+
+            try
+            {
+                DataTable dt = bd.executeSelect(sql, param);
+
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        consumoServicos.Add(map(dt.Rows[0]));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return consumoServicos;
+        }
+
         internal Model.ConsumoServico map(DataRow row)
         {
             // quant_homem, quant_m2, cod_servico, cod_consumo_mat_serv

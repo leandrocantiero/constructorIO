@@ -95,5 +95,17 @@ namespace WindowsFormsApp2.Controller
 
             return consumoMaterialServicoDAL.remover(codConsumoMatServ);
         }
+
+        internal List<Model.ConsumoMaterial> getConsumoMaterialByIdTarefa(int idTarefa)
+        {
+            DatabaseAbstractionLayer.ConsumoMaterialDAL consumoMaterialDAL = new DatabaseAbstractionLayer.ConsumoMaterialDAL();
+            return consumoMaterialDAL.obterTodosByConsumoMatByIdTarefa(idTarefa);
+        }
+
+        public List<Model.ConsumoServico> getConsumoServicoByIdTarefa(int idTarefa)
+        {
+            DatabaseAbstractionLayer.ConsumoServicoDAL consumoServicoDAL = new DatabaseAbstractionLayer.ConsumoServicoDAL();
+            return consumoServicoDAL.obterTodosByConsumoServByIdTarefa(idTarefa);
+        }
     }
 }

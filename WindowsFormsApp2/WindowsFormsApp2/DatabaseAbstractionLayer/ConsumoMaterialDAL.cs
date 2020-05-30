@@ -151,6 +151,45 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
             return sucesso;
         }
 
+        public List<ConsumoMaterial> obterTodosByConsumoMatByIdTarefa(int idTarefa)
+        {
+            List<Model.ConsumoMaterial> consumoMateriais = new List<Model.ConsumoMaterial>();
+            string sql = @"SELECT 
+                            quant, 
+                            cod_material, 
+                            cod_consumo_mat_serv,
+                            data_consumo_mat_serv,
+                            cod_tarefa
+                           FROM 
+                            public.consumo_material 
+                           WHERE 
+                                cod_tarefa = @cod_tarefa;";
+
+
+            var param = bd.getParams();
+
+            param.Add("@cod_tarefa", idTarefa);
+
+            try
+            {
+                DataTable dt = bd.executeSelect(sql, param);
+
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        consumoMateriais.Add(map(dt.Rows[0]));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return consumoMateriais;
+        }
+
         internal Model.ConsumoMaterial map(DataRow row)
         {
             Model.ConsumoMaterial consumoMaterial = new Model.ConsumoMaterial();

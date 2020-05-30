@@ -27,6 +27,7 @@ namespace WindowsFormsApp2.View
         private Controller.ObrasController obrasController;
         private Controller.CidadeController cidadeController;
         private Controller.EstadoController estadoController;
+        private Controller.ControllerConsumoMaterialServico controllerConsumoMaterialServico;
 
 
         public IniciarObra()
@@ -41,8 +42,9 @@ namespace WindowsFormsApp2.View
             obrasController = new Controller.ObrasController();
             cidadeController = new Controller.CidadeController();
             estadoController = new Controller.EstadoController();
+            controllerConsumoMaterialServico = new Controller.ControllerConsumoMaterialServico();
 
-            obras=new BindingList<object>();
+            obras =new BindingList<object>();
             tarefasSelecionadas = new BindingList<object>();
             tarefasDisponiveis  = new BindingList<object>();
             etapasDisponiveis = new BindingList<object>();
@@ -474,11 +476,36 @@ namespace WindowsFormsApp2.View
             var tarefaSelecionada = dgvTarefasSelecionadas.CurrentRow?.DataBoundItem;
             if (tarefaSelecionada != null)
             {
-                tarefasSelecionadas.Remove(tarefaSelecionada);
-                
-                if (tarefasSelecionadas.Count == 0)
+                //verifica se ja tem materiais e servicos inseridos na tarefa a remover
+                var materiaisInseridos = controllerConsumoMaterialServico.getConsumoMaterialByIdTarefa(
+                    ((Model.Tarefa)tarefaSelecionada).getCod()
+                );
+
+                var servicoInseridos = controllerConsumoMaterialServico.getConsumoServicoByIdTarefa(
+                    ((Model.Tarefa)tarefaSelecionada).getCod()
+                );
+
+                if ((materiaisInseridos != null && materiaisInseridos.Count > 0) || (servicoInseridos != null && servicoInseridos.Count > 0))
                 {
-                    tarefasSelecionadas = new BindingList<object>();
+                    if((materiaisInseridos != null && materiaisInseridos.Count > 0))
+                    {
+                        MessageBox.Show("Já existe materiais lançados nessa tarefa. Impossível remover", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Já existe serviços lançados nessa tarefa. Impossível remover", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else
+                {
+                    tarefasSelecionadas.Remove(tarefaSelecionada);
+                
+                    if (tarefasSelecionadas.Count == 0)
+                    {
+                        tarefasSelecionadas = new BindingList<object>();
+                    }
                 }
 
                 configurarGridTarefasSelecionadas(new List<object>(tarefasSelecionadas));
