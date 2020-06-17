@@ -114,7 +114,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                 {
                     foreach(DataRow row in dt.Rows)
                     {
-                        consumoMateriais.Add(map(dt.Rows[0]));
+                        consumoMateriais.Add(map(row));
                     }
                 }
             }

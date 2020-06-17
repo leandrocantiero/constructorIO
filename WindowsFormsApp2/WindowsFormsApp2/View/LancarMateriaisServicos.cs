@@ -158,6 +158,7 @@ namespace WindowsFormsApp2.View
             btnExcluir.Enabled = false;
 
             btnBuscarObra.Enabled = true;
+            btnLançarMatServ.Enabled = true;
             btnBuscarTarefa.Enabled = true;
             btnBuscarProduto.Enabled = true;
             btnBuscarServico.Enabled = true;

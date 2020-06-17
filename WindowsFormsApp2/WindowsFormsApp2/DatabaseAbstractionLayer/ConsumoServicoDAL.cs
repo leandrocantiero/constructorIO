@@ -139,7 +139,7 @@ namespace WindowsFormsApp2.DatabaseAbstractionLayer
                 {
                     foreach(DataRow row in dt.Rows)
                     {
-                        consumoServicos.Add(map(dt.Rows[0]));
+                        consumoServicos.Add(map(row));
                     }
                 }
             }
